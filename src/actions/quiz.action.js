@@ -2,13 +2,15 @@ import axios from 'axios';
 
 import {
     FETCH_QUIZZES,
-    FETCH_QUIZ
+    FETCH_QUIZ,
+    CREATE_QUIZ,
+    DELETE_QUIZ,
+    EDIT_QUIZ
 } from './types';
 
 const server = 'http://localhost:3000';
 
 export function fetchQuizzes(){
-    alert('fetch quizzes');
     const response = axios.get(`${server}`);
 
     return {
@@ -18,11 +20,51 @@ export function fetchQuizzes(){
 }
 
 export function fetchQuiz(id){
-    alert('fetch quiz');
     const response = axios.get(`${server}/${id}`);
 
     return {
         type:FETCH_QUIZ,
         payload:response
     }
+}
+
+export const createQuiz = (values, token, callback) => async dispatch => {
+
+    try {
+        const response = await axios.post(`${server}`, values, {
+            headers: {authorization: token}
+        })
+        const newlyCreatedObjId = response.data._id;
+        callback(newlyCreatedObjId);
+    } catch(e){
+        alert("something went wrong ! " + e);
+    }
+
+}
+
+export const editQuiz = (id, values, token, callback) => {
+
+    const request = axios.put(`${server}/${id}`, values, {
+        headers: {authorization:token}
+    })
+    .then(() => callback());
+
+    return {
+        type:EDIT_QUIZ,
+        payload: request
+    }
+
+}
+
+export const deleteQuiz = (id, token) => {
+
+    axios.delete(`${server}/${id}`, {
+        headers: {authorization:token}
+    })
+
+    return {
+        type: DELETE_QUIZ,
+        payload: id
+    }
+
 }
