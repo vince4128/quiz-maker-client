@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchQuiz } from '../../actions';
+import QuestionShow from '../question/Question.index';
 
 class QuizShow extends Component {
 
@@ -27,6 +28,12 @@ class QuizShow extends Component {
         return(
             <div>
                 <p>Id : {Quiz._id}</p>
+                <h3>{Quiz.title}</h3>
+                <p>{Quiz.description}</p>
+                <p>{Quiz.introduction}</p>
+                <QuestionShow questions={Quiz.question}/>
+                <p>{Quiz.date}</p>
+                <p>{Quiz.author}</p>
             </div>
         )
     }
