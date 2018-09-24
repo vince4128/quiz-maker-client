@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 const QuestionShow = (props) => {
     if(props.question){
         return(
-            <div>
+            <div>                
                 <p>{props.question.statement}</p>
                 <ul>
                     {props.question.proposal.map((p) => {
-                        return <li>{p.text}</li>
+                        return <li key={p._id}>{p.text}</li>
                     })}
-                </ul>
+                </ul>                
+
             </div>
         )
     }else{

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import QuestionShow from './Question.show';
+import { Link } from 'react-router-dom';
 
 const QuestionIndex = (props) => {
 
@@ -7,7 +8,7 @@ const QuestionIndex = (props) => {
         if(props.questions){
             return props.questions.map((q) => {
                 return (
-                    <div>
+                    <div key={q._id}>
                         <QuestionShow question={q}/>
                     </div>
                 )
@@ -20,7 +21,8 @@ const QuestionIndex = (props) => {
     return(
         <div>
             <h4>Question index</h4>
-            {renderQ()}            
+            {renderQ()}
+            <Link to={"/"}>Edit/Add Questions</Link>            
             <hr/>
         </div>        
     )
