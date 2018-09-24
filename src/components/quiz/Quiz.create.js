@@ -60,7 +60,7 @@ class QuizCreate extends Component {
     onSubmit(values){
         values.author = this.props.connected._id;      
         this.props.createQuiz(values, this.props.connected.authenticated, (newlyCreatedObjId) => {
-            this.props.history.push(`/quiz/${newlyCreatedObjId}`);
+            this.props.history.push(`/quiz/${newlyCreatedObjId}/question/new`);
         });
     }
 
