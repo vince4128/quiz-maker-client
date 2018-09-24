@@ -11,13 +11,16 @@ export const signupAction = (formProps, callback) => /*return*/ async dispatch =
     try {
     const response = await axios.post(`${server}/auth/signup`, formProps);
 
-    dispatch({ type: AUTH_USER, payload: response.data.token });
+    const parsedToken = parseJwt(response.data.token);
+
+    dispatch({ type: AUTH_USER, payload: {token : response.data.token, _id : parsedToken.sub} });
     localStorage.setItem('token', response.data.token);
+    localStorage.setItem('_id', parsedToken.sub);
     callback();
     } catch(e) {
         dispatch({ type: AUTH_ERROR, payload: 'Email in use'});
     }
-};
+}
 
 export const signinAction = (formProps, callback) => async dispatch => {
 
