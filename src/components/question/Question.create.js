@@ -10,7 +10,10 @@ import QuestionShow from './Question.show';
 class QuestionCreate extends Component {
 
     onSubmit(values){
-        alert(values);
+
+        {/*this.props.editQuiz(this.props.quizId, values, this.props.connected.authenticated ,() => {
+            this.props.history.push('/');
+        });*/}
     }
 
     render(){
@@ -20,9 +23,9 @@ class QuestionCreate extends Component {
         return (
             <div>
                 <QuestionShow/>
-                <hr/>
-                <h1>Question Create</h1>
-                <Link to={"/"}>Back</Link>
+                <h4>Question Create</h4>
+                {/*<Link to={"/"}>Back</Link>*/}
+                {JSON.stringify(this.props.quizId)}
 
                 <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                     
@@ -39,6 +42,15 @@ class QuestionCreate extends Component {
                         placeholder="Feecback ok"  
                         component={RenderField}                   
                     />
+
+                    <Field
+                        label="FeedBack ko"
+                        name="feedback.bad"
+                        placeholder="Feecback ko"  
+                        component={RenderField}                   
+                    />
+
+                    <button type="submit" className="btn btn-primary">Submit</button>
 
                 </form>
 

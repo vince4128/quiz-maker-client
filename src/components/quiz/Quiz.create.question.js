@@ -64,6 +64,7 @@ class QuizCreateQuestion extends Component{
                 /*Appeler l'action editQuiz avec le quiz présent dans le reducer*/
                 /*Ou utiliser action existante editQuiz...*/
             }
+            <QuestionCreate quizId={Quiz._id} connected={this.props.auth}/>
         </diV>
 
         const noQuiz = <p>Loading</p>;
