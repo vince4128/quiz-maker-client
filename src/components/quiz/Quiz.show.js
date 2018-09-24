@@ -34,6 +34,7 @@ class QuizShow extends Component {
                 <QuestionShow questions={Quiz.question}/>
                 <p>{Quiz.date}</p>
                 <p>{Quiz.author}</p>
+                <Link to={"/"}>Back</Link>
             </div>
         )
     }
