@@ -5,6 +5,8 @@ import Header from './header/Header';
 import QuizIndex from './quiz/Quiz.index';
 import QuizShow from './quiz/Quiz.show';
 import QuizCreate from './quiz/Quiz.create';
+import QuizEdit from './quiz/Quiz.edit';
+import QuizCreateQuestion from './quiz/Quiz.create.question';
 import CategoryIndex from './category/category.index';
 import CategoryShow from './category/category.show';
 //import UserIndex from './user/user.index';
@@ -27,7 +29,9 @@ class App extends Component {
         <Route path="/" exact render={()=><QuizIndex connected={this.props.auth}/>} />
 
         <Switch>
-          <Route path="/quiz/new" render={()=><QuizCreate connected={this.props.auth}/>} />
+          <Route path="/quiz/:id/question/new" render={()=><QuizCreateQuestion connected={this.props.auth}/>} />
+          <Route path="/quiz/:id/edit" exact render={()=><QuizEdit connected={this.props.auth}/>} /> 
+          <Route path="/quiz/new" exact render={()=><QuizCreate connected={this.props.auth}/>} />
           <Route path="/quiz/:id" render={()=><QuizShow connected={this.props.auth}/>} />
         </Switch>
 
