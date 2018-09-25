@@ -30,7 +30,7 @@ class App extends Component {
 
         <Route path="/" exact render={()=><QuizIndex connected={this.props.auth}/>} />
 
-        <Switch>
+        <Switch>          
           <Route path="/quiz/:id/question/new" render={()=><QuizCreateQuestion connected={this.props.auth}/>} />
           <Route path="/quiz/:id/edit" exact render={()=><QuizEdit connected={this.props.auth}/>} /> 
           <Route path="/quiz/new" exact render={()=><QuizCreate connected={this.props.auth}/>} />

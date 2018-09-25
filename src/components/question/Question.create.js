@@ -18,7 +18,7 @@ class QuestionCreate extends Component {
     onSubmit(values){
 
         this.props.createQuestion(this.props.quizId, values, this.props.connected, () => {
-            this.props.history.push(`/quiz/${this.props.quizId}`);
+            //this.props.history.push(`/quiz/${this.props.quizId}`);
         });
 
     }

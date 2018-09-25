@@ -57,14 +57,8 @@ class QuizCreateQuestion extends Component{
             <h3>Le quiz</h3>
             <ul>{this.renderQuiz()}</ul>
             <hr/>
-            { Quiz.question ? <QuestionIndex questions={Quiz.question}/> : "" }            
+            { Quiz.question ? <QuestionIndex questions={Quiz.question} edit={true}/> : "" }            
             <p>Ajout de question</p>            
-            {
-                /*Ajouter un bouton enregistrer qui : */
-                /*Appelle une action (à créer) qui prend en parametre l'id du quiz et push la question dedans*/
-                /*Appeler l'action editQuiz avec le quiz présent dans le reducer*/
-                /*Ou utiliser action existante editQuiz...*/
-            }
             <QuestionCreate quizId={Quiz._id} connected={this.props.auth}/>
             {/*<ArrayForm/>*/}
         </diV>

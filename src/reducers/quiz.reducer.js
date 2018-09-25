@@ -1,5 +1,5 @@
 import {
-    FETCH_QUIZZES, FETCH_QUIZ, EDIT_QUIZ, DELETE_QUIZ
+    FETCH_QUIZZES, FETCH_QUIZ, EDIT_QUIZ, DELETE_QUIZ, CREATE_QUESTION
 } from '../actions/types';
 
 export default (state={}, action) => {
@@ -15,6 +15,10 @@ export default (state={}, action) => {
 
         case EDIT_QUIZ:
             console.log('edit quiz !');
+
+        case CREATE_QUESTION:
+            const newQ = action.payload.values;
+            state[action.payload.id].question.push(newQ);
 
         case DELETE_QUIZ:
             const newState = Object.keys(state)

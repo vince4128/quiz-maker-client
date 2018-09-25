@@ -38,19 +38,19 @@ export function createQuestion(id, values, token, callback){
 
     return {
         type: CREATE_QUESTION,
-        payload: request
+        payload: {id,values}
     }
 }
 
-export function editQuestion(id, values, token, callback){
-    const request = axios.put(`${server}/question/${id}`,values, {
+export function editQuestion(idQuiz, idQuestion, values, token, callback){
+    const request = axios.put(`${server}/question/${idQuiz}/idQuestion`,values, {
         headers: {authorization:token}
     })
         .then(() => callback());
 
     return {
         type: EDIT_QUESTION,
-        payload: request
+        payload: {idQuiz,idQuestion,values}
     }
 }
 
