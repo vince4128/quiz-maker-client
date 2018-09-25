@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { Route, Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchCategories, fetchCategory } from '../../actions/index.js';
+import { fetchCategories, deleteCategory } from '../../actions/index.js';
 
 class CategoryIndex extends Component {
 
     componentDidMount(){
         this.props.fetchCategories();
+    }
+
+    handleDelete(id){        
+        this.props.deleteCategory(id, this.props.connected.authenticated);        
     }
 
     renderCategories(){
@@ -18,6 +22,19 @@ class CategoryIndex extends Component {
                 return(
                     <li key={renderData._id}>
                         <Link to={`/category/${renderData._id}`}>{renderData._id}</Link>
+                        <h2>{renderData.title}</h2>
+                        <p>{renderData.description}</p>
+                        <p>{renderData.shortDescription}</p>
+                        {
+                            this.props.connected ?
+                            (
+                                <div>
+                                    <button onClick={()=>{this.handleDelete(renderData._id)}}>Delete</button>
+                                    <Link to={`/category/${renderData._id}/edit`}>Edit</Link>
+                                </div>
+                            )
+                            : ""                      
+                        }                        
                     </li>
                 )
             })
@@ -41,4 +58,4 @@ function mapStateToProps(state){
     return { categories:state.categories};
 }
 
-export default withRouter(connect(mapStateToProps, { fetchCategories })(CategoryIndex));
+export default withRouter(connect(mapStateToProps, { fetchCategories, deleteCategory })(CategoryIndex));

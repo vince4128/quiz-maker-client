@@ -7,8 +7,10 @@ import QuizShow from './quiz/Quiz.show';
 import QuizCreate from './quiz/Quiz.create';
 import QuizEdit from './quiz/Quiz.edit';
 import QuizCreateQuestion from './quiz/Quiz.create.question';
-import CategoryIndex from './category/category.index';
-import CategoryShow from './category/category.show';
+import CategoryIndex from './category/Category.index';
+import CategoryShow from './category/Category.show';
+import CategoryCreate from './category/Category.create';
+import CategoryEdit from './category/Category.edit';
 //import UserIndex from './user/user.index';
 //import UserShow from './user/user.show';
 import Signin from './auth/Signin';
@@ -38,6 +40,8 @@ class App extends Component {
         <Route path="/category" exact render={()=><CategoryIndex connected={this.props.auth}/>} />
 
         <Switch>
+          <Route path="/category/:id/edit" exact render={()=><CategoryEdit connected={this.props.auth}/>} /> 
+          <Route path="/category/new" render={()=><CategoryCreate connected={this.props.auth}/>} />
           <Route path="/category/:id" render={()=><CategoryShow connected={this.props.auth}/>} />
         </Switch>   
 

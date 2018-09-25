@@ -9,7 +9,8 @@ class Header extends Component {
             return(
                 <span>
                     <li><Link to={"/category"}>Categories</Link></li>
-                    { this.props.location.pathname === "/" ? <li><Link to={"/quiz/new"}>New Quiz</Link></li> : "" }                    
+                    { this.props.location.pathname === "/" ? <li><Link to={"/quiz/new"}>New Quiz</Link></li> : "" }
+                    { this.props.location.pathname === "/category" ? <li><Link to={"/category/new"}>New Category</Link></li> : "" }                        
                     <li><Link to={"/signout"}>Sign out</Link></li>
                 </span>
             )
