@@ -25,7 +25,8 @@ class QuizIndex extends Component {
                         <p>{renderData.description}</p>
                         <p>{renderData.introduction}</p>
                         <p>{renderData.date}</p>
-                        <p>{renderData.question.length}</p>
+                        <p>{renderData.question ? renderData.question.length : ""}</p>
+                        <p>{renderData.author.pseudo}</p>
                         {
                             this.props.connected.authenticated ? 
                             (
@@ -34,7 +35,7 @@ class QuizIndex extends Component {
                                 <Link to={`/quiz/${renderData._id}/edit`}>Edit</Link>
                             </div>
                             ) 
-                            : ""}
+                            : ""}                        
                         <hr/>
                     </li>
                 )
