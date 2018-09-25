@@ -27,8 +27,11 @@ export function fetchQuestion(id){
     }
 }
 
-export function createQuestion(values, token, callback){
-    const request = axios.post(`${server}/question`, values, {
+export function createQuestion(id, values, token, callback){
+
+    alert('createQuestion');
+
+    const request = axios.post(`${server}/${id}/question`, values, {
         headers: {authorization: token}
     })
         .then(() => callback());

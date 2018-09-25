@@ -8,6 +8,7 @@ import RenderField from '../field/RenderField';
 import RenderSelectField from '../field/RenderSelectField';
 import QuestionIndex from '../question/Question.index';
 import QuestionCreate from '../question/Question.create';
+import ArrayForm from '../question/array.form';
 
 class QuizCreateQuestion extends Component{
 
@@ -65,6 +66,7 @@ class QuizCreateQuestion extends Component{
                 /*Ou utiliser action existante editQuiz...*/
             }
             <QuestionCreate quizId={Quiz._id} connected={this.props.auth}/>
+            {/*<ArrayForm/>*/}
         </diV>
 
         const noQuiz = <p>Loading</p>;

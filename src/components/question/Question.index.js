@@ -22,7 +22,7 @@ const QuestionIndex = (props) => {
         <div>
             <h4>Question index</h4>
             {renderQ()}
-            <Link to={"/"}>Edit/Add Questions</Link>            
+            <Link to={`/quiz/${props.quizId}/question/new`}>Edit/Add Questions</Link>            
             <hr/>
         </div>        
     )
