@@ -9,7 +9,7 @@ const QuestionIndex = (props) => {
             return props.questions.map((q) => {
                 return (
                     <div key={q._id}>
-                        <QuestionShow question={q}/>
+                        <QuestionShow question={q} edit={props.edit}/>
                     </div>
                 )
             })
