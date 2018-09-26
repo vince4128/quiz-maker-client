@@ -1,43 +1,28 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Field, FieldArray, reduxForm } from 'redux-form';
-import { withRouter } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { editQuestion } from '../../actions';
-import requireAuth from '../requireAuth';
+import { editQuestion, fetchQuiz } from '../../actions';
 import RenderField from '../field/RenderField';
-import QuestionShow from '../question/Question.show';
+import requireAuth from '../requireAuth';
+import QuestionShow from './Question.show';
+import RenderSelectField from '../field/RenderSelectField';
+import validate from './validate'
 
-class QuestionEdit extends Component {
+class QuestionCreate extends Component {
 
     constructor(props){
         super(props);
-
-        this.state = {
-            selectedQuiz: null,
-            selectedQuestion: null
-        }
     }
 
-    componentDidMount(){
-        const { id } = this.props.match.params;
-        const { qid } = this.props.match.params;
-        this.setState({selectedQuiz:id});      
-        this.setState({selectedQuestion:qid});      
-    }
+    onSubmit(values){
 
-    renderTagsField(field){
-        return(
-            <div className="form-group">
-
-            </div>
-        );
-    }
-
-    onSubmit(values){        
-        this.props.editQuestion(this.state.selectedQuiz, this.state.selectedQuestion, values, this.props.connected, () => {
-            this.props.history.push(`/quiz/${this.state.selectedQuiz}/question/new`);
+        this.props.editQuestion(this.props.quizId, this.props.question._id, values, this.props.connected, () => {
+            //this.props.history.push(`/quiz/${this.props.quizId}`);
+            alert("cb");
+            this.props.toggleEdit();
         });
+
     }
 
     renderProposals = ({ fields, meta: { error, submitFailed } }) => (
@@ -93,19 +78,55 @@ class QuestionEdit extends Component {
         </ul>
       )
 
+    test(){
+        return "test!";
+    }
+
     render(){
 
         const { handleSubmit } = this.props;
+        /*const { handleSubmit, reset } = this.props;*/      
 
-        return(
-
+        return (
+            
             <div>
-                {/*<QuestionShow/>
+                <QuestionShow/>
                 <h4>Question Edit</h4>
                 <p>id question : {this.props.question._id}</p>
-                <p>id quiz : {this.props.quizId}</p>*/}
+                <p>id quiz : {this.props.quizId}</p>
 
-                <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>                
+                <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+                    
+                    {/*<Field
+                        label="Enonce"
+                        name="statement"
+                        placeholder="enonce"
+                        component={RenderField}
+                    />
+
+                    <Field
+                        label="FeedBack ok"
+                        name="feedback.good"
+                        placeholder="Feecback ok"  
+                        component={RenderField}                   
+                    />
+
+                    <Field
+                        label="FeedBack ko"
+                        name="feedback.bad"
+                        placeholder="Feecback ko"  
+                        component={RenderField}                   
+                    />
+
+                    <Field
+                    label="Type"
+                    name="type"
+                    component={RenderSelectField}>
+                        <option value={"type1"}>Type 1</option>
+                        <option value={"type2"}>Type 2</option>
+                    </Field>
+
+                    <button type="submit" className="btn btn-primary">Submit</button>*/}
 
                     <Field
                         name="statement"
@@ -133,43 +154,23 @@ class QuestionEdit extends Component {
                         <button type="button" /*disabled={pristine || submitting}*/ /*onClick={reset}*/>
                         Réinitialiser les champs
                         </button>
+                        <button onClick={this.props.toggleEdit()}/*onClick={this.props.toggleEdit()}*/ /*disabled={submitting}*/>
+                        Cancel
+                        </button>
                     </div>
 
                 </form>
 
-            </div>    
+            </div>            
         )
-
     }
-    
+
 }
 
-function validate(values){
-
-    const errors = {};
-
-    // validate the inputs from 'values'
-    if(!values.title){
-        errors.title = "Enter a title !";
-    }
-
-    if(!values.description){
-        errors.description = "Enter a description !";
-    }
-
-    if(!values.shortDescription){
-        errors.shortDescription = "Enter a shortdescription !";
-    }
-
-    //if errors is empty, the form is fine to submit
-    //if errors as any property, redux form is invalid
-    return errors;
-
-}
 
 export default reduxForm({
     validate:validate,
-    form:'editQuestion'   //name must be unique (in case of several form it's usefull), and could be whatever string we want. 
+    form:'questionCreate'
 })(
-    withRouter(requireAuth(connect(null, { editQuestion })(QuestionEdit)))
+    withRouter(requireAuth(connect(null, { editQuestion, fetchQuiz })(QuestionCreate)))
 );
