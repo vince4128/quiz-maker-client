@@ -43,7 +43,8 @@ export function createQuestion(id, values, token, callback){
 }
 
 export function editQuestion(idQuiz, idQuestion, values, token, callback){
-    const request = axios.put(`${server}/question/${idQuiz}/idQuestion`,values, {
+    //console.log("edit question idQuestion !!!! ", idQuestion);
+    const request = axios.put(`${server}/${idQuiz}/question/edit/${idQuestion}`,values, {
         headers: {authorization:token}
     })
         .then(() => callback());
@@ -54,14 +55,18 @@ export function editQuestion(idQuiz, idQuestion, values, token, callback){
     }
 }
 
-export function deleteQuestion(id, token){
+export function deleteQuestion(id, qid, token, callback){
+
+    alert('deleteQuestion ! ');
+    console.log('deleteQuestion ! Action ', id, qid, token);
     
-    axios.delete(`${server}/question/${id}`, {
+    axios.delete(`${server}/${id}/question/${qid}`, {
         headers: {authorization: token}
-    });
+    })
+    .then(() => callback());
 
     return {
         type: DELETE_QUESTION,
-        payload: id
+        payload: {id, qid}
     }
 }
