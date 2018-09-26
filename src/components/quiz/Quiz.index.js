@@ -33,6 +33,7 @@ class QuizIndex extends Component {
                             <div>
                                 <button onClick={()=>{this.handleDelete(renderData._id)}}>Delete</button>
                                 <Link to={`/quiz/${renderData._id}/edit`}>Edit</Link>
+                                {/*<Link to={`/test/${renderData._id}`}>Edit</Link>*/}
                             </div>
                             ) 
                             : ""}                        
