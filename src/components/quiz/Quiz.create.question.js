@@ -57,7 +57,7 @@ class QuizCreateQuestion extends Component{
             <h3>Le quiz</h3>
             <ul>{this.renderQuiz()}</ul>
             <hr/>
-            { Quiz.question ? <QuestionIndex questions={Quiz.question} edit={true}/> : "" }            
+            { Quiz.question ? <QuestionIndex questions={Quiz.question} edit={true} quizId={Quiz._id} connected={this.props.auth}/> : "" }            
             <p>Ajout de question</p>            
             <QuestionCreate quizId={Quiz._id} connected={this.props.auth}/>
             {/*<ArrayForm/>*/}
