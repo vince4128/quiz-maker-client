@@ -16,6 +16,8 @@ import CategoryEdit from './category/Category.edit';
 import Signin from './auth/Signin';
 import Signup from './auth/Signup';
 import Signout from './auth/Signout';
+import QuestionEdit from './question/Question.edit';
+import QuestionsEdit from './question/Questions.edit';
 
 class App extends Component {
   render() {
@@ -29,8 +31,10 @@ class App extends Component {
         <Route path="/signout" exact component={Signout} />
 
         <Route path="/" exact render={()=><QuizIndex connected={this.props.auth}/>} />
+        <Route path="/test/:id/" exact render={()=><QuestionsEdit connected={this.props.auth}/>} />
 
-        <Switch>          
+        <Switch>
+        <Route path="/quiz/:id/question/:qid/edit" exact render={()=><QuestionEdit connected={this.props.auth}/>} />          
           <Route path="/quiz/:id/question/new" render={()=><QuizCreateQuestion connected={this.props.auth}/>} />
           <Route path="/quiz/:id/edit" exact render={()=><QuizEdit connected={this.props.auth}/>} /> 
           <Route path="/quiz/new" exact render={()=><QuizCreate connected={this.props.auth}/>} />
@@ -43,7 +47,7 @@ class App extends Component {
           <Route path="/category/:id/edit" exact render={()=><CategoryEdit connected={this.props.auth}/>} /> 
           <Route path="/category/new" render={()=><CategoryCreate connected={this.props.auth}/>} />
           <Route path="/category/:id" render={()=><CategoryShow connected={this.props.auth}/>} />
-        </Switch>   
+        </Switch>
 
         <p className="App-intro">
           Welcome to QuizMaker.
