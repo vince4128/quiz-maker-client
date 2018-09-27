@@ -6,6 +6,7 @@ import QuizIndex from './quiz/Quiz.index';
 import QuizShow from './quiz/Quiz.show';
 import QuizCreate from './quiz/Quiz.create';
 import QuizEdit from './quiz/Quiz.edit';
+import QuizMainEdit from './quiz/Quiz.main.edit';
 import QuizCreateQuestion from './quiz/Quiz.create.question';
 import CategoryIndex from './category/Category.index';
 import CategoryShow from './category/Category.show';
@@ -17,7 +18,6 @@ import Signin from './auth/Signin';
 import Signup from './auth/Signup';
 import Signout from './auth/Signout';
 import QuestionEdit from './question/Question.edit';
-import QuestionsEdit from './question/Questions.edit';
 
 class App extends Component {
   render() {
@@ -31,12 +31,12 @@ class App extends Component {
         <Route path="/signout" exact component={Signout} />
 
         <Route path="/" exact render={()=><QuizIndex connected={this.props.auth}/>} />
-        <Route path="/test/:id/" exact render={()=><QuestionsEdit connected={this.props.auth}/>} />
 
         <Switch>
-        <Route path="/quiz/:id/question/:qid/edit" exact render={()=><QuestionEdit connected={this.props.auth}/>} />          
+          <Route path="/quiz/:id/question/:qid/edit" exact render={()=><QuestionEdit connected={this.props.auth}/>} />          
           <Route path="/quiz/:id/question/new" render={()=><QuizCreateQuestion connected={this.props.auth}/>} />
-          <Route path="/quiz/:id/edit" exact render={()=><QuizEdit connected={this.props.auth}/>} /> 
+          {/*<Route path="/quiz/:id/edit" exact render={()=><QuizEdit connected={this.props.auth}/>} /> */}
+          <Route path="/quiz/:id/edit" exact render={()=><QuizMainEdit connected={this.props.auth}/>} />
           <Route path="/quiz/new" exact render={()=><QuizCreate connected={this.props.auth}/>} />
           <Route path="/quiz/:id" render={()=><QuizShow connected={this.props.auth}/>} />
         </Switch>
