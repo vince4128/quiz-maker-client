@@ -18,8 +18,8 @@ export function fetchQuestions(){
     }
 }
 
-export function fetchQuestion(id){
-    const response = axios.get(`${server}/questions/${id}`);
+export function fetchQuestion(id,qid){
+    const response = axios.get(`${server}/${id}/${qid}`);
 
     return {
         type:FETCH_QUESTION,

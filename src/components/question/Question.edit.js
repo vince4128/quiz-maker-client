@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import { Field, FieldArray, reduxForm } from 'redux-form';
+import { Field, FieldArray, initialize, reduxForm } from 'redux-form';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { editQuestion } from '../../actions';
+import { editQuestion, fetchQuestion } from '../../actions';
 import requireAuth from '../requireAuth';
 import RenderField from '../field/RenderField';
 import QuestionShow from '../question/Question.show';
@@ -15,7 +15,8 @@ class QuestionEdit extends Component {
 
         this.state = {
             selectedQuiz: null,
-            selectedQuestion: null
+            selectedQuestion: null,
+            load:false
         }
     }
 
@@ -23,7 +24,11 @@ class QuestionEdit extends Component {
         const { id } = this.props.match.params;
         const { qid } = this.props.match.params;
         this.setState({selectedQuiz:id});      
-        this.setState({selectedQuestion:qid});      
+        this.setState({selectedQuestion:qid});
+        this.props.dispatch(fetchQuestion(id,qid)).then((r)=>{
+            this.props.dispatch(initialize('editQuestion', r.payload.data));
+            this.setState({load:true})
+        })      
     }
 
     renderTagsField(field){
@@ -171,5 +176,5 @@ export default reduxForm({
     validate:validate,
     form:'editQuestion'   //name must be unique (in case of several form it's usefull), and could be whatever string we want. 
 })(
-    withRouter(requireAuth(connect(null, { editQuestion })(QuestionEdit)))
+    withRouter(requireAuth(connect(null, { editQuestion, fetchQuestion })(QuestionEdit)))
 );
