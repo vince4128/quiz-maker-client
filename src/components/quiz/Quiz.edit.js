@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, initialize } from 'redux-form';
 import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { editQuiz, fetchQuiz, fetchCategories, fetchImages } from '../../actions';
@@ -14,8 +14,9 @@ class QuizEdit extends Component {
 
         this.state = {
             selectedQuiz: null,
+            load:false
         }
-    }
+    }    
 
     componentDidMount(){
         const { id } = this.props.match.params;
@@ -23,6 +24,11 @@ class QuizEdit extends Component {
         this.props.fetchQuiz(id);
         this.props.fetchCategories();
         this.props.fetchImages();
+        this.props.dispatch(fetchQuiz(id)).then((r)=>{
+            console.log('r',r.payload.data);
+            this.props.dispatch(initialize('EditQuizForm', r.payload.data));
+            this.setState({load:true})
+         })                               
     }
 
     renderCategories(){
@@ -78,29 +84,19 @@ class QuizEdit extends Component {
 
             <hr/>
 
-            <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+            <form onSubmit={handleSubmit(this.onSubmit.bind(this))} >
                 
                 <Field
                     label="Title"
                     name="title"
-                    placeholder="Type your title"
-                    defaultValue ="blablalba"            
+                    placeholder="Type your title"          
                     component={RenderField}                    
                 />
 
                 <Field
                     label="Description"
                     name="description"
-                    placeholder="placeholder"
-                    placeholder="Type your title"                                        
-                    component={RenderField}
-                />
-
-                <Field
-                    label="Short Description"
-                    name="shortdescription"
-                    placeholder="placeholder"
-                    placeholder="Type your title"                                        
+                    placeholder="Type your Description"                                        
                     component={RenderField}
                 />
 
@@ -130,6 +126,18 @@ class QuizEdit extends Component {
     
 }
 
+const initialValues = (state) => {
+
+    //const id = ownProps.match.params;
+
+    return(
+        {
+        title: 'title', 
+        description: 'description'
+        }
+    )
+}
+
 function validate(values){
 
     const errors = {};
@@ -141,10 +149,6 @@ function validate(values){
 
     if(!values.description){
         errors.description = "Enter a description !";
-    }
-
-    if(!values.shortdescription){
-        errors.shortdescription = "Enter a shortdescription !";
     }
 
     if(!values.category){
@@ -167,7 +171,8 @@ function mapStateToProps(state){
 
 export default reduxForm({
     validate:validate,
-    initialValues:{ field1: 'value1', field2: 'value2' }, 
+    enableReinitialize : true,
+    keepDirtyOnReinitialize : true,
     form:'EditQuizForm'   //name must be unique (in case of several form it's usefull), and could be whatever string we want. 
 })(
     withRouter(requireAuth(connect(mapStateToProps, { editQuiz, fetchQuiz, fetchCategories, fetchImages })(QuizEdit)))

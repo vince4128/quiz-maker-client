@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, initialize } from 'redux-form';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { editCategory } from '../../actions';
+import { editCategory, fetchCategory } from '../../actions';
 import requireAuth from '../requireAuth';
 import RenderField from '../field/RenderField';
 
@@ -14,12 +14,18 @@ class CategoryEdit extends Component {
 
         this.state = {
             selectedCategory: null,
+            load:false
         }
     }
 
     componentDidMount(){
         const { id } = this.props.match.params;
-        this.setState({selectedCategory:id});        
+        this.setState({selectedCategory:id});
+        this.props.dispatch(fetchCategory(id)).then((r)=>{
+            console.log('r',r.payload.data);
+            this.props.dispatch(initialize('editCategroyForm', r.payload.data));
+            this.setState({load:true})
+         })           
     }
 
     renderTagsField(field){
@@ -111,6 +117,8 @@ function validate(values){
 
 export default reduxForm({
     validate:validate,
+    enableReinitialize : true,
+    keepDirtyOnReinitialize : true,
     form:'editCategroyForm'   //name must be unique (in case of several form it's usefull), and could be whatever string we want. 
 })(
     withRouter(requireAuth(connect(null, { editCategory })(CategoryEdit)))
