@@ -76,10 +76,9 @@ class QuizCreate extends Component {
         if(this.checkError()){
             alert('error with file !');
         }else{
-            //const filename = this.state.imageFile[0].name;            
-            const filename = "test";
-            //values.image = filename;
-            values.image = this.state.imageFile[0].name;
+            const filename = this.getRandomString() + this.state.imageFile[0].name;            
+            values.image = filename;
+            //values.image = this.state.imageFile[0].name;
             const data = new FormData();
             data.append('filename', filename); 
             data.append('file', this.state.imageFile[0]);             

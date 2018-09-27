@@ -33,6 +33,9 @@ class QuizShow extends Component {
                 <p>{Quiz.introduction}</p>                
                 <p>{Quiz.date}</p>
                 <p>{Quiz.author ? Quiz.author.pseudo : ""}</p>
+                <div>
+                    {Quiz.image ? <img width="250" height="auto" src={`http://localhost:3000/${Quiz.image}`}/> : ""}
+                </div>
                 <QuestionIndex questions={Quiz.question} quizId={Quiz._id}/>
                 <Link to={"/"}>Back</Link>
             </div>

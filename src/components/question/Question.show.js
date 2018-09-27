@@ -50,6 +50,11 @@ class QuestionShow extends Component {
                                 </span> 
                                 : ""}
                         </p>
+                        <div>
+                            <p>image</p>
+                            {JSON.stringify(this.props.question)}
+                            {this.props.question.image ? <img width="250" height="auto" src={`http://localhost:3000/${this.props.question.image}`}/> : ""}
+                        </div>
                     <ul>
                         {this.props.question.proposal.map((p) => {
                             return <li key={p._id}>

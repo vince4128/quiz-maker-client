@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { editQuestion, fetchQuestion } from '../../actions';
+import axios from 'axios';
+import DropZoneField from '../field/DropzoneField';
 import requireAuth from '../requireAuth';
 import RenderField from '../field/RenderField';
 import QuestionShow from '../question/Question.show';
@@ -14,10 +16,23 @@ class QuestionEdit extends Component {
         super(props);
 
         this.state = {
+            imageFile:[],
             selectedQuiz: null,
             selectedQuestion: null,
             load:false
         }
+    }
+
+    handleOnDrop = (newImageFile, rejectedFile) => {
+        this.setState({imageFile: newImageFile});        
+    };
+
+    checkError = () => {
+        return false;
+    }
+
+    getRandomString(){
+        return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     }
 
     componentDidMount(){
@@ -39,7 +54,30 @@ class QuestionEdit extends Component {
         );
     }
 
-    onSubmit(values){        
+    onSubmit(values){
+        //upload image
+        if(this.checkError()){
+            alert('error with file !');
+        }else{
+            const filename = this.getRandomString() + this.state.imageFile[0].name;            
+            values.image = filename;
+            //values.image = this.state.imageFile[0].name;
+            const data = new FormData();
+            data.append('filename', filename); 
+            data.append('file', this.state.imageFile[0]);             
+            alert('la requete va etre passee !');
+            axios.post('http://localhost:3000/upload', data, {
+                headers: {authorization: this.props.connected}
+            })
+                .then((r)=>{
+                    //this.setState({ imageURL: `http://localhost:3000/${r.body.file}`, uploadStatus: true });
+                    //lancer action
+                    //alert('callback');
+                    //console.log('callback post image', r.data);
+                }).catch((err)=>{
+                    console.log(err);
+                })
+        }        
         this.props.editQuestion(this.state.selectedQuiz, this.state.selectedQuestion, values, this.props.connected, () => {
             this.props.history.push(`/quiz/${this.state.selectedQuiz}/question/new`);
         });
@@ -118,19 +156,32 @@ class QuestionEdit extends Component {
                         component={RenderField}
                         label="enonce"
                     />
+                    
+                    <Field
+                        label="Image"
+                        name="image"                    
+                        component={DropZoneField}
+                        type="file"
+                        imageFile={this.state.imageFile}
+                        handleOnDrop={this.handleOnDrop}                    
+                        />
+
                     <FieldArray name="proposal" component={this.renderProposals} />
+
                     <Field
                         label="FeedBack ok"
                         name="feedback.good"
                         placeholder="Feedback ok"  
                         component={RenderField}                   
                         />
-                        <Field
+
+                    <Field
                         label="FeedBack ko"
                         name="feedback.bad"
                         placeholder="Feecback ko"  
                         component={RenderField}                   
                         />
+
                     <div>
                         <button type="submit" /*onClick={this.props.toggleEdit()}/*onClick={this.props.toggleEdit()}*/ /*disabled={submitting}*/>
                         Éditer la question

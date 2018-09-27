@@ -3,6 +3,8 @@ import { Field, FieldArray, reduxForm } from 'redux-form';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createQuestion, fetchQuiz } from '../../actions';
+import axios from 'axios';
+import DropZoneField from '../field/DropzoneField';
 import RenderField from '../field/RenderField';
 import requireAuth from '../requireAuth';
 import QuestionShow from './Question.show';
@@ -13,9 +15,48 @@ class QuestionCreate extends Component {
 
     constructor(props){
         super(props);
+
+        this.state = {
+            imageFile: []
+        }
+    }
+
+    handleOnDrop = (newImageFile, rejectedFile) => {
+        this.setState({imageFile: newImageFile});        
+    };
+
+    checkError = () => {
+        return false;
+    }
+
+    getRandomString(){
+        return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     }
 
     onSubmit(values){
+        //upload image
+        if(this.checkError()){
+            alert('error with file !');
+        }else{
+            const filename = this.getRandomString() + this.state.imageFile[0].name;            
+            values.image = filename;
+            //values.image = this.state.imageFile[0].name;
+            const data = new FormData();
+            data.append('filename', filename); 
+            data.append('file', this.state.imageFile[0]);             
+            alert('la requete va etre passee !');
+            axios.post('http://localhost:3000/upload', data, {
+                headers: {authorization: this.props.connected}
+            })
+                .then((r)=>{
+                    //this.setState({ imageURL: `http://localhost:3000/${r.body.file}`, uploadStatus: true });
+                    //lancer action
+                    //alert('callback');
+                    //console.log('callback post image', r.data);
+                }).catch((err)=>{
+                    console.log(err);
+                })
+        }
 
         this.props.createQuestion(this.props.quizId, values, this.props.connected, () => {
             //this.props.history.push(`/quiz/${this.props.quizId}`);
@@ -99,37 +140,6 @@ class QuestionCreate extends Component {
                 {this.test}
 
                 <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-                    
-                    {/*<Field
-                        label="Enonce"
-                        name="statement"
-                        placeholder="enonce"
-                        component={RenderField}
-                    />
-
-                    <Field
-                        label="FeedBack ok"
-                        name="feedback.good"
-                        placeholder="Feecback ok"  
-                        component={RenderField}                   
-                    />
-
-                    <Field
-                        label="FeedBack ko"
-                        name="feedback.bad"
-                        placeholder="Feecback ko"  
-                        component={RenderField}                   
-                    />
-
-                    <Field
-                    label="Type"
-                    name="type"
-                    component={RenderSelectField}>
-                        <option value={"type1"}>Type 1</option>
-                        <option value={"type2"}>Type 2</option>
-                    </Field>
-
-                    <button type="submit" className="btn btn-primary">Submit</button>*/}
 
                     <Field
                         name="statement"
@@ -137,19 +147,31 @@ class QuestionCreate extends Component {
                         component={RenderField}
                         label="enonce"
                     />
+
+                    <Field
+                        name="uploadInput"
+                        component={DropZoneField}
+                        type="file"
+                        imageFile={this.state.imageFile}
+                        handleOnDrop={this.handleOnDrop}                    
+                        />
+
                     <FieldArray name="proposal" component={this.renderProposals} />
+                    
                     <Field
                         label="FeedBack ok"
                         name="feedback.good"
                         placeholder="Feedback ok"  
                         component={RenderField}                   
                         />
-                        <Field
+                        
+                    <Field
                         label="FeedBack ko"
                         name="feedback.bad"
                         placeholder="Feecback ko"  
                         component={RenderField}                   
                         />
+
                     <div>
                         <button type="submit" /*disabled={submitting}*/>
                         Ajouter la question

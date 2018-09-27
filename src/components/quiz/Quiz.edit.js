@@ -3,6 +3,8 @@ import { Field, reduxForm, initialize } from 'redux-form';
 import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { editQuiz, fetchQuiz, fetchCategories, fetchImages } from '../../actions';
+import axios from 'axios';
+import DropZoneField from '../field/DropzoneField';
 import requireAuth from '../requireAuth';
 import RenderField from '../field/RenderField';
 import RenderSelectField from '../field/RenderSelectField';
@@ -13,10 +15,23 @@ class QuizEdit extends Component {
         super(props);
 
         this.state = {
+            imageFile:[],
             selectedQuiz: null,
             load:false
         }
-    }    
+    }
+    
+    handleOnDrop = (newImageFile, rejectedFile) => {
+        this.setState({imageFile: newImageFile});        
+    };
+
+    checkError = () => {
+        return false;
+    }
+
+    getRandomString(){
+        return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    }
 
     componentDidMount(){
         const { id } = this.props.match.params;
@@ -45,19 +60,6 @@ class QuizEdit extends Component {
         );    
     }
 
-    renderImages(){
-        //avoid mutate
-        const data = Object.assign({}, this.props.images);
-        //options to return
-        return Object.keys(data).map(            
-            (img)=>{
-                return(
-                    <option key={data[img]._id} value={data[img]._id}>{data[img].title}</option>
-                )
-            }
-        );    
-    }
-
     renderTagsField(field){
         return(
             <div className="form-group">
@@ -67,7 +69,30 @@ class QuizEdit extends Component {
     }
 
     onSubmit(values){
-        this.props.editQuiz(this.state.selectedQuiz, values, this.props.connected.authenticated ,() => {
+        //upload image
+        if(this.checkError()){
+            alert('error with file !');
+        }else{
+            const filename = this.getRandomString() + this.state.imageFile[0].name;            
+            values.image = filename;
+            //values.image = this.state.imageFile[0].name;
+            const data = new FormData();
+            data.append('filename', filename); 
+            data.append('file', this.state.imageFile[0]);             
+            alert('la requete va etre passee !');
+            axios.post('http://localhost:3000/upload', data, {
+                headers: {authorization: this.props.auth}
+            })
+                .then((r)=>{
+                    //this.setState({ imageURL: `http://localhost:3000/${r.body.file}`, uploadStatus: true });
+                    //lancer action
+                    //alert('callback');
+                    //console.log('callback post image', r.data);
+                }).catch((err)=>{
+                    console.log(err);
+                })
+        }
+        this.props.editQuiz(this.state.selectedQuiz, values, this.props.auth ,() => {
             this.props.history.push('/');
         });
     }
@@ -100,19 +125,21 @@ class QuizEdit extends Component {
                     component={RenderField}
                 />
 
-                {/*<Field
-                    label="Image"
-                    name="image"
-                    component={RenderSelectField}>
-                    {this.renderImages()}
-                </Field>*/}
-
                 <Field
                     label="Category"
                     name="category"
                     component={RenderSelectField}>
                     {this.renderCategories()}
                 </Field>
+
+                <Field
+                    label="Image"
+                    name="image"                    
+                    component={DropZoneField}
+                    type="file"
+                    imageFile={this.state.imageFile}
+                    handleOnDrop={this.handleOnDrop}                    
+                    />
 
                 <button type="submit" className="btn btn-primary">Submit</button>
                 <Link to="/" className="btn btn-danger">Cancel</Link>
