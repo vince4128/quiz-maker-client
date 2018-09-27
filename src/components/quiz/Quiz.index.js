@@ -27,6 +27,9 @@ class QuizIndex extends Component {
                         <p>{renderData.date}</p>
                         <p>{renderData.question ? renderData.question.length : ""}</p>
                         <p>{renderData.author.pseudo}</p>
+                        <div>
+                            {renderData.image ? <img width="250" height="auto" src={`http://localhost:3000/${renderData.image}`}/> : ""}
+                        </div>
                         {
                             this.props.connected.authenticated ? 
                             (

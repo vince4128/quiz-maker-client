@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createQuiz, fetchCategories, fetchImages} from '../../actions';
+import axios from 'axios';
+import DropZoneField from '../field/DropzoneField';
 import requireAuth from '../requireAuth';
 import RenderField from '../field/RenderField';
 import RenderSelectField from '../field/RenderSelectField';
@@ -14,8 +16,20 @@ class QuizCreate extends Component {
         super(props);
 
         this.state = {
-            imageFile: []
+            imageFile: []            
         }
+    }
+
+    handleOnDrop = (newImageFile, rejectedFile) => {
+        this.setState({imageFile: newImageFile});        
+    };
+
+    checkError = () => {
+        return false;
+    }
+
+    getRandomString(){
+        return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     }
 
     componentDidMount(){
@@ -58,6 +72,31 @@ class QuizCreate extends Component {
     }
 
     onSubmit(values){
+        //upload image
+        if(this.checkError()){
+            alert('error with file !');
+        }else{
+            //const filename = this.state.imageFile[0].name;            
+            const filename = "test";
+            //values.image = filename;
+            values.image = this.state.imageFile[0].name;
+            const data = new FormData();
+            data.append('filename', filename); 
+            data.append('file', this.state.imageFile[0]);             
+            alert('la requete va etre passee !');
+            axios.post('http://localhost:3000/upload', data, {
+                headers: {authorization: this.props.connected.authenticated}
+            })
+                .then((r)=>{
+                    //this.setState({ imageURL: `http://localhost:3000/${r.body.file}`, uploadStatus: true });
+                    //lancer action
+                    //alert('callback');
+                    //console.log('callback post image', r.data);
+                }).catch((err)=>{
+                    console.log(err);
+                })
+        }
+        
         values.author = this.props.connected._id;      
         this.props.createQuiz(values, this.props.connected.authenticated, (newlyCreatedObjId) => {
             this.props.history.push(`/quiz/${newlyCreatedObjId}/question/new`);
@@ -89,23 +128,10 @@ class QuizCreate extends Component {
                 />
 
                 <Field
-                    label="Short Description"
-                    name="shortdescription"
-                    component={RenderField}
-                />
-
-                <Field
                     label="Introduction"
                     name="introduction"
                     component={RenderField}
                 />
-
-                {/*<Field
-                    label="Image"
-                    name="image"
-                    component={RenderSelectField}>
-                    {this.renderImages()}
-                </Field>*/}
 
                 <Field
                     label="Category"
@@ -113,6 +139,14 @@ class QuizCreate extends Component {
                     component={RenderSelectField}>
                     {this.renderCategories()}
                 </Field>
+
+                <Field
+                    name="uploadInput"
+                    component={DropZoneField}
+                    type="file"
+                    imageFile={this.state.imageFile}
+                    handleOnDrop={this.handleOnDrop}                    
+                    />
 
                 <button type="submit" className="btn btn-primary">Submit</button>
                 <Link to="/" className="btn btn-danger">Cancel</Link>
@@ -137,10 +171,6 @@ function validate(values){
 
     if(!values.description){
         errors.description = "Enter a description !";
-    }
-
-    if(!values.shortdescription){
-        errors.shortdescription = "Enter a shortdescription !";
     }
 
     if(!values.category){
