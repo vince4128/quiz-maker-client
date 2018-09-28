@@ -70,27 +70,29 @@ class QuizEdit extends Component {
 
     onSubmit(values){
         //upload image
-        if(this.checkError()){
-            alert('error with file !');
-        }else{
-            const filename = this.getRandomString() + this.state.imageFile[0].name;            
-            values.image = filename;
-            //values.image = this.state.imageFile[0].name;
-            const data = new FormData();
-            data.append('filename', filename); 
-            data.append('file', this.state.imageFile[0]);             
-            alert('la requete va etre passee !');
-            axios.post('http://localhost:3000/upload', data, {
-                headers: {authorization: this.props.auth}
-            })
-                .then((r)=>{
-                    //this.setState({ imageURL: `http://localhost:3000/${r.body.file}`, uploadStatus: true });
-                    //lancer action
-                    //alert('callback');
-                    //console.log('callback post image', r.data);
-                }).catch((err)=>{
-                    console.log(err);
+        if(this.state.imageFile.length>0){
+            if(this.checkError()){
+                alert('error with file !');
+            }else{
+                const filename = this.getRandomString() + this.state.imageFile[0].name;            
+                values.image = filename;
+                //values.image = this.state.imageFile[0].name;
+                const data = new FormData();
+                data.append('filename', filename); 
+                data.append('file', this.state.imageFile[0]);             
+                alert('la requete va etre passee !');
+                axios.post('http://localhost:3000/upload', data, {
+                    headers: {authorization: this.props.auth}
                 })
+                    .then((r)=>{
+                        //this.setState({ imageURL: `http://localhost:3000/${r.body.file}`, uploadStatus: true });
+                        //lancer action
+                        //alert('callback');
+                        //console.log('callback post image', r.data);
+                    }).catch((err)=>{
+                        console.log(err);
+                    })
+            }
         }
         this.props.editQuiz(this.state.selectedQuiz, values, this.props.auth ,() => {
             this.props.history.push('/');

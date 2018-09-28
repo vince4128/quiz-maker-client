@@ -41,6 +41,14 @@ class QuestionEdit extends Component {
         this.setState({selectedQuiz:id});      
         this.setState({selectedQuestion:qid});
         this.props.dispatch(fetchQuestion(id,qid)).then((r)=>{
+            console.log("init", r.payload.data.proposal);
+            r.payload.data.proposal.map((p) => {
+                if(p.value === true){
+                    p.value = "true";
+                }else if(p.value === false){
+                    p.value = "false";
+                }
+            })
             this.props.dispatch(initialize('editQuestion', r.payload.data));
             this.setState({load:true})
         })      
@@ -56,27 +64,29 @@ class QuestionEdit extends Component {
 
     onSubmit(values){
         //upload image
-        if(this.checkError()){
-            alert('error with file !');
-        }else{
-            const filename = this.getRandomString() + this.state.imageFile[0].name;            
-            values.image = filename;
-            //values.image = this.state.imageFile[0].name;
-            const data = new FormData();
-            data.append('filename', filename); 
-            data.append('file', this.state.imageFile[0]);             
-            alert('la requete va etre passee !');
-            axios.post('http://localhost:3000/upload', data, {
-                headers: {authorization: this.props.connected}
-            })
-                .then((r)=>{
-                    //this.setState({ imageURL: `http://localhost:3000/${r.body.file}`, uploadStatus: true });
-                    //lancer action
-                    //alert('callback');
-                    //console.log('callback post image', r.data);
-                }).catch((err)=>{
-                    console.log(err);
+        if(this.state.imageFile.length>0){
+            if(this.checkError()){
+                alert('error with file !');
+            }else{
+                const filename = this.getRandomString() + this.state.imageFile[0].name;
+                values.image = filename;
+                //values.image = this.state.imageFile[0].name;
+                const data = new FormData();
+                data.append('filename', filename);            
+                data.append('file', this.state.imageFile[0]);           
+                alert('la requete va etre passee !');
+                axios.post('http://localhost:3000/upload', data, {
+                    headers: {authorization: this.props.connected.authenticated}
                 })
+                    .then((r)=>{
+                        //this.setState({ imageURL: `http://localhost:3000/${r.body.file}`, uploadStatus: true });
+                        //lancer action
+                        //alert('callback');
+                        //console.log('callback post image', r.data);
+                    }).catch((err)=>{
+                        console.log(err);
+                    })
+            }
         }        
         this.props.editQuestion(this.state.selectedQuiz, this.state.selectedQuestion, values, this.props.connected, () => {
             this.props.history.push(`/quiz/${this.state.selectedQuiz}/question/new`);
