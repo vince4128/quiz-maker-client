@@ -34,8 +34,9 @@ class QuizIndex extends Component {
                             this.props.connected.authenticated ? 
                             (
                             <div>
-                                <button onClick={()=>{this.handleDelete(renderData._id)}}>Delete</button>
-                                <Link to={`/quiz/${renderData._id}/edit`}>Edit</Link>
+                                <button onClick={()=>{this.handleDelete(renderData._id)}}>Delete</button>&nbsp;
+                                <Link to={`/quiz/${renderData._id}/edit`}>Edit</Link>&nbsp;
+                                <Link to={`/preview/${renderData._id}`}>Preview</Link>
                                 {/*<Link to={`/test/${renderData._id}`}>Edit</Link>*/}
                             </div>
                             ) 
