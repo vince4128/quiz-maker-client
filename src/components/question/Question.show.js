@@ -10,20 +10,18 @@ class QuestionShow extends Component {
         super(props);
         this.state = {
             editing:false,
-            delete:0
+            deleted:false
         }
 
         this.toggleEdit = this.toggleEdit.bind(this);
         this.parentMethod = this.parentMethod.bind(this);
     }
 
-    handleDelete(id, qid){
+    handleDelete(id, qid){        
         this.props.deleteQuestion(id, qid, this.props.connected, ()=>{
-            //this.props.history.push(`/quiz/${this.state.selectedQuiz}/question/new`);
             this.setState({delete : this.state.delete+=1})
-            this.forceUpdate();
-            this.props.psuh("coucou");
-        });        
+        });
+        this.setState({deleted:true})        
     }
 
     toggleEdit(){
@@ -37,35 +35,37 @@ class QuestionShow extends Component {
 
     render(){
         if(this.props.question){
-            return(
-                <div>
-                    { !this.state.editing ? 
+            if(!this.state.deleted){
+                return(
                     <div>
-                        <p>
-                            {this.props.question.statement}
-                            {this.props.edit ? 
-                                <span>
-                                    <Link to={`/quiz/${this.props.quizId}/question/${this.props.question._id}/edit`}>Edit</Link>
-                                    <button onClick={()=>{this.handleDelete(this.props.quizId, this.props.question._id)}}>delete</button>
-                                </span> 
-                                : ""}
-                        </p>
+                        { !this.state.editing ? 
                         <div>
-                            <p>image</p>
-                            {JSON.stringify(this.props.question)}
-                            {this.props.question.image ? <img width="250" height="auto" src={`http://localhost:3000/${this.props.question.image}`}/> : ""}
-                        </div>
-                    <ul>
-                        {this.props.question.proposal.map((p) => {
-                            return <li key={p._id}>
-                                    {p.text}
-                                </li>
-                        })}
-                    </ul>
-                    </div> : ""}                               
+                            <p>
+                                {this.props.question.statement}
+                                {this.props.edit ? 
+                                    <span>
+                                        <Link to={`/quiz/${this.props.quizId}/question/${this.props.question._id}/edit`}>Edit</Link>
+                                        <button onClick={()=>{this.handleDelete(this.props.quizId, this.props.question._id)}}>delete</button>
+                                    </span> 
+                                    : ""}
+                            </p>
+                            <div>                            
+                                {this.props.question.image ? <img width="250" height="auto" src={`http://localhost:3000/${this.props.question.image}`}/> : ""}
+                            </div>
+                        <ul>
+                            {this.props.question.proposal.map((p) => {
+                                return <li key={p._id}>
+                                        {p.text}
+                                    </li>
+                            })}
+                        </ul>
+                        </div> : ""}                               
 
-                </div>
-            )
+                    </div>
+                )
+            }else{
+                return("");
+            }
         }else{
             return(
                 <div>Loading...</div>
