@@ -45,9 +45,9 @@ class PreviewQuiz extends Component {
     }
 
     prevNext(direction){
-        if(direction === "next"){
+        if(direction === "next" && this.state.currentSlide <= this.state.totalSlide){
             this.setState({currentSlide:this.state.currentSlide += 1});
-        }else{
+        }else if(direction === "prev" && this.state.currentSlide > 0){
             this.setState({currentSlide:this.state.currentSlide -= 1});
         }
     }
