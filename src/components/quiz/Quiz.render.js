@@ -16,10 +16,36 @@ const QuizRender = (props) => {
                             <div>
                                 {q.statement} ?
                                 <br/>
+                                <form>
                                 {q.proposal.map((p) =>{
-                                    return <button>{p.text}</button>
+                                    //return <button>{p.text}</button>                                    
+                                    //return <input type="radio">test</input>
+                                    return (
+                                        <div>
+                                            <fieldset>
+                                                <label>{p.text}</label>
+                                                <input
+                                                    type="radio"
+                                                    name="question"
+                                                    value={p.text}
+                                                    //checked={p.checked}
+                                                    //onClick={()=>{props.toggleCheck(p)}}
+                                                    onChange={(e)=>{console.log(e.target.checked),props.toggleCheck(p, e.target.checked)}}
+                                                />
+                                            </fieldset>
+                                        </div>
+                                    )
                                 })}
-                                {q.index}
+                                </form>
+                                <p>
+                                    <button onClick={()=>props.questionValidation(q)}>Validate</button>
+                                </p>
+                                <p>
+                                index : {q.index}
+                                </p>
+                                <p>
+                                answered : {JSON.stringify(q.answered)}
+                                </p>
                             </div>
                             : ""
                         }

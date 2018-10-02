@@ -32,6 +32,10 @@ class PreviewQuiz extends Component {
             let QuizzArray = [];
             QuizzArray.push({intro:Quiz.title});
             Quiz.question.map((q) => {
+                q.answered = false;
+                q.proposal.map((p) => {
+                    p.checked = false;
+                })
                 QuizzArray.push(q)
             })
             QuizzArray.push({feedback:Quiz.feedback});
@@ -52,6 +56,23 @@ class PreviewQuiz extends Component {
         }
     }
 
+    questionValidation(q){
+        //set state pour updater la question dans l'objet quiz présent dans state        
+        alert("validation " + q.index);
+        q.proposal.map((p) => {
+            alert('proposition ' + p.text);
+            if(p.checked){alert('checked !')};
+        })
+    }
+
+    toggleCheck(p, check){
+        //p.checked = !p.checked;
+        if(check){
+            alert("check est là !");
+        }
+        alert(p.text + " " + check);
+    }
+
     render(){
 
         return(
@@ -66,6 +87,8 @@ class PreviewQuiz extends Component {
                     currentSlide={this.state.currentSlide}
                     totalSlide={this.state.totalSlide}
                     prevNext={(direction)=>{this.prevNext(direction)}}
+                    questionValidation={(index)=>{this.questionValidation(index)}}
+                    toggleCheck={(p, check)=>this.toggleCheck(p, check)}
                     />
             </div>
         )
