@@ -10,36 +10,32 @@ const QuizRender = (props) => {
             if(q.index === props.currentSlide){ 
                 return(
                     <li>
-                        {/*JSON.stringify(q)*/}
                         {q.intro ? <h1>{q.intro}{q.index}</h1>: ""}
                         {q.proposal ? 
                             <div>
                                 {q.statement} ?
                                 <br/>
-                                <form>
+                                <form onSubmit={(e)=>{e.preventDefault();alert(e.values)}}>
                                 {q.proposal.map((p) =>{
-                                    //return <button>{p.text}</button>                                    
-                                    //return <input type="radio">test</input>
                                     return (
                                         <div>
                                             <fieldset>
-                                                <label>{p.text}</label>
+                                                <label htmlFor={p._id}>{p.text}</label>
                                                 <input
+                                                    id={p._id}
                                                     type="radio"
                                                     name="question"
                                                     value={p.text}
-                                                    //checked={p.checked}
+                                                    checked={p.checked}
                                                     //onClick={()=>{props.toggleCheck(p)}}
-                                                    onChange={(e)=>{console.log(e.target.checked),props.toggleCheck(p, e.target.checked)}}
+                                                    onChange={(e)=>{console.log(e.target.checked),props.toggleCheck(q,p, e.target.checked)}}
                                                 />
                                             </fieldset>
                                         </div>
                                     )
-                                })}
-                                </form>
-                                <p>
-                                    <button onClick={()=>props.questionValidation(q)}>Validate</button>
-                                </p>
+                                })}                                
+                                <button onClick={()=>props.questionValidation(q)}>Validate</button>                                
+                                </form>                                
                                 <p>
                                 index : {q.index}
                                 </p>

@@ -32,10 +32,12 @@ class PreviewQuiz extends Component {
             let QuizzArray = [];
             QuizzArray.push({intro:Quiz.title});
             Quiz.question.map((q) => {
+                console.log(q);
                 q.answered = false;
                 q.proposal.map((p) => {
                     p.checked = false;
                 })
+                //QuizzArray[`${q._id}`] = q;
                 QuizzArray.push(q)
             })
             QuizzArray.push({feedback:Quiz.feedback});
@@ -45,6 +47,7 @@ class PreviewQuiz extends Component {
                     totalSlide:Quiz.question.length
                 }
             );
+            console.log(QuizzArray);
         });
     }
 
@@ -59,18 +62,32 @@ class PreviewQuiz extends Component {
     questionValidation(q){
         //set state pour updater la question dans l'objet quiz présent dans state        
         alert("validation " + q.index);
-        q.proposal.map((p) => {
-            alert('proposition ' + p.text);
-            if(p.checked){alert('checked !')};
-        })
+        q.answered = true;
+        const data = Object.assign(this.state.quiz);
+        data[`${q.index}`] = q;
+        this.setState({quiz:data});        
     }
 
-    toggleCheck(p, check){
+    toggleCheck(q, p, check){
         //p.checked = !p.checked;
+        //TODO add a method for multi-choice question
+        //if question simple
+        const data = Object.assign(this.state.quiz);      
+        data[`${q.index}`].proposal.map((i) => {
+            i.checked = false;
+        })
         if(check){
-            alert("check est là !");
+            //data[`${q.index}`].proposal[`${p._id}`].checked = true;
+            data[`${q.index}`].proposal.map((i) => {
+                if(i._id === p._id){
+                    i.checked = true;
+                    console.log("III",i);
+                }
+            })
+            data[`${q.index}`] = q;
+            this.setState({quiz:data});
         }
-        alert(p.text + " " + check);
+        this.setState({quiz:data});
     }
 
     render(){
@@ -81,14 +98,13 @@ class PreviewQuiz extends Component {
                 <h1>Quiz Preview</h1>
                 {JSON.stringify(this.state)}
                 <hr/>
-                {/*ajouter composant qui prend en parametre l'objet quiz*/}
                 <QuizRender
                     quiz={this.state.quiz} 
                     currentSlide={this.state.currentSlide}
                     totalSlide={this.state.totalSlide}
                     prevNext={(direction)=>{this.prevNext(direction)}}
                     questionValidation={(index)=>{this.questionValidation(index)}}
-                    toggleCheck={(p, check)=>this.toggleCheck(p, check)}
+                    toggleCheck={(q, p, check)=>this.toggleCheck(q, p, check)}
                     />
             </div>
         )
