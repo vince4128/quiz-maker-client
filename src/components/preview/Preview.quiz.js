@@ -52,8 +52,14 @@ class PreviewQuiz extends Component {
     }
 
     prevNext(direction){
+        const currentQ = this.state.quiz[this.state.currentSlide];
+        //console.log(currentQ);
         if(direction === "next" && this.state.currentSlide <= this.state.totalSlide){
-            this.setState({currentSlide:this.state.currentSlide += 1});
+            if(this.state.currentSlide > 0 && currentQ.answered){
+                this.setState({currentSlide:this.state.currentSlide += 1});
+            }else if(this.state.currentSlide === 0){
+                this.setState({currentSlide:this.state.currentSlide += 1});
+            }
         }else if(direction === "prev" && this.state.currentSlide > 0){
             this.setState({currentSlide:this.state.currentSlide -= 1});
         }
@@ -63,9 +69,23 @@ class PreviewQuiz extends Component {
         //set state pour updater la question dans l'objet quiz présent dans state        
         alert("validation " + q.index);
         q.answered = true;
-        const data = Object.assign(this.state.quiz);
-        data[`${q.index}`] = q;
-        this.setState({quiz:data});        
+        //this.updateQinState(q);
+        this.questionCorrection(q);
+    }
+
+    questionCorrection(q){
+        //TODO add a method for multi-choice question
+        //const currentQ = this.state.quiz[this.state.currentSlide];
+        q.proposal.map((p) => {
+            if(p.value){
+                if(p.checked){
+                    q.result = true;
+                }else{
+                    q.result = false;
+                }    
+            }
+        });        
+        this.updateQinState(q);
     }
 
     toggleCheck(q, p, check){
@@ -87,6 +107,12 @@ class PreviewQuiz extends Component {
             data[`${q.index}`] = q;
             this.setState({quiz:data});
         }
+        this.setState({quiz:data});
+    }
+
+    updateQinState(q){
+        const data = Object.assign(this.state.quiz);
+        data[`${q.index}`] = q;
         this.setState({quiz:data});
     }
 

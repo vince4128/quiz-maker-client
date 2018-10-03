@@ -5,6 +5,7 @@ const QuizRender = (props) => {
 
     const renderQuiz = () => {
         let count = 0;
+        console.log("LE QUIZ", props.quiz);
         return props.quiz.map((q) => {
             q.index = count++;
             if(q.index === props.currentSlide){ 
@@ -27,7 +28,6 @@ const QuizRender = (props) => {
                                                     name="question"
                                                     value={p.text}
                                                     checked={p.checked}
-                                                    //onClick={()=>{props.toggleCheck(p)}}
                                                     onChange={(e)=>{console.log(e.target.checked),props.toggleCheck(q,p, e.target.checked)}}
                                                 />
                                             </fieldset>
@@ -35,7 +35,21 @@ const QuizRender = (props) => {
                                     )
                                 })}                                
                                 <button onClick={()=>props.questionValidation(q)}>Validate</button>                                
-                                </form>                                
+                                </form>
+                                <p>
+                                    { q.answered ? 
+                                        <div>
+                                            { q.result ? 
+                                                <p>
+                                                    {q.feedback.good}
+                                                </p> 
+                                            :   <p>
+                                                    {q.feedback.bad}
+                                                </p>
+                                            }
+                                        </div> 
+                                    : ""}
+                                </p>                                
                                 <p>
                                 index : {q.index}
                                 </p>
