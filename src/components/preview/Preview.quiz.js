@@ -15,6 +15,7 @@ class PreviewQuiz extends Component {
             intro:"",
             questions:{},
             score:0,
+            scorePercent:0,
             progression:0,
             totalSlide:0,
             currentSlide:0,
@@ -67,7 +68,6 @@ class PreviewQuiz extends Component {
 
     questionValidation(q){
         //set state pour updater la question dans l'objet quiz présent dans state        
-        alert("validation " + q.index);
         q.answered = true;
         //this.updateQinState(q);
         this.questionCorrection(q);
@@ -80,6 +80,7 @@ class PreviewQuiz extends Component {
             if(p.value){
                 if(p.checked){
                     q.result = true;
+                    this.setState({score:this.state.score += 1});
                 }else{
                     q.result = false;
                 }    
@@ -128,6 +129,7 @@ class PreviewQuiz extends Component {
                     quiz={this.state.quiz} 
                     currentSlide={this.state.currentSlide}
                     totalSlide={this.state.totalSlide}
+                    score={this.state.score}
                     prevNext={(direction)=>{this.prevNext(direction)}}
                     questionValidation={(index)=>{this.questionValidation(index)}}
                     toggleCheck={(q, p, check)=>this.toggleCheck(q, p, check)}
