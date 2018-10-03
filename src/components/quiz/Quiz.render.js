@@ -3,15 +3,31 @@ import ProgressBar from '../ui/progressBar';
 
 const QuizRender = (props) => {
 
+    const shouldBeDisabled = (q) => {
+        if(q.answered){
+            return true;
+        }
+        let disabled = true;
+        q.proposal.map((p) => {
+            if(p.checked === true){
+                disabled = false;
+            }
+        })
+        return disabled;
+    }
+
     const renderQuiz = () => {
         let count = 0;
-        console.log("LE QUIZ", props.quiz);
         return props.quiz.map((q) => {
             q.index = count++;
-            if(q.index === props.currentSlide){ 
+            if(q.index === props.currentSlide){
                 return(
                     <li>
-                        {q.intro ? <h1>{q.intro}{q.index}</h1>: ""}
+                        {q.intro ? <h1>{q.intro}</h1>: ""}
+                        {q.feedback ? <h1>Feedback {JSON.stringify(q.feedback)}</h1>: ""}
+                        <p>
+                            Score : {props.score}
+                        </p>
                         {q.proposal ? 
                             <div>
                                 {q.statement} ?
@@ -28,13 +44,13 @@ const QuizRender = (props) => {
                                                     name="question"
                                                     value={p.text}
                                                     checked={p.checked}
-                                                    onChange={(e)=>{console.log(e.target.checked),props.toggleCheck(q,p, e.target.checked)}}
+                                                    onChange={(e)=>{props.toggleCheck(q,p, e.target.checked)}}
                                                 />
                                             </fieldset>
                                         </div>
                                     )
                                 })}                                
-                                <button onClick={()=>props.questionValidation(q)}>Validate</button>                                
+                                <button disabled={shouldBeDisabled(q)} onClick={()=>props.questionValidation(q)}>Validate</button>                                
                                 </form>
                                 <p>
                                     { q.answered ? 
@@ -55,7 +71,7 @@ const QuizRender = (props) => {
                                 </p>
                                 <p>
                                 answered : {JSON.stringify(q.answered)}
-                                </p>
+                                </p>                                
                             </div>
                             : ""
                         }
