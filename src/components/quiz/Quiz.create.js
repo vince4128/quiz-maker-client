@@ -115,24 +115,44 @@ class QuizCreate extends Component {
             <h1>Create Quiz</h1>
 
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-                
-                <Field
-                    label="Title"
-                    name="title"
-                    component={RenderField}
-                />
 
-                <Field
-                    label="Description"
-                    name="description"
-                    component={RenderField}
-                />
+                <fieldset>
+                    
+                    <Field
+                        label="Title"
+                        name="title"
+                        component={RenderField}
+                    />
 
-                <Field
-                    label="Introduction"
-                    name="introduction"
-                    component={RenderField}
-                />
+                    <Field
+                        label="Description"
+                        name="description"
+                        component={RenderField}
+                    />
+
+                    <Field
+                        label="Introduction"
+                        name="introduction"
+                        component={RenderField}
+                    />
+
+                </fieldset>
+
+                <fieldset>
+
+                    <Field
+                        label="Feedback bad"
+                        name="feedback.bad"
+                        component={RenderField}
+                    />
+
+                    <Field
+                        label="Feedback good"
+                        name="feedback.good"
+                        component={RenderField}
+                    />
+
+                </fieldset>
 
                 <Field
                     label="Category"
@@ -180,6 +200,10 @@ function validate(values){
 
     if(!values.introduction){
         errors.introduction = "Enter an introduction !";
+    }
+
+    if(!values.feedback){
+        errors.feedback = "Enter a feedback !";
     }
 
     /*if(!values.image){
