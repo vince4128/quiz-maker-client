@@ -17,6 +17,7 @@ class PreviewQuiz extends Component {
             score:0,
             scorePercent:0,
             progression:0,
+            totalQuestion:0,
             totalSlide:0,
             currentSlide:0,
             feedback:{}
@@ -40,12 +41,13 @@ class PreviewQuiz extends Component {
                 })
                 //QuizzArray[`${q._id}`] = q;
                 QuizzArray.push(q)
-            })
+            });         
             QuizzArray.push({feedback:Quiz.feedback});
             this.setState(
                 {
                     quiz:QuizzArray,
-                    totalSlide:Quiz.question.length
+                    totalSlide:QuizzArray.length,
+                    totalQuestion:Quiz.question.length
                 }
             );
             console.log(QuizzArray);
@@ -81,12 +83,18 @@ class PreviewQuiz extends Component {
                 if(p.checked){
                     q.result = true;
                     this.setState({score:this.state.score += 1});
+                    this.calcScorePrecent();
                 }else{
                     q.result = false;
                 }    
             }
         });        
         this.updateQinState(q);
+    }
+
+    calcScorePrecent(){
+        const scorePercent = (this.state.score * 100)/this.state.totalQuestion;
+        this.setState({scorePercent});
     }
 
     toggleCheck(q, p, check){
@@ -123,13 +131,13 @@ class PreviewQuiz extends Component {
             
             <div>
                 <h1>Quiz Preview</h1>
-                {JSON.stringify(this.state)}
                 <hr/>
                 <QuizRender
                     quiz={this.state.quiz} 
                     currentSlide={this.state.currentSlide}
                     totalSlide={this.state.totalSlide}
                     score={this.state.score}
+                    scorePercent={this.state.scorePercent}
                     prevNext={(direction)=>{this.prevNext(direction)}}
                     questionValidation={(index)=>{this.questionValidation(index)}}
                     toggleCheck={(q, p, check)=>this.toggleCheck(q, p, check)}

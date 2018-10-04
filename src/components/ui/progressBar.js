@@ -3,7 +3,7 @@ import React from 'react';
 const ProgressBar = (props) => {
     return (
         <div>
-            {props.currentSlide} / {props.totalSlide}
+            {props.currentSlide+1} / {props.totalSlide}
         </div>
     )
 }

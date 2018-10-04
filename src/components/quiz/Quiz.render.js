@@ -24,9 +24,9 @@ const QuizRender = (props) => {
                 return(
                     <li>
                         {q.intro ? <h1>{q.intro}</h1>: ""}
-                        {q.feedback ? <h1>Feedback {JSON.stringify(q.feedback)}</h1>: ""}
+                        {q.feedback && (q.index === props.totalSlide-1) ? <h1>{props.scorePercent > 80 ? q.feedback.good : q.feedback.bad}</h1>: ""}
                         <p>
-                            Score : {props.score}
+                            Score : {props.scorePercent}<br/>
                         </p>
                         {q.proposal ? 
                             <div>
