@@ -75,6 +75,7 @@ class QuestionCreate extends Component {
             this.props.fetchQuiz(this.props.quizId);
         });
 
+        this.props.reset();
     }
 
     renderProposals = ({ fields, meta: { error, submitFailed } }) => (
@@ -189,7 +190,7 @@ class QuestionCreate extends Component {
                         <button type="submit" /*disabled={submitting}*/>
                         Ajouter la question
                         </button>
-                        <button type="button" /*disabled={pristine || submitting}*/ /*onClick={reset}*/>
+                        <button type="button" /*disabled={pristine || submitting}*/ onClick={this.props.reset}>
                         Réinitialiser les champs
                         </button>
                     </div>
@@ -205,7 +206,8 @@ class QuestionCreate extends Component {
 
 export default reduxForm({
     validate:validate,
-    form:'questionCreate'
+    form:'questionCreate',
+    enableReinitialize: true
 })(
     withRouter(requireAuth(connect(null, { createQuestion, fetchQuiz })(QuestionCreate)))
 );
