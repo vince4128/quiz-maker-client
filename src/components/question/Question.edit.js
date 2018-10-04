@@ -87,7 +87,18 @@ class QuestionEdit extends Component {
                         console.log(err);
                     })
             }
-        }        
+        }
+        //check type of question
+        const trueValue = values.proposal.filter((value) => {
+            console.log(value);
+            return value.value === "true";
+        });
+        console.log("edit trueValue ", trueValue);
+        if(trueValue.length > 1){            
+            values.type = "multi"
+        }else{
+            values.type = "simple"
+        }
         this.props.editQuestion(this.state.selectedQuiz, this.state.selectedQuestion, values, this.props.connected, () => {
             this.props.history.push(`/quiz/${this.state.selectedQuiz}/question/new`);
         });

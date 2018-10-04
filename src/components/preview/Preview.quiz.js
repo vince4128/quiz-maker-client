@@ -78,17 +78,37 @@ class PreviewQuiz extends Component {
     questionCorrection(q){
         //TODO add a method for multi-choice question
         //const currentQ = this.state.quiz[this.state.currentSlide];
-        q.proposal.map((p) => {
-            if(p.value){
-                if(p.checked){
-                    q.result = true;
-                    this.setState({score:this.state.score += 1});
-                    this.calcScorePrecent();
-                }else{
-                    q.result = false;
-                }    
+        if(q.type ==="simple"){
+            q.proposal.map((p) => {
+                if(p.value){
+                    if(p.checked){
+                        q.result = true;
+                        this.setState({score:this.state.score += 1});
+                        this.calcScorePrecent();
+                    }else{
+                        q.result = false;
+                    }    
+                }
+            });       
+        }else if(q.type === "multi"){
+            let isGood = true;
+            q.result = true;
+            q.proposal.map((p) => {
+                if(p.value){
+                    if(!p.checked){
+                        isGood = false;
+                        q.result = false;
+                        return
+                    }
+                }
+            })
+
+            if(isGood){
+                this.setState({score:this.state.score += 1});
+                this.calcScorePrecent();
             }
-        });        
+        }
+         
         this.updateQinState(q);
     }
 
@@ -98,19 +118,18 @@ class PreviewQuiz extends Component {
     }
 
     toggleCheck(q, p, check){
-        //p.checked = !p.checked;
+        const data = Object.assign(this.state.quiz); 
         //TODO add a method for multi-choice question
-        //if question simple
-        const data = Object.assign(this.state.quiz);      
-        data[`${q.index}`].proposal.map((i) => {
-            i.checked = false;
-        })
+        if(q.type === "simple"){                 
+            data[`${q.index}`].proposal.map((i) => {
+                i.checked = false;
+            })
+        }
         if(check){
             //data[`${q.index}`].proposal[`${p._id}`].checked = true;
             data[`${q.index}`].proposal.map((i) => {
                 if(i._id === p._id){
                     i.checked = true;
-                    console.log("III",i);
                 }
             })
             data[`${q.index}`] = q;

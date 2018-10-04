@@ -40,9 +40,9 @@ const QuizRender = (props) => {
                                                 <label htmlFor={p._id}>{p.text}</label>
                                                 <input
                                                     id={p._id}
-                                                    type="radio"
+                                                    type={q.type === "simple" ? "radio" : "checkbox"}
                                                     name="question"
-                                                    value={p.text}
+                                                    //value={p.text}
                                                     checked={p.checked}
                                                     onChange={(e)=>{props.toggleCheck(q,p, e.target.checked)}}
                                                 />
