@@ -41,7 +41,6 @@ class QuestionCreate extends Component {
             }else{
                 const filename = this.getRandomString() + this.state.imageFile[0].name;            
                 values.image = filename;
-                //values.image = this.state.imageFile[0].name;
                 const data = new FormData();
                 data.append('filename', filename); 
                 data.append('file', this.state.imageFile[0]);             
@@ -59,6 +58,19 @@ class QuestionCreate extends Component {
                     })
             }
         }
+        //check type of question
+        const trueValue = values.proposal.filter((value) => {
+            console.log(value);
+            console.log(value.value);
+            return value.value === "true";
+        });
+        if(trueValue.length > 1){
+            values.type = "multi"
+        }else{
+            values.type = "simple"
+        }
+        console.log("TRUE VALUE ", trueValue);
+        //
         this.props.createQuestion(this.props.quizId, values, this.props.connected, () => {
             this.props.fetchQuiz(this.props.quizId);
         });
