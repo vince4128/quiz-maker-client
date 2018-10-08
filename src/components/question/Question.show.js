@@ -68,7 +68,7 @@ class QuestionShow extends Component {
             }
         }else{
             return(
-                <div>Loading...</div>
+                <div>Aucune proposition à afficher.</div>
             )
         }  
     }

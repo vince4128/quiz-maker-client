@@ -20,7 +20,7 @@ const QuestionIndex = (props) => {
                 )
             })
         }else{
-            return <p>Loading...</p>
+            return <p>Aucune Question à afficher.</p>
         }
     }
 
