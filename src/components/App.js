@@ -35,8 +35,7 @@ class App extends Component {
 
         <Switch>
           <Route path="/quiz/:id/question/:qid/edit" exact render={()=><QuestionEdit connected={this.props.auth}/>} />          
-          <Route path="/quiz/:id/question/new" render={()=><QuizCreateQuestion connected={this.props.auth}/>} />
-          {/*<Route path="/quiz/:id/edit" exact render={()=><QuizEdit connected={this.props.auth}/>} /> */}
+          <Route path="/quiz/:id/question/new" render={()=><QuizCreateQuestion connected={this.props.auth}/>} />          
           <Route path="/quiz/:id/edit" exact render={()=><QuizMainEdit connected={this.props.auth}/>} />
           <Route path="/quiz/new" exact render={()=><QuizCreate connected={this.props.auth}/>} />
           <Route path="/quiz/:id" render={()=><QuizShow connected={this.props.auth}/>} />
@@ -51,6 +50,8 @@ class App extends Component {
         </Switch>
 
         <Route path="/preview/:id" exact render={()=><PreviewQuiz connected={this.props.auth}/>} />
+
+        <Route path="/shared/:id" exact render={()=><PreviewQuiz connected={this.props.auth}/>} />
 
         <p className="App-intro">
           Welcome to QuizMaker.
