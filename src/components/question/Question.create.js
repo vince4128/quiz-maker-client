@@ -6,6 +6,7 @@ import { createQuestion, fetchQuiz } from '../../actions';
 import axios from 'axios';
 import DropZoneField from '../field/DropzoneField';
 import RenderField from '../field/RenderField';
+import RenderRadio from '../field/RenderRadio';
 import requireAuth from '../requireAuth';
 import QuestionShow from './Question.show';
 import RenderSelectField from '../field/RenderSelectField';
@@ -96,7 +97,7 @@ class QuestionCreate extends Component {
                   <label>
                       <Field
                       name={`${proposal}.value`}
-                      component="input"
+                      component={RenderRadio}
                       type="radio"
                       value="true"
                       />{' '}
@@ -105,7 +106,7 @@ class QuestionCreate extends Component {
                   <label>
                       <Field
                       name={`${proposal}.value`}
-                      component="input"
+                      component={RenderRadio}
                       type="radio"
                       value="false"
                       />{' '}
@@ -183,7 +184,7 @@ class QuestionCreate extends Component {
                     <Field
                         label="FeedBack ko"
                         name="feedback.bad"
-                        placeholder="Feecback ko"  
+                        placeholder="Feedback ko"  
                         component={RenderField}                   
                         />
 

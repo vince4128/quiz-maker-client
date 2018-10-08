@@ -8,7 +8,9 @@ import axios from 'axios';
 import DropZoneField from '../field/DropzoneField';
 import requireAuth from '../requireAuth';
 import RenderField from '../field/RenderField';
+import RenderRadio from '../field/RenderRadio';
 import QuestionShow from '../question/Question.show';
+import validate from './validate';
 
 class QuestionEdit extends Component {
 
@@ -121,7 +123,7 @@ class QuestionEdit extends Component {
                   <label>
                       <Field
                       name={`${proposal}.value`}
-                      component="input"
+                      component={RenderRadio}
                       type="radio"
                       value="true"
                       />{' '}
@@ -130,7 +132,7 @@ class QuestionEdit extends Component {
                   <label>
                       <Field
                       name={`${proposal}.value`}
-                      component="input"
+                      component={RenderRadio}
                       type="radio"
                       value="false"
                       />{' '}
@@ -207,9 +209,9 @@ class QuestionEdit extends Component {
                         <button type="submit" /*onClick={this.props.toggleEdit()}/*onClick={this.props.toggleEdit()}*/ /*disabled={submitting}*/>
                         Enregistrer la question
                         </button>
-                        <button type="button" /*disabled={pristine || submitting}*/ /*onClick={reset}*/>
-                        Réinitialiser les champs
-                        </button>
+                        <Link to={`/quiz/${this.props.match.params.id}/edit`} /*disabled={pristine || submitting}*/ /*onClick={reset}*/>
+                        Annuler
+                        </Link>
                     </div>
 
                 </form>
@@ -221,7 +223,7 @@ class QuestionEdit extends Component {
     
 }
 
-function validate(values){
+/*function validate(values){
 
     const errors = {};
 
@@ -242,7 +244,7 @@ function validate(values){
     //if errors as any property, redux form is invalid
     return errors;
 
-}
+}*/
 
 export default reduxForm({
     validate:validate,
