@@ -7,7 +7,7 @@ import App from './components/App';
 ReactDOM.render(
     <Root>
         <BrowserRouter>
-            <Route path="/" render={({ match }) => <App match={match} {...this.props} />}/>
+            <Route path="/" render={({ match }) => <App match={match} />}/>
         </BrowserRouter>
     </Root>
     , document.getElementById('root')
