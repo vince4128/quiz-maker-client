@@ -80,21 +80,9 @@ class QuestionCreate extends Component {
 
     renderProposals = ({ fields, meta: { error, submitFailed } }) => (
         <ul>
-          <li>
-            <button type="button" onClick={() => fields.push({})}>
-              Ajouter une proposition
-            </button>
-            {submitFailed && error && <span>{error}</span>}
-          </li>
+          
           {fields.map((proposal, index) => (
-            <li key={index}>
-              <button
-                type="button"
-                title="Effacer la propostion"
-                onClick={() => fields.remove(index)}
-              >
-              Supprimer la question
-              </button>
+            <li key={index}>              
               <h4>Proposal #{index + 1}</h4>
               <Field
                 name={`${proposal}.text`}
@@ -126,8 +114,21 @@ class QuestionCreate extends Component {
                   </div>
               </div>        
               {/*<FieldArray name={`${proposal}.hobbies`} component={renderHobbies} />*/}
+              <button
+                type="button"
+                title="Effacer la propostion"
+                onClick={() => fields.remove(index)}
+              >
+                Supprimer la question
+              </button>
             </li>
           ))}
+          <li>
+            <button type="button" onClick={() => fields.push({})}>
+              Ajouter une proposition
+            </button>
+            {submitFailed && error && <span>{error}</span>}
+          </li>
         </ul>
       )
 

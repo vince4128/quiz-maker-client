@@ -105,22 +105,9 @@ class QuestionEdit extends Component {
     }
 
     renderProposals = ({ fields, meta: { error, submitFailed } }) => (
-        <ul>
-          <li>
-            <button type="button" onClick={() => fields.push({})}>
-              Éditer une proposition
-            </button>
-            {submitFailed && error && <span>{error}</span>}
-          </li>
+        <ul>          
           {fields.map((proposal, index) => (
-            <li key={index}>
-              <button
-                type="button"
-                title="Effacer la propostion"
-                onClick={() => fields.remove(index)}
-              >
-              Supprimer la question
-              </button>
+            <li key={index}>              
               <h4>Proposal #{index + 1}</h4>
               <Field
                 name={`${proposal}.text`}
@@ -150,10 +137,23 @@ class QuestionEdit extends Component {
                       False
                   </label>
                   </div>
-              </div>        
+              </div>
+              <button
+                type="button"
+                title="Effacer la propostion"
+                onClick={() => fields.remove(index)}
+              >
+                Supprimer la question
+              </button>        
               {/*<FieldArray name={`${proposal}.hobbies`} component={renderHobbies} />*/}
             </li>
           ))}
+          <li>
+            <button type="button" onClick={() => fields.push({})}>
+              Ajouter une proposition
+            </button>
+            {submitFailed && error && <span>{error}</span>}
+          </li>
         </ul>
       )
 
@@ -205,7 +205,7 @@ class QuestionEdit extends Component {
 
                     <div>
                         <button type="submit" /*onClick={this.props.toggleEdit()}/*onClick={this.props.toggleEdit()}*/ /*disabled={submitting}*/>
-                        Éditer la question
+                        Enregistrer la question
                         </button>
                         <button type="button" /*disabled={pristine || submitting}*/ /*onClick={reset}*/>
                         Réinitialiser les champs
@@ -226,16 +226,16 @@ function validate(values){
     const errors = {};
 
     // validate the inputs from 'values'
-    if(!values.title){
-        errors.title = "Enter a title !";
+    if(!values.statement){
+        errors.statement = "Enter a énoncé !";
     }
 
     if(!values.description){
         errors.description = "Enter a description !";
     }
 
-    if(!values.shortDescription){
-        errors.shortDescription = "Enter a shortdescription !";
+    if(!values.feedback){
+        errors.feedback = "Enter a feedback !";
     }
 
     //if errors is empty, the form is fine to submit
