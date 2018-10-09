@@ -1,0 +1,17 @@
+//RESET
+@import "../../node_modules/normalize.css/normalize.css";
+//ANIMATION
+@import "../../node_modules/animate.css/animate.min.css";
+//GENERAL
+@import "./general/general";
+//MIXINS
+@import "./mixins/mixins";
+//TYPOGRAPHY
+@import "./typography/typography";
+
+//ORGANISM
+//@import "./organism/organism";
+//MOLECULE
+@import "./molecule/cards";
+//ATOM
+//@import "./atom/atom";
