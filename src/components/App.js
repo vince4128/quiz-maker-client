@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link, Switch } from 'react-router-dom';
+import { Route, Link, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Header from './header/Header';
 import QuizIndex from './quiz/Quiz.index';
@@ -8,6 +8,7 @@ import QuizCreate from './quiz/Quiz.create';
 import QuizEdit from './quiz/Quiz.edit';
 import QuizMainEdit from './quiz/Quiz.main.edit';
 import QuizCreateQuestion from './quiz/Quiz.create.question';
+import QuizIntegration from './quiz/Quiz.integration';
 import CategoryIndex from './category/Category.index';
 import CategoryShow from './category/Category.show';
 import CategoryCreate from './category/Category.create';
@@ -25,7 +26,8 @@ class App extends Component {
     return (
       <div className="App">
 
-        <Header auth={this.props.auth}/>
+        {this.props.location.pathname.includes('shared') ?
+          "" : <Header auth={this.props.auth}/>}
 
         <Route path="/signin" exact component={Signin} />
         <Route path="/signup" exact component={Signup} />
@@ -50,7 +52,7 @@ class App extends Component {
         </Switch>
 
         <Route path="/preview/:id" exact render={()=><PreviewQuiz connected={this.props.auth}/>} />
-
+        <Route path="/share/:id" exact render={()=><QuizIntegration connected={this.props.auth}/>} />
         <Route path="/shared/:id" exact render={()=><PreviewQuiz connected={this.props.auth}/>} />
 
         <p className="App-intro">
@@ -65,4 +67,4 @@ function mapStateToProps(state){
   return { auth:state.auth, _id:state.auth._id}
 }
 
-export default connect(mapStateToProps)(App);
+export default withRouter(connect(mapStateToProps)(App));
