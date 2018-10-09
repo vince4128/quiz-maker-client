@@ -149,8 +149,6 @@ class PreviewQuiz extends Component {
         return(
             
             <div>
-                <h1>Quiz Preview</h1>
-                <hr/>
                 <QuizRender
                     quiz={this.state.quiz} 
                     currentSlide={this.state.currentSlide}

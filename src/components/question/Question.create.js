@@ -70,7 +70,6 @@ class QuestionCreate extends Component {
         }else{
             values.type = "simple"
         }
-        console.log("TRUE VALUE ", trueValue);
         //
         this.props.createQuestion(this.props.quizId, values, this.props.connected, () => {
             this.props.fetchQuiz(this.props.quizId);
