@@ -8,10 +8,12 @@
 @import "./mixins/mixins";
 //TYPOGRAPHY
 @import "./typography/typography";
+//ANIMATION
+@import "./animation/animation";
 
 //ORGANISM
-//@import "./organism/organism";
+@import "./organism/organism";
 //MOLECULE
-@import "./molecule/cards";
+@import "./molecule/molecule";
 //ATOM
 //@import "./atom/atom";

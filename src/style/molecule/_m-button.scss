@@ -1,0 +1,76 @@
+//move into a variable file
+$color-button-primary:#17aa56;
+$color-button-secondary:#0a833d;
+
+.m-button{
+    border:none;
+    background:none;
+    cursor:pointer;
+    //padding:25px 80px;
+    display:inline-block;
+    margin:10px 15px 10px 0;
+    text-transform:uppercase;
+    letter-spacing: 1px;
+    //font-weight:700;
+    outline:none;
+    position:relative;
+    -webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+    transition: all 0.3s;
+    
+    &:after{
+        content:'';
+        position:absolute;
+        z-index:-1;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        transition: all 0.3s;
+    }
+
+    .btn:before {
+        //font-family: 'icomoon';
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        position: relative;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    &.m-button--primary{
+        background: $color-button-primary;
+        color: #fff;
+        border-radius:3px;
+        box-shadow: 0 3px darken($color-button-primary, 10%);
+        padding:10px 15px 10px 90px;
+
+        & .m-button--a{
+            overflow:hidden;
+
+            &:before{
+                position:absolute;
+                left:0;
+                width:40%;
+                font-size:160%;
+                line-height: 0.8;
+                color:$color-button-secondary;
+            }
+
+            &.btn-activated{
+                -webkit-animation: fadeOutText 0.5s;
+                -moz-animation: fadeOutText 0.5s;
+                animation: fadeOutText 0.5s;
+
+                &:before {
+                    -webkit-animation: moveToRight 0.5s;
+                    -moz-animation: moveToRight 0.5s;
+                    animation: moveToRight 0.5s;
+                }
+            }
+            
+        }
+    }
+}
+
