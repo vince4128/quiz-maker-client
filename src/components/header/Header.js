@@ -26,15 +26,13 @@ class Header extends Component {
 
     render(){
         return(
-            <div>
-                <header className="App-header">
-                    <h1 className="App-title">Quiz Maker</h1>
-                </header>
+            <header className="o-header">                
                 <ul>
+                    <li><h3 className="App-title">Quiz Maker</h3></li>
                     <li><Link to={"/"}>Home</Link></li>
                     {this.renderLinks()}
-                </ul>              
-            </div>
+                </ul>    
+            </header>                          
         )
     }
 

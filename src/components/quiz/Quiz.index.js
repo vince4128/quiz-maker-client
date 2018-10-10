@@ -79,9 +79,9 @@ class QuizIndex extends Component {
 
     render(){
         return(
-            <div>
-                <h2>Quiz index</h2>
+            <div>                
                 <ul className="o-card-list">
+                <h2>Quiz index</h2>
                     {this.renderQuizzes()}
                 </ul>
             </div>

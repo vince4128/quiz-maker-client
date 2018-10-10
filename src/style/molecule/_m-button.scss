@@ -8,9 +8,11 @@ $color-button-secondary:#0a833d;
     cursor:pointer;
     //padding:25px 80px;
     display:inline-block;
-    margin:10px 15px 10px 0;
+    margin:5px 10px 5px 0;
     text-transform:uppercase;
+    font-size:1rem;
     letter-spacing: 1px;
+    text-decoration: none;
     //font-weight:700;
     outline:none;
     position:relative;
@@ -44,7 +46,7 @@ $color-button-secondary:#0a833d;
         color: #fff;
         border-radius:3px;
         box-shadow: 0 3px darken($color-button-primary, 10%);
-        padding:10px 15px 10px 90px;
+        padding:5px 10px 5px 70px;
 
         & .m-button--a{
             overflow:hidden;
