@@ -43,7 +43,7 @@ class CategoryIndex extends Component {
 
     render(){
         return(
-            <div>
+            <div className="o-content">
                 <h2>Category Index</h2>
                 <ul>
                     {this.renderCategories()}

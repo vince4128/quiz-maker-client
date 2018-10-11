@@ -53,7 +53,7 @@ class QuizCreateQuestion extends Component{
         data[this.state.selectedQuiz] ? Quiz = data[this.state.selectedQuiz] : Quiz = {err:'objet inexistant'};
 
         const hasQuiz = 
-            <diV>
+            <div>
             <h2>Quiz Create Question</h2>
             {/*<h3>Le quiz</h3>
             <ul>{this.renderQuiz()}</ul>
@@ -63,7 +63,7 @@ class QuizCreateQuestion extends Component{
             <p>Ajout de question</p>            
             <QuestionCreate quizId={Quiz._id} connected={this.props.auth}/>
             {/*<ArrayForm/>*/}
-        </diV>
+        </div>
 
         const noQuiz = <p>Loading</p>;
 

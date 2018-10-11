@@ -16,39 +16,42 @@ class Signup extends Component {
         const { handleSubmit } = this.props;
 
         return(
-            <form onSubmit={handleSubmit(this.onSubmit)}>
-                <fieldset>
-                    <label>Email</label>
-                    <Field
-                        name="email"
-                        type="text"
-                        component="input"
-                        autoComplete="none"
-                    />
-                </fieldset>
-                <fieldset>
-                    <label>Pseudo</label>
-                    <Field
-                        name="pseudo"
-                        type="text"
-                        component="input"
-                        autoComplete="none"
-                    />
-                </fieldset>
-                <fieldset>
-                    <label>Password</label>
-                    <Field
-                        name="password"
-                        type="password"
-                        component="input"
-                        autoComplete="none"
-                    />
-                </fieldset>
-                <div>
-                    {this.props.errorMessage}
-                </div>
-                <button>Sign up !</button>
-            </form>
+            <div className="o-content">
+                <h2>Sign up</h2>
+                <form className="m-form" onSubmit={handleSubmit(this.onSubmit)}>
+                    <fieldset>
+                        <label>Email</label>
+                        <Field
+                            name="email"
+                            type="text"
+                            component="input"
+                            autoComplete="none"
+                        />
+                    </fieldset>
+                    <fieldset>
+                        <label>Pseudo</label>
+                        <Field
+                            name="pseudo"
+                            type="text"
+                            component="input"
+                            autoComplete="none"
+                        />
+                    </fieldset>
+                    <fieldset>
+                        <label>Password</label>
+                        <Field
+                            name="password"
+                            type="password"
+                            component="input"
+                            autoComplete="none"
+                        />
+                    </fieldset>
+                    <div>
+                        {this.props.errorMessage}
+                    </div>
+                    <button>Sign up !</button>
+                </form>
+            </div>
         )
     }
 };

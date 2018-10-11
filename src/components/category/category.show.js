@@ -45,7 +45,7 @@ class CategoryShow extends Component {
 
     render(){
         return(
-            <div>
+            <div className="o-content">
                 <h1>Category Show</h1>
                 {this.renderCategory()}                
             </div>

@@ -29,13 +29,13 @@ class CategoryCreate extends Component {
 
         return(
 
-            <div>
+            <div className="o-content">
 
             <h1>Create Category</h1>
 
             <hr/>
 
-            <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+            <form class="m-form" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                 
                 <Field
                     label="Title"

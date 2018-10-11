@@ -165,13 +165,13 @@ class QuestionEdit extends Component {
 
         return(
 
-            <div>
+            <div className="o-content">
                 {/*<QuestionShow/>
                 <h4>Question Edit</h4>
                 <p>id question : {this.props.question._id}</p>
                 <p>id quiz : {this.props.quizId}</p>*/}
 
-                <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>                
+                <form class="m-form" onSubmit={handleSubmit(this.onSubmit.bind(this))}>                
 
                     <Field
                         name="statement"

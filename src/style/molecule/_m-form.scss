@@ -1,0 +1,75 @@
+.m-form{
+
+    fieldset{
+        border:none;
+        background-color: rgba(255,255,255,0.8);
+        border-radius:3px;
+    }
+
+    input{
+        display: inline-block;
+        width:100%;
+        padding:0 20px;
+        line-height: 50px;
+        height:50px;
+        background:$light-color;
+        border:solid 1px #e6e6e6;
+        border-bottom-width:3px;
+        border-radius:5px;
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+        outline:none;
+    }
+
+    /*input:not(:last-child){
+        margin-bottom: 20px;
+    }*/
+
+    input[type="email"]:focus,
+    input[type="email"]:active,
+    input[type="password"]:focus,
+    input[type="password"]:active{
+        border-color:#ccc;
+    }
+
+    button[type="submit"]{
+        position:relative;
+        width:100%;
+        padding:0 20px;
+        line-height: 50px;
+        height:50px;
+        z-index:1;
+        display:inline-block;
+        padding:0 20px;
+        background-color:$accent1-color;
+        background-size: 20px 20px;
+        background-image: -webkit-linear-gradient(
+            45deg,
+            rgba(255,255,255,0.15) 25%,
+            rgba(0,0,0,0) 25%,
+            rgba(0,0,0,0) 50%,
+            rgba(255,255,255,0.15) 50%,
+            rgba(255,255,255,0.15) 75%,
+            rgba(0,0,0,0) 75%,
+            rgba(0,0,0,0)            
+        );
+        border: solid 1px darken($accent1-color, 10%);
+        border-bottom-width:3px;
+        color:$light-color;
+        outline:none;
+        cursor: pointer;
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+    }
+
+    button[type="submit"]:hover{
+        background-size:30px 30px;
+    }
+
+    label{
+        font-size: 1.2rem;
+        margin: 0 0 20px;
+        border-bottom: dashed 1px e6e6e6;
+    }
+
+}

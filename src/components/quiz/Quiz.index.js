@@ -59,7 +59,7 @@ class QuizIndex extends Component {
                                     {
                                     this.props.connected.authenticated ? 
                                     (
-                                    <div>                                        
+                                    <div className="m-card__footer__action">                                       
                                         &nbsp;<Link to={`/preview/${renderData._id}`} className="m-button m-button--primary">Preview</Link>&nbsp;
                                         <Link className="m-button m-button--primary" to={`/share/${renderData._id}`}>Partager</Link>
                                         {renderData.author._id === this.props.connected._id ? 
@@ -79,7 +79,7 @@ class QuizIndex extends Component {
 
     render(){
         return(
-            <div>                
+            <div className="o-content">                
                 <ul className="o-card-list">
                 <h2>Quiz index</h2>
                     {this.renderQuizzes()}

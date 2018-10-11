@@ -24,7 +24,7 @@ class QuizIntegration extends Component{
 
     render(){
         return(
-            <div>
+            <div className="o-content">
                 <h1>Code d'intégration du quiz</h1>
                 <hr/>
                 <section>

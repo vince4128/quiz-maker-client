@@ -16,30 +16,33 @@ class Signin extends Component {
         const { handleSubmit } = this.props;
 
         return(
-            <form onSubmit={handleSubmit(this.onSubmit)}>
-                <fieldset>
-                    <label>Email</label>
-                    <Field
-                        name="email"
-                        type="text"
-                        component="input"
-                        autoComplete="none"
-                    />
-                </fieldset>
-                <fieldset>
-                    <label>Password</label>
-                    <Field
-                        name="password"
-                        type="password"
-                        component="input"
-                        autoComplete="none"
-                    />
-                </fieldset>
-                <div>
-                    {this.props.errorMessage}
-                </div>
-                <button>Sign In !</button>
-            </form>
+            <div class="o-content">
+                <h2>Sign in</h2>
+                <form className="m-form" onSubmit={handleSubmit(this.onSubmit)}>
+                    <fieldset>
+                        <label>Email</label>
+                        <Field
+                            name="email"
+                            type="email"
+                            component="input"
+                            autoComplete="none"
+                        />
+                    </fieldset>
+                    <fieldset>
+                        <label>Password</label>
+                        <Field
+                            name="password"
+                            type="password"
+                            component="input"
+                            autoComplete="none"
+                        />
+                    </fieldset>
+                    <div>
+                        {this.props.errorMessage}
+                    </div>
+                    <button>Sign In !</button>
+                </form>
+            </div>
         )
     }
 };

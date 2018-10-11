@@ -82,7 +82,7 @@ const QuizRender = (props) => {
     }
 
     return(
-        <div>
+        <div class="o-content">
             <ProgressBar currentSlide={props.currentSlide} totalSlide={props.totalSlide}/>
             <ul>
                 {renderQuiz()}

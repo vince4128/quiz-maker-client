@@ -7,29 +7,25 @@ class Header extends Component {
     renderLinks(){
         if(this.props.auth.authenticated) {
             return(
-                <span>
-                    <li><Link to={"/category"}>Categories</Link></li>
-                    { this.props.location.pathname === "/" ? <li><Link to={"/quiz/new"}>New Quiz</Link></li> : "" }
-                    { this.props.location.pathname === "/category" ? <li><Link to={"/category/new"}>New Category</Link></li> : "" }                        
+                <span className="m-header__link--right">                     
                     <li><Link to={"/signout"}>Sign out</Link></li>
                 </span>
             )
         }else{
             return(
-                <div>
+                <span className="m-header__link--right">
                     <li><Link to={"/signin"}>Sign in</Link></li>
                     <li><Link to={"/signup"}>Sign up</Link></li>
-                </div>
+                </span>
             )
         }
     }
 
     render(){
         return(
-            <header className="o-header">                
+            <header className="o-header header-container">                
                 <ul>
                     <li><h3 className="App-title">Quiz Maker</h3></li>
-                    <li><Link to={"/"}>Home</Link></li>
                     {this.renderLinks()}
                 </ul>    
             </header>                          

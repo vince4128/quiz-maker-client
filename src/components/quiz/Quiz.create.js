@@ -110,11 +110,11 @@ class QuizCreate extends Component {
 
         return(
 
-            <div>
+            <div className="o-content">
 
             <h1>Create Quiz</h1>
 
-            <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+            <form class="m-form" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 
                 <fieldset>
                     

@@ -53,13 +53,13 @@ class QuizCreateQuestion extends Component{
         data[this.state.selectedQuiz] ? Quiz = data[this.state.selectedQuiz] : Quiz = {err:'objet inexistant'};
 
         const hasQuiz = 
-            <diV>
-            <h2>Quiz Edit</h2>
-            <QuizEdit connected={this.props.auth}/>
-            { Quiz.question ? <QuestionIndex questions={Quiz.question} edit={true} quizId={Quiz._id} connected={this.props.auth}/> : "" }            
-            <p>Ajout de question</p>            
-            <QuestionCreate quizId={Quiz._id} connected={this.props.auth}/>
-        </diV>
+            <div className="o-content">
+                <h2>Quiz Edit</h2>
+                <QuizEdit connected={this.props.auth}/>
+                { Quiz.question ? <QuestionIndex questions={Quiz.question} edit={true} quizId={Quiz._id} connected={this.props.auth}/> : "" }            
+                <p>Ajout de question</p>            
+                <QuestionCreate quizId={Quiz._id} connected={this.props.auth}/>
+            </div>
 
         const noQuiz = <p>Loading</p>;
 
