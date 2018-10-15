@@ -10,6 +10,7 @@ import QuizEdit from './Quiz.edit';
 import QuestionIndex from '../question/Question.index';
 import QuestionCreate from '../question/Question.create';
 import ArrayForm from '../question/array.form';
+import Tabs from '../tabs/Tabs';
 
 class QuizCreateQuestion extends Component{
 
@@ -53,12 +54,18 @@ class QuizCreateQuestion extends Component{
         data[this.state.selectedQuiz] ? Quiz = data[this.state.selectedQuiz] : Quiz = {err:'objet inexistant'};
 
         const hasQuiz = 
-            <div className="o-content">
+            <div className="o-content">            
                 <h2>Quiz Edit</h2>
-                <QuizEdit connected={this.props.auth}/>
-                { Quiz.question ? <QuestionIndex questions={Quiz.question} edit={true} quizId={Quiz._id} connected={this.props.auth}/> : "" }            
-                <p>Ajout de question</p>            
-                <QuestionCreate quizId={Quiz._id} connected={this.props.auth}/>
+                <Tabs>
+                    <div label="Paramètres généraux">
+                        <QuizEdit connected={this.props.auth}/>
+                    </div>
+                    <div label="Ajout / Édition de questions">
+                        { Quiz.question ? <QuestionIndex questions={Quiz.question} edit={true} quizId={Quiz._id} connected={this.props.auth}/> : "" }
+                        {/*<p>Ajout de question</p>*/}
+                        <QuestionCreate quizId={Quiz._id} connected={this.props.auth}/>    
+                    </div>                                                    
+                </Tabs>
             </div>
 
         const noQuiz = <p>Loading</p>;
