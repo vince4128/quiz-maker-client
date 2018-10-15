@@ -115,16 +115,16 @@ class QuestionCreate extends Component {
               </div>        
               {/*<FieldArray name={`${proposal}.hobbies`} component={renderHobbies} />*/}
               <button
-                type="m-button m-button--secondary"
+                className="m-button m-button--secondary"
                 title="Effacer la propostion"
                 onClick={() => fields.remove(index)}
               >
-                Supprimer la question
+                Supprimer la proposition
               </button>
             </li>
           ))}
           <li>
-            <button type="m-button m-button--primary" onClick={() => fields.push({})}>
+            <button className="m-button m-button--primary" onClick={() => fields.push({})}>
               Ajouter une proposition
             </button>
             {submitFailed && error && <span>{error}</span>}
@@ -148,7 +148,7 @@ class QuestionCreate extends Component {
         return (
             
             <div className="o-content">
-                <QuestionShow/>
+                {/*<QuestionShow/>*/}
                 <h4>Question Create</h4>
                 {/*<Link to={"/"}>Back</Link>*/}
                 {JSON.stringify(this.props.quizId)}
