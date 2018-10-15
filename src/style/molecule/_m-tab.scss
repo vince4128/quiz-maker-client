@@ -1,0 +1,25 @@
+.m-tab-list{
+    border-bottom: 1px solid $accent2-color;
+    padding-left: 0;
+}
+
+.m-tab-list__item{
+
+    display: inline-block;
+    list-style: none;
+    margin-bottom: -1px;
+    padding: 0.5rem 0.75rem;
+    border:1px solid #ccc;
+    border-bottom:none;
+    //border-radius: 0 5px 0 0;
+    cursor:pointer;
+
+    &--active{
+        //background-color: white;
+        background-color: $accent2-color;
+        color:#fff;
+        border: solid $accent2-color;
+        border-width: 1px 1px 0 1px;
+    }
+
+}

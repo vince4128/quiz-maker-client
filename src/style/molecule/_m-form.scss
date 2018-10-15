@@ -4,7 +4,7 @@
         border:none;
         background-color: rgba(255,255,255,0.8);
         border-radius:2px;
-        max-width:720px;
+        max-width:1024px;
         padding:1rem;
         margin: 1rem 0;
     }
@@ -16,13 +16,20 @@
         padding:0 1rem;
         line-height: 50px;
         height:50px;
-        background:#fff;
-        border:solid 1px #e6e6e6;
+        background:$light-color;
+        //border:solid 1px #e6e6e6;
+        border:none;
+        border-bottom: 2px solid;
+        border-bottom-color: #e6e6e6;
         border-bottom-width:2px;
         border-radius:2px;
         -webkit-transition: all 0.3s ease;
         transition: all 0.3s ease;
         outline:none;
+    }
+
+    input[type="radio"]{
+        height:20px;
     }
 
     /*input:not(:last-child){
@@ -36,15 +43,13 @@
     input[type="text"]:focus,
     input[type="text"]:active
     input[type="textarea"]:focus,
-    input[type="textarea"]:active{
-        border-color:#ccc;
-        line-height: 55px;
-        height:55px;
-    }
-
+    input[type="textarea"]:active,
     select:focus,
     select:active{
-        border-color:#ccc;
+        border-color:$accent2-color;
+        border-bottom-width:3px;
+        line-height: 49px;
+        height:49px;
     }
 
     button[type="submit"],
