@@ -7,7 +7,7 @@ const validate = values => {
       errors.feedback.bad = "Enter a bad feedback !";
       errors.feedback.good = "Enter a good feedback !";
   }
-    if (!values.proposal || !values.proposal.length<2) {
+    if (!values.proposal || values.proposal.length<2) {
       errors.proposal = { _error: 'Au moins deux proposition sont requises' }
     } else {
       const proposalArrayErrors = []
