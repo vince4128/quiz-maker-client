@@ -55,15 +55,12 @@ class QuizCreateQuestion extends Component{
         const hasQuiz = 
             <div>
             <h2>Quiz Create Question</h2>
-            {/*<h3>Le quiz</h3>
-            <ul>{this.renderQuiz()}</ul>
-            <hr/>*/}
-            <QuizEdit/>
-            { Quiz.question ? <QuestionIndex questions={Quiz.question} edit={true} quizId={Quiz._id} connected={this.props.auth}/> : "" }            
-            <p>Ajout de question</p>            
-            <QuestionCreate quizId={Quiz._id} connected={this.props.auth}/>
-            {/*<ArrayForm/>*/}
-        </div>
+                {/*<QuizEdit/>*/}
+                { Quiz.question ? <QuestionIndex questions={Quiz.question} edit={true} quizId={Quiz._id} connected={this.props.auth}/> : "" }            
+                <p>Ajout de question</p>
+                <QuestionCreate quizId={Quiz._id} connected={this.props.auth}/>
+                {/*<ArrayForm/>*/}
+            </div>
 
         const noQuiz = <p>Loading</p>;
 
