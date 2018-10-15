@@ -102,7 +102,8 @@ class QuestionEdit extends Component {
             values.type = "simple"
         }
         this.props.editQuestion(this.state.selectedQuiz, this.state.selectedQuestion, values, this.props.connected, () => {
-            this.props.history.push(`/quiz/${this.state.selectedQuiz}/question/new`);
+            //this.props.history.push(`/quiz/${this.state.selectedQuiz}/question/new`);
+            this.props.history.push(`/quiz/${this.state.selectedQuiz}/edit`);
         });
     }
 

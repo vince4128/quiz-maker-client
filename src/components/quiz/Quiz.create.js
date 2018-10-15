@@ -100,7 +100,8 @@ class QuizCreate extends Component {
         
         values.author = this.props.connected._id;      
         this.props.createQuiz(values, this.props.connected.authenticated, (newlyCreatedObjId) => {
-            this.props.history.push(`/quiz/${newlyCreatedObjId}/question/new`);
+            //this.props.history.push(`/quiz/${newlyCreatedObjId}/question/new`);
+            this.props.history.push(`/quiz/${newlyCreatedObjId}/edit`);
         });
     }
 
@@ -119,18 +120,21 @@ class QuizCreate extends Component {
                 <fieldset>
                     
                     <Field
+                        placeholder="Titre du nouveau quiz"
                         label="Title"
                         name="title"
-                        component={RenderField}
+                        component={RenderField}                        
                     />
 
                     <Field
+                        placeholder="Description du nouveau quiz"
                         label="Description"
                         name="description"
                         component={RenderField}
                     />
 
                     <Field
+                        placeholder="Introduction du nouveau quiz"
                         label="Introduction"
                         name="introduction"
                         component={RenderField}
@@ -141,12 +145,14 @@ class QuizCreate extends Component {
                 <fieldset>
 
                     <Field
+                        placeholder="Feedback général en cas de réussite"
                         label="Feedback bad"
                         name="feedback.bad"
                         component={RenderField}
                     />
 
                     <Field
+                        placeholder="Feedback général en cas d'échec"
                         label="Feedback good"
                         name="feedback.good"
                         component={RenderField}
