@@ -37,30 +37,31 @@ class QuestionShow extends Component {
         if(this.props.question){
             if(!this.state.deleted){
                 return(
-                    <div>
-                        { !this.state.editing ? 
-                        <div>
-                            <p>
-                                {this.props.question.statement}
-                                {this.props.edit ? 
-                                    <span>
-                                        <Link to={`/quiz/${this.props.quizId}/question/${this.props.question._id}/edit`}>Edit</Link>
-                                        <button onClick={()=>{this.handleDelete(this.props.quizId, this.props.question._id)}}>delete</button>
-                                    </span> 
-                                    : ""}
-                            </p>
-                            <div>                            
-                                {this.props.question.image ? <img width="250" height="auto" src={`http://localhost:3000/${this.props.question.image}`}/> : ""}
-                            </div>
+                    <div className="m-question--admin">
+                        <header className="m-card__header">      
+                            <h3>{this.props.question.statement}</h3>
+                        </header>
                         <ul>
                             {this.props.question.proposal.map((p) => {
                                 return <li key={p._id}>
-                                        {p.text}
+                                        {p.text} - {p.value.toString()}
                                     </li>
                             })}
                         </ul>
+                        { !this.state.editing ? 
+                        <div>
+                            <footer>                                
+                                {this.props.edit ? 
+                                    <span>
+                                        <Link to={`/quiz/${this.props.quizId}/question/${this.props.question._id}/edit`} className="m-button m-button--primary">Edit</Link>
+                                        <button className="m-button m-button--secondary" onClick={()=>{this.handleDelete(this.props.quizId, this.props.question._id)}}>delete</button>
+                                    </span> 
+                                    : ""}
+                            </footer>
+                            <div>                            
+                                {/*this.props.question.image ? <img width="250" height="auto" src={`http://localhost:3000/${this.props.question.image}`}/> : ""*/}
+                            </div>                        
                         </div> : ""}                               
-
                     </div>
                 )
             }else{
