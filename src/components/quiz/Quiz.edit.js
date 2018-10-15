@@ -109,42 +109,52 @@ class QuizEdit extends Component {
 
             <h1>Edit Quiz</h1>
 
-            <hr/>
-
             <form  class="m-form" onSubmit={handleSubmit(this.onSubmit.bind(this))} >
+
+                <fieldset>
                 
-                <Field
-                    label="Title"
-                    name="title"
-                    placeholder="Type your title"          
-                    component={RenderField}                    
-                />
-
-                <Field
-                    label="Description"
-                    name="description"
-                    placeholder="Type your Description"                                        
-                    component={RenderField}
-                />
-
-                <Field
-                    label="Category"
-                    name="category"
-                    component={RenderSelectField}>
-                    {this.renderCategories()}
-                </Field>
-
-                <Field
-                    label="Image"
-                    name="image"                    
-                    component={DropZoneField}
-                    type="file"
-                    imageFile={this.state.imageFile}
-                    handleOnDrop={this.handleOnDrop}                    
+                    <Field
+                        label="Title"
+                        name="title"
+                        placeholder="Type your title"          
+                        component={RenderField}                    
                     />
 
+                    <Field
+                        label="Description"
+                        name="description"
+                        placeholder="Type your Description"                                        
+                        component={RenderField}
+                    />
+
+                </fieldset>
+
+                <fieldset>
+
+                    <Field
+                        label="Category"
+                        name="category"
+                        component={RenderSelectField}>
+                        {this.renderCategories()}
+                    </Field>
+
+                </fieldset>
+
+                <fieldset>
+
+                    <Field
+                        label="Image"
+                        name="image"                    
+                        component={DropZoneField}
+                        type="file"
+                        imageFile={this.state.imageFile}
+                        handleOnDrop={this.handleOnDrop}                    
+                        />
+
+                </fieldset>
+
                 <button type="submit" className="btn btn-primary">Submit</button>
-                <Link to="/" className="btn btn-danger">Cancel</Link>
+                <Link to="/" className="m-form__cancel">Cancel</Link>
 
             </form>
 

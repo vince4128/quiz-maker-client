@@ -154,23 +154,30 @@ class QuizCreate extends Component {
 
                 </fieldset>
 
-                <Field
-                    label="Category"
-                    name="category"
-                    component={RenderSelectField}>
-                    {this.renderCategories()}
-                </Field>
+                <fieldset>
 
-                <Field
-                    name="uploadInput"
-                    component={DropZoneField}
-                    type="file"
-                    imageFile={this.state.imageFile}
-                    handleOnDrop={this.handleOnDrop}                    
-                    />
+                    <Field
+                        label="Category"
+                        name="category"
+                        component={RenderSelectField}>
+                        {this.renderCategories()}
+                    </Field>
+
+                </fieldset>
+
+                <fieldset>
+                    <label for="uploadInput">Image</label>
+                    <Field
+                        name="uploadInput"
+                        component={DropZoneField}
+                        type="file"
+                        imageFile={this.state.imageFile}
+                        handleOnDrop={this.handleOnDrop}                    
+                        />
+                </fieldset>
 
                 <button type="submit" className="btn btn-primary">Submit</button>
-                <Link to="/" className="btn btn-danger">Cancel</Link>
+                <Link to="/" className="m-form__cancel">Cancel</Link>
 
             </form>
 
@@ -183,7 +190,7 @@ class QuizCreate extends Component {
 
 function validate(values){
 
-    const errors = {};
+    const errors = {feedback:{good:"",bad:""}};
 
     // validate the inputs from 'values'
     if(!values.title){
@@ -203,7 +210,8 @@ function validate(values){
     }
 
     if(!values.feedback){
-        errors.feedback = "Enter a feedback !";
+        errors.feedback.bad = "Enter a bad feedback !";
+        errors.feedback.good = "Enter a good feedback !";
     }
 
     /*if(!values.image){

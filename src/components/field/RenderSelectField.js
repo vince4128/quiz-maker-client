@@ -13,7 +13,7 @@ const RenderSelectField = (field) => {
                 {...field.input}>                    
                 {field.children}
             </select>
-            {touched ? error : ''}
+            {touched && error ? <div className="m-form__error">{error}</div> : ''}
         </div>
     )
 }

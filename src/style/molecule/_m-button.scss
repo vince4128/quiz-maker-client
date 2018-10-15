@@ -37,10 +37,11 @@
         -webkit-font-smoothing: antialiased;
     }
 
-    &.m-button--primary{
+    &.m-button--primary,
+    &.m-button--secondary{
         background: $accent2-color;
         color: #fff;
-        border-radius:3px;
+        //border-radius:3px;
         box-shadow: 0 3px darken($accent2-color, 10%);
         padding:5px 10px 5px 70px;
 
@@ -69,6 +70,11 @@
             }
             
         }
+    }
+
+    &.m-button--secondary{
+        background-color: $accent1-color;
+        box-shadow: 0 3px darken($accent1-color, 10%);
     }
 }
 

@@ -1,13 +1,14 @@
 const validate = values => {
-    const errors = {}
+    const errors = {feedback:{good:"",bad:""}}
     if (!values.statement) {
-      errors.statement = 'Required'
+      errors.statement = 'Un énoncé est requis'
     }
-    if (!values.feedback) {
-      errors.feedback = 'Required'
-    }
-    if (!values.proposal || !values.proposal.length) {
-      errors.proposal = { _error: 'Au moins une proposition doit être présente' }
+    if(!values.feedback){
+      errors.feedback.bad = "Enter a bad feedback !";
+      errors.feedback.good = "Enter a good feedback !";
+  }
+    if (!values.proposal || !values.proposal.length<2) {
+      errors.proposal = { _error: 'Au moins deux proposition sont requises' }
     } else {
       const proposalArrayErrors = []
       values.proposal.forEach((member, memberIndex) => {
