@@ -10,6 +10,7 @@ const RenderField = (field) => { // param field contain some event handlers to w
                 <input
                     className="form-control"
                     type="text"
+                    placeholder={field.placeholder}
                     {...field.input}
                 />
                 {touched && error ? <div className="m-form__error">{error}</div> : ''}              
