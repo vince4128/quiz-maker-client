@@ -119,22 +119,32 @@ class PreviewQuiz extends Component {
 
     toggleCheck(q, p, check){
         const data = Object.assign(this.state.quiz); 
-        //TODO add a method for multi-choice question
+        //simple question
         if(q.type === "simple"){                 
             data[`${q.index}`].proposal.map((i) => {
                 i.checked = false;
             })
-        }
-        if(check){
-            //data[`${q.index}`].proposal[`${p._id}`].checked = true;
+
+            if(check){
+                data[`${q.index}`].proposal.map((i) => {
+                    if(i._id === p._id){
+                        i.checked = true;
+                    }
+                })
+                data[`${q.index}`] = q;
+                this.setState({quiz:data});
+            }
+        }else{
+            //multiple question            
             data[`${q.index}`].proposal.map((i) => {
                 if(i._id === p._id){
-                    i.checked = true;
+                    i.checked = !i.checked;
                 }
             })
             data[`${q.index}`] = q;
             this.setState({quiz:data});
         }
+        
         this.setState({quiz:data});
     }
 
