@@ -115,7 +115,7 @@ class QuestionCreate extends Component {
               </div>        
               {/*<FieldArray name={`${proposal}.hobbies`} component={renderHobbies} />*/}
               <button
-                type="button"
+                type="m-button m-button--secondary"
                 title="Effacer la propostion"
                 onClick={() => fields.remove(index)}
               >
@@ -124,7 +124,7 @@ class QuestionCreate extends Component {
             </li>
           ))}
           <li>
-            <button type="button" onClick={() => fields.push({})}>
+            <button type="m-button m-button--primary" onClick={() => fields.push({})}>
               Ajouter une proposition
             </button>
             {submitFailed && error && <span>{error}</span>}
@@ -156,42 +156,59 @@ class QuestionCreate extends Component {
 
                 <form class="m-form" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 
-                    <Field
-                        name="statement"
-                        type="text"
-                        component={RenderField}
-                        label="enonce"
-                    />
+                    <fieldset>
 
-                    <Field
-                        name="uploadInput"
-                        component={DropZoneField}
-                        type="file"
-                        imageFile={this.state.imageFile}
-                        handleOnDrop={this.handleOnDrop}                    
+                        <Field
+                            name="statement"
+                            type="text"
+                            component={RenderField}
+                            label="enoncé de la question"
                         />
 
-                    <FieldArray name="proposal" component={this.renderProposals} />
+                    </fieldset>
+
+                    <fieldset>
+
+                        <label for="uploadInput">Image</label>
+                        <Field
+                            name="uploadInput"
+                            component={DropZoneField}
+                            type="file"
+                            imageFile={this.state.imageFile}
+                            handleOnDrop={this.handleOnDrop}                    
+                            />
+
+                    </fieldset>
+
+                    <fieldset>
+
+                        <FieldArray name="proposal" component={this.renderProposals} />
+
+                    </fieldset>
+
+                    <fieldset>
                     
-                    <Field
-                        label="FeedBack ok"
-                        name="feedback.good"
-                        placeholder="Feedback ok"  
-                        component={RenderField}                   
-                        />
-                        
-                    <Field
-                        label="FeedBack ko"
-                        name="feedback.bad"
-                        placeholder="Feedback ko"  
-                        component={RenderField}                   
-                        />
+                        <Field
+                            label="FeedBack ok"
+                            name="feedback.good"
+                            placeholder="Feedback ok"  
+                            component={RenderField}                   
+                            />
+                            
+                        <Field
+                            label="FeedBack ko"
+                            name="feedback.bad"
+                            placeholder="Feedback ko"  
+                            component={RenderField}                   
+                            />
+
+                    </fieldset>
 
                     <div>
-                        <button type="submit" /*disabled={submitting}*/>
+                        <button type="submit" className="btn btn-primary"/*disabled={submitting}*/>
                         Ajouter la question
                         </button>
-                        <button type="button" /*disabled={pristine || submitting}*/ onClick={this.props.reset}>
+                        <button type="button" className="m-form__cancel"/*disabled={pristine || submitting}*/ onClick={this.props.reset}>
                         Réinitialiser les champs
                         </button>
                     </div>

@@ -5,13 +5,13 @@ const renderImagePreview = imageFile => {
     return imageFile.map(({name, preview, size}) => {
         return (<li key="imagePreview">        
             <img
-                style={{display:"block", margin:"auto", paddingTop:"10%"}}
+                style={{display:"block", margin:"auto"}}
                 src={preview}
                 alt={name}
-                height="50px"
-                width="50px"
+                height="auto"
+                width="200px"
             />
-            <span>{name} - {size} bytes</span>
+            <p className="m-dropzone__info">{name} - {size} bytes</p>
         </li>)
     });
 };
@@ -25,6 +25,7 @@ export default ({
 }) => (
     <div>
         <DropZone
+            className="m-dropzone"
             accept="image/jpeg, image/png, image/gif, image/bmp"
             multiple={ false }
             onDrop={handleOnDrop}
@@ -35,9 +36,8 @@ export default ({
                 {renderImagePreview(imageFile)}
             </ul>
         ):(
-            <div>
-                <div><h1>???</h1></div>
-                <div>Clik or drag img here</div>
+            <div className="m-dropzone__tip">
+                <h3>Clik or drag img here</h3>
             </div>            
         )}
         </DropZone>

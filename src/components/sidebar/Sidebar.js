@@ -25,7 +25,7 @@ class Sidebar extends Component {
         return(
             <section className="sidebar-container o-sidebar">            
                 <ul>
-                    <li><h3 className="App-title">Add Route</h3></li>
+                    {/*<li><h3 className="App-title">Add Route</h3></li>*/}
                     <li><Link to={"/"}>Home</Link></li>
                     {this.renderLinks()}
                 </ul>    

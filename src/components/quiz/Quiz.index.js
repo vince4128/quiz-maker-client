@@ -64,7 +64,7 @@ class QuizIndex extends Component {
                                         <Link className="m-button m-button--primary" to={`/share/${renderData._id}`}>Partager</Link>
                                         {renderData.author._id === this.props.connected._id ? 
                                         <Link className="m-button m-button--primary" to={`/quiz/${renderData._id}/edit`}>Edit</Link> : ""}
-                                        <button className="m-button m-button--primary" onClick={()=>{this.handleDelete(renderData._id)}}>Delete</button>
+                                        <button className="m-button m-button--secondary" onClick={()=>{this.handleDelete(renderData._id)}}>Delete</button>
                                     </div>
                                     ) 
                                     : ""}

@@ -12,7 +12,7 @@ const RenderField = (field) => { // param field contain some event handlers to w
                     type="text"
                     {...field.input}
                 />
-                {touched ? error : ''}
+                {touched && error ? <div className="m-form__error">{error}</div> : ''}              
             </div>
         );
     }
