@@ -110,52 +110,63 @@ class QuestionEdit extends Component {
     renderProposals = ({ fields, meta: { error, submitFailed } }) => (
         <ul>          
           {fields.map((proposal, index) => (
-            <li key={index}>              
-              <h4>Proposal #{index + 1}</h4>
-              <Field
-                name={`${proposal}.text`}
-                type="text"
-                component={RenderField}
-                label="Proposition"
-              />
-              <div>
-              <label>Value</label>
-                  <div>
-                  <label>
-                      <Field
-                      name={`${proposal}.value`}
-                      component={RenderRadio}
-                      type="radio"
-                      value="true"
-                      />{' '}
-                      Vrai
-                  </label>
-                  <label>
-                      <Field
-                      name={`${proposal}.value`}
-                      component={RenderRadio}
-                      type="radio"
-                      value="false"
-                      />{' '}
-                      False
-                  </label>
-                  </div>
-              </div>
-              <button
-                type="button"
-                title="Effacer la propostion"
-                onClick={() => fields.remove(index)}
-              >
-                Supprimer la question
-              </button>        
-              {/*<FieldArray name={`${proposal}.hobbies`} component={renderHobbies} />*/}
+            <li key={index}>
+
+                <fieldset>
+
+                    <h4>Proposition #{index + 1}</h4>
+                    <Field
+                        name={`${proposal}.text`}
+                        type="text"
+                        component={RenderField}
+                        label="Énoncé de la proposition"
+                    />
+                    <div>
+                    <label>Valeur</label>
+                        <div>
+                        <label>
+                            <Field
+                            name={`${proposal}.value`}
+                            component={RenderRadio}
+                            type="radio"
+                            value="true"
+                            />{' '}
+                            Vrai
+                        </label>
+                        <label>
+                            <Field
+                            name={`${proposal}.value`}
+                            component={RenderRadio}
+                            type="radio"
+                            value="false"
+                            />{' '}
+                            False
+                        </label>
+                        </div>
+                    </div>
+                    <button
+                        type="button"
+                        title="Effacer la propostion"
+                        className="m-button m-button--secondary"
+                        onClick={() => fields.remove(index)}
+                    >
+                        Supprimer la proposition
+                    </button>        
+                    {/*<FieldArray name={`${proposal}.hobbies`} component={renderHobbies} />*/}
+
+                </fieldset>
+
             </li>
           ))}
           <li>
-            <button type="button" onClick={() => fields.push({})}>
-              Ajouter une proposition
-            </button>
-            {submitFailed && error && <span>{error}</span>}
+            <fieldset>
+                <button type="button" className="m-button m-button--primary" onClick={() => fields.push({})}>
+                Ajouter une proposition
+                </button>
+                <div>
+                    {submitFailed && error && <div className="m-form__error">{error}</div>}
+                </div>
+            </fieldset>
           </li>
         </ul>
       )
@@ -174,43 +185,51 @@ class QuestionEdit extends Component {
 
                 <form class="m-form" onSubmit={handleSubmit(this.onSubmit.bind(this))}>                
 
-                    <Field
-                        name="statement"
-                        type="text"
-                        component={RenderField}
-                        label="enonce"
-                    />
-                    
-                    <Field
-                        label="Image"
-                        name="image"                    
-                        component={DropZoneField}
-                        type="file"
-                        imageFile={this.state.imageFile}
-                        handleOnDrop={this.handleOnDrop}                    
+                    <fieldset>
+
+                        <Field
+                            name="statement"
+                            type="text"
+                            component={RenderField}
+                            label="Énonce"
                         />
+                        
+                        <Field
+                            label="Image"
+                            name="image"                    
+                            component={DropZoneField}
+                            type="file"
+                            imageFile={this.state.imageFile}
+                            handleOnDrop={this.handleOnDrop}                    
+                            />
+                    
+                    </fieldset>
 
                     <FieldArray name="proposal" component={this.renderProposals} />
 
-                    <Field
-                        label="FeedBack ok"
-                        name="feedback.good"
-                        placeholder="Feedback ok"  
-                        component={RenderField}                   
-                        />
+                    <fieldset>
 
-                    <Field
-                        label="FeedBack ko"
-                        name="feedback.bad"
-                        placeholder="Feecback ko"  
-                        component={RenderField}                   
-                        />
+                        <Field
+                            label="FeedBack ok"
+                            name="feedback.good"
+                            placeholder="Feedback ok"  
+                            component={RenderField}                   
+                            />
+
+                        <Field
+                            label="FeedBack ko"
+                            name="feedback.bad"
+                            placeholder="Feecback ko"  
+                            component={RenderField}                   
+                            />
+
+                    </fieldset>
 
                     <div>
                         <button type="submit" /*onClick={this.props.toggleEdit()}/*onClick={this.props.toggleEdit()}*/ /*disabled={submitting}*/>
                         Enregistrer la question
                         </button>
-                        <Link to={`/quiz/${this.props.match.params.id}/edit`} /*disabled={pristine || submitting}*/ /*onClick={reset}*/>
+                        <Link to={`/quiz/${this.props.match.params.id}/edit`} className="m-form__cancel" /*disabled={pristine || submitting}*/ /*onClick={reset}*/>
                         Annuler
                         </Link>
                     </div>

@@ -82,53 +82,64 @@ class QuestionCreate extends Component {
         <ul>
           
           {fields.map((proposal, index) => (
-            <li key={index}>              
-              <h4>Proposal #{index + 1}</h4>
-              <Field
-                name={`${proposal}.text`}
-                type="text"
-                component={RenderField}
-                label="Proposition"
-              />
-              <div>
-              <label>Value</label>
-                  <div>
-                  <label>
-                      <Field
-                      name={`${proposal}.value`}
-                      component={RenderRadio}
-                      type="radio"
-                      value="true"
-                      />{' '}
-                      Vrai
-                  </label>
-                  <label>
-                      <Field
-                      name={`${proposal}.value`}
-                      component={RenderRadio}
-                      type="radio"
-                      value="false"
-                      />{' '}
-                      False
-                  </label>
-                  </div>
-              </div>        
-              {/*<FieldArray name={`${proposal}.hobbies`} component={renderHobbies} />*/}
-              <button
-                className="m-button m-button--secondary"
-                title="Effacer la propostion"
-                onClick={() => fields.remove(index)}
-              >
-                Supprimer la proposition
-              </button>
+            <li key={index}>
+
+                <fieldset>
+
+                    <h4>Proposition #{index + 1}</h4>
+                    <Field
+                        name={`${proposal}.text`}
+                        type="text"
+                        component={RenderField}
+                        label="Proposition"
+                    />
+                    <div>
+                    <label>Valeur</label>
+                        <div>
+                        <label className="toggle-1">
+                            <Field
+                            name={`${proposal}.value`}
+                            className="toggle-1__input"
+                            component={RenderRadio}
+                            type="radio"
+                            value="true"
+                            />{' '}
+                            <span className="toggle-1__button">Vrai</span>
+                        </label>
+                        <label>
+                            <Field
+                            name={`${proposal}.value`}
+                            component={RenderRadio}
+                            type="radio"
+                            value="false"
+                            />{' '}
+                            False
+                        </label>
+                        </div>
+                    </div>        
+                    {/*<FieldArray name={`${proposal}.hobbies`} component={renderHobbies} />*/}
+                    <button
+                        className="m-button m-button--secondary"
+                        title="Effacer la propostion"
+                        onClick={() => fields.remove(index)}
+                    >
+                        Supprimer la proposition
+                    </button>
+
+              </fieldset>
+
             </li>
           ))}
           <li>
-            <button className="m-button m-button--primary" onClick={() => fields.push({})}>
-              Ajouter une proposition
-            </button>
-            {submitFailed && error && <span>{error}</span>}
-          </li>
+            <fieldset>
+                <button className="m-button m-button--primary" onClick={() => fields.push({})}>
+                Ajouter une proposition
+                </button>
+                <div>
+                    {submitFailed && error && <div className="m-form__error">{error}</div>}
+                </div>
+            </fieldset>
+          </li>          
         </ul>
       )
 
