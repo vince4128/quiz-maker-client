@@ -109,7 +109,7 @@ class QuizEdit extends Component {
 
             <h1>Edit Quiz</h1>
 
-            <form  class="m-form" onSubmit={handleSubmit(this.onSubmit.bind(this))} >
+            <form class="m-form" onSubmit={handleSubmit(this.onSubmit.bind(this))} >
 
                 <fieldset>
                 
