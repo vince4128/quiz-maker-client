@@ -124,23 +124,26 @@ class QuestionEdit extends Component {
                     <div>
                     <label>Valeur</label>
                         <div>
-                        <label>
+                        <label className="toggle-2" for="toggle-1">
                             <Field
                             name={`${proposal}.value`}
+                            className="toggle-2__input toggle-2--true"
                             component={RenderRadio}
                             type="radio"
                             value="true"
+                            id="toggle-1"
                             />{' '}
-                            Vrai
+                            <span className="toggle-2__button">Vrai</span>
                         </label>
-                        <label>
+                        <label className="toggle-2">
                             <Field
                             name={`${proposal}.value`}
+                            className="toggle-2__input toggle-2--false"
                             component={RenderRadio}
                             type="radio"
                             value="false"
                             />{' '}
-                            False
+                            <span className="toggle-2__button">Faux</span>
                         </label>
                         </div>
                     </div>
