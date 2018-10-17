@@ -5,15 +5,12 @@ const RenderRadio = (field) => { // param field contain some event handlers to w
         const className = `form-group ${touched && error ? 'alert alert-danger' : ''}`;
 
         return(
-            <div className={className}>
-                <label>{field.label}</label>
-                <input
-                    className="form-control"
+            <input
+                    className={field.className}
+                    id={field.id}
                     type="radio"
                     {...field.input}
-                />
-                {touched ? error : ''}
-            </div>
+            />
         );
     }
 
