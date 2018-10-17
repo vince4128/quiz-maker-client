@@ -10,7 +10,8 @@
     }
 
     input,
-    select{
+    select,
+    textarea{
         display: inline-block;
         width:100%;
         padding:0 1rem;
@@ -47,9 +48,6 @@
     select:focus,
     select:active{
         border-color:$accent2-color;
-        border-bottom-width:3px;
-        line-height: 49px;
-        height:49px;
     }
 
     button[type="submit"],
@@ -116,49 +114,71 @@
         margin:0;
     }
 
-    .toggle-1{
+    label.toggle-1,
+    label.toggle-2{
+        width:auto !important;
+        padding:0;
+    }
+
+    .toggle-2{
         display: inline-block;
         vertical-align: top;
-        margin:15px 0;
+        //margin: 0 15px 0 0;
 
         &__input{
-            display: none;
+            display:none;
+            width:200px !important;
 
-            &:checked + .toggle-1__button {
-                background: #00b3b4;
-                border: solid 1px #00b3b4;
+            &.toggle-2--true:checked + .toggle-2__button{
+                background-color: $accent2-color;
+                border-color: $accent2-color;
+                color: #ffffff;
+
+                &:before{
+                    background: #ffffff;
+                }
+
             }
+
+            &.toggle-2--false:checked + .toggle-2__button{
+                background-color: $accent1-color;
+                border-color: $accent1-color;
+                color: #ffffff;
+
+                &:before{
+                    background: #ffffff;
+                }
+
+            }
+
         }
 
         &__button{
-            position:relative;
+            position: relative;
             display: inline-block;
-            font-size: 1rem;
             line-height: 20px;
             text-transform: uppercase;
-            background-color: #f2395a;
-            border:solid 1px #f2395a;
-            color:white;
-            width:80px;
-            height:30px;
-            transition: all .3s ease;
+            background-color: #ffffff;
+            color: #aaaaaa;
+            border: 1px solid #cccccc;
+            padding: 5px 10px 5px 30px;
+            transition: all 0.3s ease;
             cursor: pointer;
 
             &:before{
-                position:absolute;
-                top:5px;
-                left:40px;
-                content: "Vrai";
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                right: auto;
                 display: inline-block;
-                height:20px;
-                padding: 0 3px;
-                background: white;
-                color: #f2395a;
-                transition: all .3s ease;
+                width: 10px;
+                height: 10px;
+                background-color: #cccccc;
+                content: "";
+                transition: all 0.3s ease;
             }
 
         }
-
     }
 
 }
