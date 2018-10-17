@@ -41,13 +41,13 @@ class QuestionShow extends Component {
                         <header className="m-card__header">      
                             <h3>{this.props.question.statement}</h3>
                         </header>
-                        <ul>
+                        {/*<ul>
                             {this.props.question.proposal.map((p) => {
                                 return <li key={p._id}>
                                         {p.text} - {p.value.toString()}
                                     </li>
                             })}
-                        </ul>
+                        </ul>*/}
                         { !this.state.editing ? 
                         <div>
                             <footer>                                
