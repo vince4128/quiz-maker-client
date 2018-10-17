@@ -28,8 +28,34 @@ class QuizIndex extends Component {
             .map(key => {
                 const renderData = data[key];
                 return (
-                    <li key={renderData._id}>                    
-                        <section className="m-card m-card--wide">
+                    <li key={renderData._id}>
+
+                        <section className="m-card">
+                            <div className="meta">
+                                <div className="photo" style={{ backgroundImage: `url(http://localhost:3000/${renderData.image})` }}></div>
+                                <ul class="details">
+                                    <li className="author">crée par : {renderData.author.pseudo}</li>
+                                    <li className="date">le : {this.renderDate(renderData.date)}</li>                                
+                                </ul>
+                            </div>                            
+                            <section className="description">
+                                <h1>{renderData.title}</h1>
+                                <h2>{renderData.description}</h2>
+                                <p>Intro ?</p>
+                                <div class="read-more">
+                                    <div className="m-button-group">
+                                        <Link to={`/preview/${renderData._id}`} className="">Preview</Link>&nbsp;
+                                        <Link className="" to={`/share/${renderData._id}`}>Partager</Link>
+                                        {renderData.author._id === this.props.connected._id ? 
+                                        <Link className="" to={`/quiz/${renderData._id}/edit`}>Edit</Link> : ""}                                        
+                                    </div>                            
+                                    <button className="m-button m-button--secondary" onClick={()=>{this.handleDelete(renderData._id)}}>Delete</button>             
+                                </div>
+                            </section>                            
+                        </section>
+                        
+
+                        {/*<section className="m-card m-card--wide">
                             <Link to={`/quiz/${renderData._id}`}>
                                 <header className="m-card__header">                                
                                     {renderData.image ? <img className="m-card__image" width="250" height="auto" src={`http://localhost:3000/${renderData.image}`}/> : ""}
@@ -71,7 +97,7 @@ class QuizIndex extends Component {
                                     
                                 </footer>
                                                    
-                        </section>                    
+                                        </section>  */}                  
                     </li>
                 )
             })
