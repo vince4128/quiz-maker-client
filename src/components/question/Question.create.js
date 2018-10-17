@@ -7,6 +7,7 @@ import axios from 'axios';
 import DropZoneField from '../field/DropzoneField';
 import RenderField from '../field/RenderField';
 import RenderRadio from '../field/RenderRadio';
+import RenderCheck from '../field/RenderCheck';
 import requireAuth from '../requireAuth';
 import QuestionShow from './Question.show';
 import RenderSelectField from '../field/RenderSelectField';
@@ -96,24 +97,26 @@ class QuestionCreate extends Component {
                     <div>
                     <label>Valeur</label>
                         <div>
-                        <label className="toggle-1">
+                        <label className="toggle-2" for="toggle-1">
                             <Field
                             name={`${proposal}.value`}
-                            className="toggle-1__input"
+                            className="toggle-2__input toggle-2--true"
                             component={RenderRadio}
                             type="radio"
                             value="true"
+                            id="toggle-1"
                             />{' '}
-                            <span className="toggle-1__button">Vrai</span>
+                            <span className="toggle-2__button">Vrai</span>
                         </label>
-                        <label>
+                        <label className="toggle-2">
                             <Field
                             name={`${proposal}.value`}
+                            className="toggle-2__input toggle-2--false"
                             component={RenderRadio}
                             type="radio"
                             value="false"
                             />{' '}
-                            False
+                            <span className="toggle-2__button">Faux</span>
                         </label>
                         </div>
                     </div>        
@@ -189,13 +192,7 @@ class QuestionCreate extends Component {
                             handleOnDrop={this.handleOnDrop}                    
                             />
 
-                    </fieldset>
-
-                    <fieldset>
-
-                        <FieldArray name="proposal" component={this.renderProposals} />
-
-                    </fieldset>
+                    </fieldset>                    
 
                     <fieldset>
                     
@@ -214,6 +211,8 @@ class QuestionCreate extends Component {
                             />
 
                     </fieldset>
+
+                    <FieldArray name="proposal" component={this.renderProposals} />
 
                     <div>
                         <button type="submit" className="btn btn-primary"/*disabled={submitting}*/>
