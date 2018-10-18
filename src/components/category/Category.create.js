@@ -33,30 +33,32 @@ class CategoryCreate extends Component {
 
             <h1>Create Category</h1>
 
-            <hr/>
-
             <form class="m-form" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                 
-                <Field
-                    label="Title"
-                    name="title"
-                    component={RenderField}
-                />
+                <fieldset>
 
-                <Field
-                    label="Description"
-                    name="description"
-                    component={RenderField}
-                />
+                    <Field
+                        label="Title"
+                        name="title"
+                        component={RenderField}
+                    />
 
-                <Field
-                    label="Short Description"
-                    name="shortDescription"
-                    component={RenderField}
-                />
+                    <Field
+                        label="Description"
+                        name="description"
+                        component={RenderField}
+                    />
+
+                    <Field
+                        label="Short Description"
+                        name="shortDescription"
+                        component={RenderField}
+                    />
+
+                </fieldset>
 
                 <button type="submit" className="btn btn-primary">Submit</button>
-                <Link to="/category" className="btn btn-danger">Cancel</Link>
+                <Link to="/category" className="m-form__cancel">Cancel</Link>
 
         </form>
 
