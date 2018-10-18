@@ -1,31 +1,31 @@
-.o-sidebar{
+/*.o-sidebar{
 
     position:fixed;
     top:0;
-    width:30%;
+    width:300px;
     min-height: 100vh;
     background-color:$grey-color;
 
     color:$light-color;
-    padding-top:3rem;
+    padding-top:3rem;*/
 
-    @include mq('tablet-wide') {
-        width : 25%;
+    /*@include mq('tablet-wide') {
+        width : 300px;
     }
 
     @include mq('desktop-wide') {
-        width : 20%;
+        width : 300px;
     }
 
     @include mq('ultra-wide') {
-        width : 15%;
+        width : 300px;
     }
 
     @include mq('xxx-wide') {
-        width : 12.5%;
-    }  
+        width : 300px;
+    }  */
 
-    ul{
+    /*ul{
         list-style: none;
         margin:0;
         padding:0;
@@ -48,5 +48,138 @@
             border-bottom:1px solid $grey-color;
         }
     }
+
+}*/
+
+.o-sidebar{
+
+    font-family:'Lato-regular';
+    color:$light-color;
+    position:relative;    
+    z-index:98;
+
+    &__trigger{
+        z-index:2;
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:4em;
+        background: #192b3c;
+    }
+
+    &__trigger > i {
+        display: inline-block;
+        margin:1.5em 0 0 1.5em;
+        fill:$light-color;
+    }
+    
+    &__nav {
+        position:fixed;
+        top:0;
+        left:-15em;        
+        overflow:hidden;
+        transition:all .3s ease-in;
+        width:15em;
+        height:100%;
+        background: #243e56;
+        color:$light-color;
+    }
+
+    &__nav:hover,
+    &__nav:focus,
+    &__trigger:focus + &__nav,
+    &__trigger:hover + &__nav{
+        left:0;
+    }
+
+    &__nav ul{
+        position: absolute;
+        top:4em;
+        left:0;
+        margin:0;
+        padding:0;
+        width:15em;
+    }
+
+    &__nav ul li{
+        width: 100%;
+    }
+
+    &__nav-link{
+        position: relative;
+        display: inline-block;
+        width:100%;
+        height: 4em;
+        font-family:'Lato-regular';
+        color:$light-color;
+
+        &:hover{
+            background-color: $accent2-color;
+        }
+    }
+
+    &__nav-link em{
+        position: absolute;
+        top:50%;
+        left:4em;
+        transform: translateY(-50%);
+    }
+
+    &__nav-link > i {
+        position:absolute;
+        top: 0px;
+        left: 0px;
+        padding:20px;
+        display: inline-block;
+        width:4em;
+        height:4em;
+        fill:$light-color;
+
+        &:before{
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%, -50%);
+        }
+    }
+
+    @include mq('tablet') {
+
+        &__trigger{
+            width:4em;
+        }
+
+        &__nav{
+            width:4em;
+            left:0;
+        }
+
+        &__nav:hover,
+        &__nav:focus,
+        &__trigger:hover + &__nav,
+        &__trigger:focus + &__nav{
+            width: 15em;
+        }
+
+    }
+
+    @include mq('tablet-wide') {
+
+        &__trigger{
+            display: none;
+        }
+
+        &__nav{
+            width:15em;
+        }
+
+        &__nav ul{
+            //top: 1.3em;
+        }
+
+    }
+
+
 
 }

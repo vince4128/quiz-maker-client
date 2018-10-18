@@ -1,23 +1,25 @@
 .o-content{
     display: block;
+    position:relative;
     width:100%;    
-    padding: 2rem 1% 0 31%;
+    padding: 2rem 1% 0 1em;
+    z-index:0;
+
+    @include mq('tablet') {
+        padding: 2rem 1% 0 5em;
+    }
 
     @include mq('tablet-wide') {
-        padding: 2rem 1% 0 26%;
+        padding: 2rem 1% 0 16em;
     }
 
-    @include mq('desktop-wide') {
-        padding: 2rem 1% 0 21%;
-    }
-
-    @include mq('ultra-wide') {
+    /*@include mq('ultra-wide') {
         padding: 2rem 1% 0 16%;
     }
 
     @include mq('xxx-wide') {
         padding: 2rem 1% 0 13.5%;
-    }
+    }*/
     
     & &{
         padding:0;
