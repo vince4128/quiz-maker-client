@@ -59,10 +59,6 @@ class App extends Component {
             <Route path="/share/:id" exact render={()=><QuizIntegration connected={this.props.auth}/>} />
             <Route path="/shared/:id" exact render={()=><PreviewQuiz connected={this.props.auth}/>} />
 
-            <p className="footer">
-              Welcome to QuizMaker.
-            </p>
-
         </section>
 
       </div>
