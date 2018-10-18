@@ -1,5 +1,7 @@
 .m-form{
 
+    padding-bottom:2rem;
+
     fieldset{
         border:none;
         background-color: rgba(255,255,255,0.8);
@@ -27,6 +29,10 @@
         -webkit-transition: all 0.3s ease;
         transition: all 0.3s ease;
         outline:none;
+    }
+
+    textarea{
+        height:auto;
     }
 
     input[type="radio"]{
