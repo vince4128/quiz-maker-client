@@ -42,62 +42,18 @@ class QuizIndex extends Component {
                                 <h1>{renderData.title}</h1>
                                 <h2>{renderData.description}</h2>
                                 <p>Intro ?</p>
+                                <hr/>
                                 <div class="read-more">
                                     <div className="m-button-group">
-                                        <Link to={`/preview/${renderData._id}`} className="">Preview</Link>&nbsp;
+                                        <button id="btn-delete" className="m-button-group--secondary" onClick={()=>{this.handleDelete(renderData._id)}}>Delete</button>                                        
                                         <Link className="" to={`/share/${renderData._id}`}>Partager</Link>
                                         {renderData.author._id === this.props.connected._id ? 
-                                        <Link className="" to={`/quiz/${renderData._id}/edit`}>Edit</Link> : ""}                                        
-                                    </div>                            
-                                    <button className="m-button m-button--secondary" onClick={()=>{this.handleDelete(renderData._id)}}>Delete</button>             
+                                        <Link className="" to={`/quiz/${renderData._id}/edit`}>Edit</Link> : ""}
+                                        <Link id="btn-preview" to={`/preview/${renderData._id}`} className="">Preview</Link>&nbsp;                                                                               
+                                    </div>                                                                
                                 </div>
                             </section>                            
-                        </section>
-                        
-
-                        {/*<section className="m-card m-card--wide">
-                            <Link to={`/quiz/${renderData._id}`}>
-                                <header className="m-card__header">                                
-                                    {renderData.image ? <img className="m-card__image" width="250" height="auto" src={`http://localhost:3000/${renderData.image}`}/> : ""}
-                                </header>
-                                <div className="m-card__body">
-                                    <h2 class="m-card__title">
-                                        {renderData.title}
-                                    </h2>
-                                    <p className="m-card__subtitle">
-                                        {renderData.description}
-                                    </p>
-
-                                    <p class="m-card__intro">
-                                        {renderData.introduction}
-                                    </p>                                
-                                </div>
-                            </Link>
-
-                            <footer class="m-card__footer">
-                                                                        
-                                    <div className="m-card__footer__info">
-                                        <p className="m-card__footer__info__created-by">crée par : {renderData.author.pseudo}</p>
-                                        <p className="m-card__footer__info__created-at">le : {this.renderDate(renderData.date)}</p>
-                                    </div>
-                                    <p className="m-card__footer__info">nombre de questions : {renderData.question ? renderData.question.length : ""}</p>
-
-                                    {
-                                    this.props.connected.authenticated ? 
-                                    (
-                                    <div className="m-card__footer__action">                                       
-                                        &nbsp;<Link to={`/preview/${renderData._id}`} className="m-button m-button--primary">Preview</Link>&nbsp;
-                                        <Link className="m-button m-button--primary" to={`/share/${renderData._id}`}>Partager</Link>
-                                        {renderData.author._id === this.props.connected._id ? 
-                                        <Link className="m-button m-button--primary" to={`/quiz/${renderData._id}/edit`}>Edit</Link> : ""}
-                                        <button className="m-button m-button--secondary" onClick={()=>{this.handleDelete(renderData._id)}}>Delete</button>
-                                    </div>
-                                    ) 
-                                    : ""}
-                                    
-                                </footer>
-                                                   
-                                        </section>  */}                  
+                        </section>                 
                     </li>
                 )
             })
@@ -107,7 +63,6 @@ class QuizIndex extends Component {
         return(
             <div className="o-content">                
                 <ul className="o-card-list">
-                <h2>Quiz index</h2>
                     {this.renderQuizzes()}
                 </ul>
             </div>

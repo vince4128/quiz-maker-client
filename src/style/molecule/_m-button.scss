@@ -127,15 +127,21 @@
     display:block;
     margin-top:15px;
     clear:both;
+
     &:after {
         content: "";
         clear: both;
         display: table;
     }
+
 }
 
-.m-button-group a {
-    border: 1px solid darken($accent2-color, 10%);
+.m-button-group a,
+.m-button-group button {
+    //border: 1px solid darken($accent2-color, 10%);
+    border:none;
+    border-radius:3px;
+    margin:0 5px 5px 0;
     background-color: $accent2-color;
     box-shadow: 0 3px darken($accent2-color, 10%);
     color: white !important;
@@ -160,4 +166,26 @@
         background-color: darken($accent2-color, 10%);
     }
 
+    &.m-button-group--secondary{
+        background-color: $accent1-color;
+        box-shadow: 0 3px darken($accent1-color, 20%);
+        padding: 7px 10px;
+    }
+
+    @include mq('phablet','max') { 
+        display: block;
+        width:100%;
+        text-align: center;
+    }
+
 }
+
+#btn-preview{
+    @include mq('tablet','max') { 
+        display: block;
+        width:100%;
+        text-align: center;
+    }
+}
+
+
