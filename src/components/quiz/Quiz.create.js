@@ -8,6 +8,7 @@ import axios from 'axios';
 import DropZoneField from '../field/DropzoneField';
 import requireAuth from '../requireAuth';
 import RenderField from '../field/RenderField';
+import RenderArea from '../field/RenderArea';
 import RenderSelectField from '../field/RenderSelectField';
 
 class QuizCreate extends Component {
@@ -130,14 +131,14 @@ class QuizCreate extends Component {
                         placeholder="Description du nouveau quiz"
                         label="Description"
                         name="description"
-                        component={RenderField}
+                        component={RenderArea}
                     />
 
                     <Field
                         placeholder="Introduction du nouveau quiz"
                         label="Introduction"
                         name="introduction"
-                        component={RenderField}
+                        component={RenderArea}
                     />
 
                 </fieldset>
@@ -148,14 +149,14 @@ class QuizCreate extends Component {
                         placeholder="Feedback général en cas de réussite"
                         label="Feedback bad"
                         name="feedback.bad"
-                        component={RenderField}
+                        component={RenderArea}
                     />
 
                     <Field
                         placeholder="Feedback général en cas d'échec"
                         label="Feedback good"
                         name="feedback.good"
-                        component={RenderField}
+                        component={RenderArea}
                     />
 
                 </fieldset>

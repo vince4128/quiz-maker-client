@@ -7,6 +7,7 @@ import axios from 'axios';
 import DropZoneField from '../field/DropzoneField';
 import requireAuth from '../requireAuth';
 import RenderField from '../field/RenderField';
+import RenderArea from '../field/RenderArea';
 import RenderSelectField from '../field/RenderSelectField';
 
 class QuizEdit extends Component {
@@ -124,7 +125,7 @@ class QuizEdit extends Component {
                         label="Description"
                         name="description"
                         placeholder="Type your Description"                                        
-                        component={RenderField}
+                        component={RenderArea}
                     />
 
                 </fieldset>

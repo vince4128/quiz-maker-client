@@ -6,8 +6,8 @@ import { createQuestion, fetchQuiz } from '../../actions';
 import axios from 'axios';
 import DropZoneField from '../field/DropzoneField';
 import RenderField from '../field/RenderField';
+import RenderArea from '../field/RenderArea';
 import RenderRadio from '../field/RenderRadio';
-import RenderCheck from '../field/RenderCheck';
 import requireAuth from '../requireAuth';
 import QuestionShow from './Question.show';
 import RenderSelectField from '../field/RenderSelectField';
@@ -91,7 +91,7 @@ class QuestionCreate extends Component {
                     <Field
                         name={`${proposal}.text`}
                         type="text"
-                        component={RenderField}
+                        component={RenderArea}
                         label="Proposition"
                     />
                     <div>
@@ -175,7 +175,7 @@ class QuestionCreate extends Component {
                         <Field
                             name="statement"
                             type="text"
-                            component={RenderField}
+                            component={RenderArea}
                             label="enoncé de la question"
                         />
 
@@ -200,14 +200,14 @@ class QuestionCreate extends Component {
                             label="FeedBack ok"
                             name="feedback.good"
                             placeholder="Feedback ok"  
-                            component={RenderField}                   
+                            component={RenderArea}                   
                             />
                             
                         <Field
                             label="FeedBack ko"
                             name="feedback.bad"
                             placeholder="Feedback ko"  
-                            component={RenderField}                   
+                            component={RenderArea}                   
                             />
 
                     </fieldset>
