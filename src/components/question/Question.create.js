@@ -161,12 +161,7 @@ class QuestionCreate extends Component {
 
         return (
             
-            <div className="o-content">
-                {/*<QuestionShow/>*/}
-                <h4>Question Create</h4>
-                {/*<Link to={"/"}>Back</Link>*/}
-                {JSON.stringify(this.props.quizId)}
-                {this.test}
+            <div className="o-content o-content--add">
 
                 <form class="m-form" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 
