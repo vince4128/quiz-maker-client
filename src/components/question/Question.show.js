@@ -52,16 +52,15 @@ class QuestionShow extends Component {
                         <div>
                             <footer>                                
                                 {this.props.edit ? 
-                                    <span>
+                                    <div className="m-button-group">
+                                    <button className="m-button-group--secondary" onClick={()=>{this.handleDelete(this.props.quizId, this.props.question._id)}}>delete</button>
                                         <Link to={`/quiz/${this.props.quizId}/question/${this.props.question._id}/edit`} className="m-button m-button--primary">Edit</Link>
-                                        <button className="m-button m-button--secondary" onClick={()=>{this.handleDelete(this.props.quizId, this.props.question._id)}}>delete</button>
-                                    </span> 
+                                    </div> 
                                     : ""}
                             </footer>
                             <div>                            
-                                {/*this.props.question.image ? <img width="250" height="auto" src={`http://localhost:3000/${this.props.question.image}`}/> : ""*/}
                             </div>                        
-                        </div> : ""}                               
+                                </div> : ""}                               
                     </div>
                 )
             }else{
