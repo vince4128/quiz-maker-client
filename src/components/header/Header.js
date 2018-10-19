@@ -21,10 +21,25 @@ class Header extends Component {
         }
     }
 
+    toggleClassBody(){
+        document.body.classList.toggle('menu-open');
+    }
+
     render(){
         return(
             <header className="o-header header-container">                
                 <ul>
+                    <li onClick={()=>{this.toggleClassBody()}}>
+                        <a className="o-header__trigger" href="#">
+                            <i>
+                                <svg className="test" version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                                    <path d="M17.5 6h-15c-0.276 0-0.5-0.224-0.5-0.5s0.224-0.5 0.5-0.5h15c0.276 0 0.5 0.224 0.5 0.5s-0.224 0.5-0.5 0.5z"></path>
+                                    <path d="M17.5 11h-15c-0.276 0-0.5-0.224-0.5-0.5s0.224-0.5 0.5-0.5h15c0.276 0 0.5 0.224 0.5 0.5s-0.224 0.5-0.5 0.5z"></path>
+                                    <path d="M17.5 16h-15c-0.276 0-0.5-0.224-0.5-0.5s0.224-0.5 0.5-0.5h15c0.276 0 0.5 0.224 0.5 0.5s-0.224 0.5-0.5 0.5z"></path>
+                                </svg>
+                            </i>
+                        </a>
+                    </li>
                     <li><h3 className="App-title">Quiz Maker</h3></li>
                     {this.renderLinks()}
                 </ul>    
