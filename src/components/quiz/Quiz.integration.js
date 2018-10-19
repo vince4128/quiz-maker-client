@@ -25,21 +25,26 @@ class QuizIntegration extends Component{
     render(){
         return(
             <div className="o-content">
-                <h1>Code d'intégration du quiz</h1>
-                <hr/>
                 <section className="m-form">
-                    <h3>Via une url</h3>                
-                    <input ref={(linkref) => this.linkref = linkref} type="text" value={`http://localhost:3001/shared/${this.props.match.params.id}`} id="sharedQuiz"/>
-                    <button className="m-button m-button--primary" onClick={(e)=>this.linkToClipboard(e,'link')}>Copier le lien</button>
-                </section>
-                <section className="m-form">
-                    <h3>Via un code d'intégration</h3>
-                    <input 
-                        type="textarea"
-                        ref={(textarearef) => this.textarearef = textarearef} 
-                        value={`<iframe src="http://localhost:3001/shared/${this.props.match.params.id}" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" width="100%" height="100vh"></iframe>`}                         
-                        id="iframeSharedQuiz"/>
-                    <button className="m-button m-button--primary" onClick={(e)=>this.linkToClipboard(e,'embed')}>Copier le code</button>
+                    <h1>Code d'intégration du quiz</h1>
+                    <section>
+                        <fieldset>
+                            <h3>Via une url</h3>                
+                            <input ref={(linkref) => this.linkref = linkref} type="text" value={`http://localhost:3001/shared/${this.props.match.params.id}`} id="sharedQuiz"/>
+                            <button className="m-button m-button--primary" onClick={(e)=>this.linkToClipboard(e,'link')}>Copier le lien</button>
+                        </fieldset>
+                    </section>
+                    <section>
+                        <fieldset>
+                            <h3>Via un code d'intégration</h3>
+                            <input 
+                                type="textarea"
+                                ref={(textarearef) => this.textarearef = textarearef} 
+                                value={`<iframe src="http://localhost:3001/shared/${this.props.match.params.id}" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" width="100%" height="100vh"></iframe>`}                         
+                                id="iframeSharedQuiz"/>
+                            <button className="m-button m-button--primary" onClick={(e)=>this.linkToClipboard(e,'embed')}>Copier le code</button>
+                        </fieldset>
+                    </section>
                 </section>
             </div>
         )
