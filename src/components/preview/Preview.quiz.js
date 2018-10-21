@@ -12,6 +12,7 @@ class PreviewQuiz extends Component {
         this.state = {
             selectedQuiz:null,
             quiz:[],
+            quizImg:"",
             intro:"",
             questions:{},
             score:0,
@@ -47,7 +48,8 @@ class PreviewQuiz extends Component {
                 {
                     quiz:QuizzArray,
                     totalSlide:QuizzArray.length,
-                    totalQuestion:Quiz.question.length
+                    totalQuestion:Quiz.question.length,
+                    quizImg:Quiz.image
                 }
             );
             console.log(QuizzArray);
@@ -160,6 +162,7 @@ class PreviewQuiz extends Component {
             
             <div>
                 <QuizRender
+                    quizImg={this.state.quizImg}
                     quiz={this.state.quiz} 
                     currentSlide={this.state.currentSlide}
                     totalSlide={this.state.totalSlide}
