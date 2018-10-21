@@ -24,8 +24,6 @@ export const signupAction = (formProps, callback) => /*return*/ async dispatch =
 
 export const signinAction = (formProps, callback) => async dispatch => {
 
-    alert(JSON.stringify(formProps));
-
     try {
     const response = await axios.post(`${server}/auth/signin`, formProps);
 
@@ -48,8 +46,6 @@ function parseJwt (token) {
 };
 
 export function signoutAction(){
-
-    alert('signout lancé !', localStorage._id);
 
     localStorage.removeItem('token');
     localStorage.removeItem('_id');
