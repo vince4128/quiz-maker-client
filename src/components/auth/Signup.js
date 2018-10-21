@@ -49,7 +49,7 @@ class Signup extends Component {
                     <div>
                         {this.props.errorMessage}
                     </div>
-                    <button>Sign up !</button>
+                    <button className="m-button m-button--primary">Sign up !</button>
                 </form>
             </div>
         )
