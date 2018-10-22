@@ -23,16 +23,17 @@ class QuizIndex extends Component {
     }
 
     renderQuizzes(){
-        const data = Object.assign({}, this.props.quiz)
+        const data = Object.assign({}, this.props.quiz)        
         return Object.keys(data)
             .map(key => {
                 const renderData = data[key];
+                const image = renderData.image ? `url(http://localhost:3000/${renderData.image})` : 'url(/img/placeholder.jpg)';                
                 return (
                     <li key={renderData._id}>
 
                         <section className="m-card">
                             <div className="meta">
-                                <div className="photo" style={{ backgroundImage: `url(http://localhost:3000/${renderData.image})` }}></div>
+                                <div className="photo" style={{ backgroundImage: image }}></div>
                                 <ul class="details">
                                     <li className="author">
                                         <i>
