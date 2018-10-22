@@ -199,4 +199,10 @@
     float:none;
 }
 
+.m-button:disabled{
+    background-color: $lightgrey-color;
+    box-shadow: 0 3px darken($lightgrey-color, 20%);
+    color:darken($lightgrey-color, 20%) !important;    
+}
+
 
