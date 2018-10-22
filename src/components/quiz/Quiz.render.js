@@ -46,14 +46,14 @@ const QuizRender = (props) => {
                         {q.intro ? <QuizIntro quizImg={props.quizImg} intro={q.intro} next={() => {props.prevNext("next")}}/> : ""}
                         {q.feedback && (q.index === props.totalSlide-1) ? <QuizEnd scorePercent={props.scorePercent} feedback={q.feedback}/> : ""}                        
                         {q.proposal ?
-                            <div>
+                            <div className="animated slideInRight">
                             {q.image ? <div className="m-question__image"><img src={`http://localhost:3000/${q.image}`}/></div>:<div className="m-question__image--placeholder"></div>} 
                             <div className="m-question">
-                                <ProgressBar currentSlide={props.currentSlide} totalSlide={props.totalSlide}/>
-                                <ProgressNumber currentSlide={props.currentSlide} totalSlide={props.totalSlide}/>                                
+                                {/*<ProgressBar currentSlide={props.currentSlide} totalSlide={props.totalSlide}/>
+                                <ProgressNumber currentSlide={props.currentSlide} totalSlide={props.totalSlide}/>*/}                           
                                 {<div className="a-question__enonce">{q.statement}</div>}
                                 <br/>
-                                <form onSubmit={(e)=>{e.preventDefault();alert(e.values)}}>                                
+                                <form onSubmit={(e)=>{e.preventDefault()}}>                                
                                 {q.proposal.map((p) =>{
                                     return (
                                         <div>                                                                                        
@@ -91,6 +91,9 @@ const QuizRender = (props) => {
                                     : ""}
                                 </p>
                             </div>
+                            <section className="m-quiz__nextBtn">
+                                    {q.answered ? <button className="animated fadeIn m-button m-button-group--primary" onClick={()=>props.prevNext("next")}>Suivant</button> : ""}
+                            </section>
                         </div>
                             : ""
                         }
@@ -102,16 +105,15 @@ const QuizRender = (props) => {
 
     return(
         <div className="o-quiz">
+            <ProgressBar currentSlide={props.currentSlide} totalSlide={props.totalSlide}/>
+            <ProgressNumber currentSlide={props.currentSlide} totalSlide={props.totalSlide}/>
             <div className="m-quiz__title">
                 <h1>{getTitle()}</h1>
             </div>
             
             <ul className="m-quiz__question">
                 {renderQuiz()}
-            </ul>
-            <section className="m-quiz__nextBtn">
-                    {true ? <button className="m-button m-button-group--primary" onClick={()=>props.prevNext("next")}>Suivant</button> : ""}
-            </section>
+            </ul>            
         </div>
     )
 

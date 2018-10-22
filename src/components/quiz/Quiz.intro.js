@@ -9,7 +9,7 @@ const QuizIntro = (props) => {
             </div>
             <div className="m-quiz__intro__title">
             <h1>{props.intro}</h1>
-            <button className="m-button m-button--primary" onClick={()=>props.next()}>Démarrer</button>
+            <button className="animated fadeInLeft m-button m-button--primary" onClick={()=>props.next()}>Démarrer</button>
             </div>            
         </div>
     );
