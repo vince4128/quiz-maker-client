@@ -9,6 +9,7 @@ import requireAuth from '../requireAuth';
 import RenderField from '../field/RenderField';
 import RenderArea from '../field/RenderArea';
 import RenderSelectField from '../field/RenderSelectField';
+import RichTextHtml from '../field/RichTextHtml';
 
 class QuizEdit extends Component {
 
@@ -125,7 +126,7 @@ class QuizEdit extends Component {
                         label="Description"
                         name="description"
                         placeholder="Type your Description"                                        
-                        component={RenderArea}
+                        component={RichTextHtml}
                     />
 
                 </fieldset>

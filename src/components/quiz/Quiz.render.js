@@ -48,9 +48,7 @@ const QuizRender = (props) => {
                         {q.proposal ?
                             <div className="animated slideInRight">
                             {q.image ? <div className="m-question__image"><img src={`http://localhost:3000/${q.image}`}/></div>:<div className="m-question__image--placeholder"></div>} 
-                            <div className="m-question">
-                                {/*<ProgressBar currentSlide={props.currentSlide} totalSlide={props.totalSlide}/>
-                                <ProgressNumber currentSlide={props.currentSlide} totalSlide={props.totalSlide}/>*/}                           
+                            <div className="m-question">                     
                                 {<div className="a-question__enonce">{q.statement}</div>}
                                 <br/>
                                 <form onSubmit={(e)=>{e.preventDefault()}}>                                

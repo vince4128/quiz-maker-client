@@ -9,6 +9,7 @@ import DropZoneField from '../field/DropzoneField';
 import requireAuth from '../requireAuth';
 import RenderField from '../field/RenderField';
 import RenderArea from '../field/RenderArea';
+import RichTextHtml from '../field/RichTextHtml';
 import RenderSelectField from '../field/RenderSelectField';
 
 class QuizCreate extends Component {
@@ -19,6 +20,11 @@ class QuizCreate extends Component {
         this.state = {
             imageFile: []            
         }
+        this.handleEditorChange = this.handleEditorChange.bind(this);
+    }
+
+    handleEditorChange(content) {
+        this.setState({ content });
     }
 
     handleOnDrop = (newImageFile, rejectedFile) => {
@@ -131,7 +137,7 @@ class QuizCreate extends Component {
                         placeholder="Description du nouveau quiz"
                         label="Description"
                         name="description"
-                        component={RenderArea}
+                        component={RichTextHtml}
                     />
 
                     <Field
