@@ -33,7 +33,7 @@ class PreviewQuiz extends Component {
             let Quiz = {};
             data[id] ? Quiz = data[id] : Quiz = { err:'Quiz inexistant' };
             let QuizzArray = [];
-            QuizzArray.push({intro:Quiz.title});
+            QuizzArray.push({intro:Quiz.introduction, title:Quiz.title});            
             Quiz.question.map((q) => {
                 console.log(q);
                 q.answered = false;
