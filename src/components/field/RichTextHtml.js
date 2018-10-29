@@ -22,14 +22,23 @@ class RichTextHtml extends Component {
         }
     }
 
-    onChange(value) {
+    onChange(value) {        
         const isTextChanged = this.state.value.toString('html') != value.toString('html');
         this.setState({value}, e => isTextChanged && this.props.input.onChange(value.toString('html')));
     };
 
     render() {
         return (
-            <RichTextEditor value={this.state.value} onChange={this.onChange.bind(this)} />
+            <div>
+                <label>{this.props.label}</label>                
+                <RichTextEditor 
+                    value={this.state.value}
+                    onChange={this.onChange.bind(this)}
+                    toolbarClassName="m-rte-toolbar"
+                    editorClassName="m-rte-editor" 
+                />
+                {this.props.meta.touched && this.props.meta.error ? <div className="m-form__error">{this.props.meta.error}</div> : ''}
+            </div>
         );
     }
 }

@@ -144,7 +144,7 @@ class QuizCreate extends Component {
                         placeholder="Introduction du nouveau quiz"
                         label="Introduction"
                         name="introduction"
-                        component={RenderArea}
+                        component={RichTextHtml}
                     />
 
                 </fieldset>
@@ -155,14 +155,14 @@ class QuizCreate extends Component {
                         placeholder="Feedback général en cas de réussite"
                         label="Feedback bad"
                         name="feedback.bad"
-                        component={RenderArea}
+                        component={RichTextHtml}
                     />
 
                     <Field
                         placeholder="Feedback général en cas d'échec"
                         label="Feedback good"
                         name="feedback.good"
-                        component={RenderArea}
+                        component={RichTextHtml}
                     />
 
                 </fieldset>

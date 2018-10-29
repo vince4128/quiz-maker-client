@@ -7,6 +7,7 @@ import axios from 'axios';
 import DropZoneField from '../field/DropzoneField';
 import RenderField from '../field/RenderField';
 import RenderArea from '../field/RenderArea';
+import RichTextHtml from '../field/RichTextHtml';
 import RenderRadio from '../field/RenderRadio';
 import requireAuth from '../requireAuth';
 import QuestionShow from './Question.show';
@@ -91,7 +92,7 @@ class QuestionCreate extends Component {
                     <Field
                         name={`${proposal}.text`}
                         type="text"
-                        component={RenderArea}
+                        component={RichTextHtml}
                         label="Proposition"
                     />
                     <div>
@@ -169,7 +170,7 @@ class QuestionCreate extends Component {
                         <Field
                             name="statement"
                             type="text"
-                            component={RenderArea}
+                            component={RichTextHtml}
                             label="enoncé de la question"
                         />
 
@@ -194,14 +195,14 @@ class QuestionCreate extends Component {
                             label="FeedBack ok"
                             name="feedback.good"
                             placeholder="Feedback ok"  
-                            component={RenderArea}                   
+                            component={RichTextHtml}                   
                             />
                             
                         <Field
                             label="FeedBack ko"
                             name="feedback.bad"
                             placeholder="Feedback ko"  
-                            component={RenderArea}                   
+                            component={RichTextHtml}                   
                             />
 
                     </fieldset>

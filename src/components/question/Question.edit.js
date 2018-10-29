@@ -9,6 +9,7 @@ import DropZoneField from '../field/DropzoneField';
 import requireAuth from '../requireAuth';
 import RenderField from '../field/RenderField';
 import RenderRadio from '../field/RenderRadio';
+import RichTextHtml from '../field/RichTextHtml';
 import QuestionShow from '../question/Question.show';
 import validate from './validate';
 
@@ -118,7 +119,7 @@ class QuestionEdit extends Component {
                     <Field
                         name={`${proposal}.text`}
                         type="text"
-                        component={RenderField}
+                        component={RichTextHtml}
                         label="Énoncé de la proposition"
                     />
                     <div>
@@ -192,7 +193,7 @@ class QuestionEdit extends Component {
                         <Field
                             name="statement"
                             type="text"
-                            component={RenderField}
+                            component={RichTextHtml}
                             label="Énonce"
                         />
                         
@@ -215,14 +216,14 @@ class QuestionEdit extends Component {
                             label="FeedBack ok"
                             name="feedback.good"
                             placeholder="Feedback ok"  
-                            component={RenderField}                   
+                            component={RichTextHtml}                   
                             />
 
                         <Field
                             label="FeedBack ko"
                             name="feedback.bad"
                             placeholder="Feecback ko"  
-                            component={RenderField}                   
+                            component={RichTextHtml}                   
                             />
 
                     </fieldset>

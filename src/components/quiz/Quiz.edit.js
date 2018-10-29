@@ -129,6 +129,13 @@ class QuizEdit extends Component {
                         component={RichTextHtml}
                     />
 
+                    <Field
+                        placeholder="Introduction"
+                        label="Introduction"
+                        name="introduction"
+                        component={RichTextHtml}
+                    />
+
                 </fieldset>
 
                 <fieldset>
@@ -190,6 +197,10 @@ function validate(values){
 
     if(!values.description){
         errors.description = "Enter a description !";
+    }
+
+    if(!values.introduction){
+        errors.introduction = "Enter a introduction !";
     }
 
     if(!values.category){

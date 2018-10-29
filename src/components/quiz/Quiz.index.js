@@ -75,8 +75,8 @@ class QuizIndex extends Component {
                             </div>                            
                             <section className="description">
                                 <h1>{renderData.title}</h1>
-                                <h2>{renderData.description}</h2>
-                                <p>Intro ?</p>
+                                <h2 dangerouslySetInnerHTML={{__html: renderData.description}}/>
+                                <p className="introduction" dangerouslySetInnerHTML={{__html: renderData.introduction}} />
                                 <hr/>
                                 <div class="read-more">
                                     <div className="m-button-group">
