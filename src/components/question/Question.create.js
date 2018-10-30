@@ -36,6 +36,10 @@ class QuestionCreate extends Component {
         return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     }
 
+    resetImageFile(){
+        this.setState({imageFile:[]});
+    }
+
     onSubmit(values){
         //upload image
         if(this.state.imageFile.length>0){
@@ -47,7 +51,6 @@ class QuestionCreate extends Component {
                 const data = new FormData();
                 data.append('filename', filename); 
                 data.append('file', this.state.imageFile[0]);             
-                alert('la requete va etre passee !');
                 axios.post('http://localhost:3000/upload', data, {
                     headers: {authorization: this.props.connected}
                 })
@@ -78,6 +81,7 @@ class QuestionCreate extends Component {
         });
 
         this.props.reset();
+        this.resetImageFile();
     }
 
     renderProposals = ({ fields, meta: { error, submitFailed } }) => (
@@ -213,7 +217,7 @@ class QuestionCreate extends Component {
                         <button type="submit" className="btn btn-primary"/*disabled={submitting}*/>
                         Ajouter la question
                         </button>
-                        <button type="button" className="m-form__cancel"/*disabled={pristine || submitting}*/ onClick={this.props.reset}>
+                        <button type="button" className="m-form__cancel"/*disabled={pristine || submitting}*/ onClick={()=>{this.props.reset();this.resetImageFile();}}>
                         Réinitialiser les champs
                         </button>
                     </div>
