@@ -38,7 +38,7 @@ export function createImage(values, token, callback){
 
     xhr.onreadystatechange = () => {
         if(this.readyState == XMLHttpRequest.DONE && this.status == 200){
-            alert('requete effectuee');
+            //alert('requete effectuee');
         }
     }
 

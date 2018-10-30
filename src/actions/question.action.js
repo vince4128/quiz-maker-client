@@ -29,8 +29,6 @@ export function fetchQuestion(id,qid){
 
 export function createQuestion(id, values, token, callback){
 
-    alert('createQuestion');
-
     const request = axios.post(`${server}/${id}/question`, values, {
         headers: {authorization: token}
     })
@@ -57,7 +55,6 @@ export function editQuestion(idQuiz, idQuestion, values, token, callback){
 
 export function deleteQuestion(id, qid, token, callback){
 
-    alert('deleteQuestion ! ');
     console.log('deleteQuestion ! Action ', id, qid, token);
     
     axios.delete(`${server}/${id}/question/${qid}`, {

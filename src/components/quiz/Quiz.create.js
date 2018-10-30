@@ -90,7 +90,6 @@ class QuizCreate extends Component {
                 const data = new FormData();
                 data.append('filename', filename); 
                 data.append('file', this.state.imageFile[0]);             
-                alert('la requete va etre passee !');
                 axios.post('http://localhost:3000/upload', data, {
                     headers: {authorization: this.props.connected.authenticated}
                 })
