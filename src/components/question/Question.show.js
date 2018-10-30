@@ -39,7 +39,7 @@ class QuestionShow extends Component {
                 return(
                     <div className="m-question--admin">
                         <header className="m-card__header">      
-                            <h3>{this.props.question.statement}</h3>
+                            <p dangerouslySetInnerHTML={{__html: this.props.question.statement}}></p>
                         </header>
                         {/*<ul>
                             {this.props.question.proposal.map((p) => {
