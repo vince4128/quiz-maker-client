@@ -82,6 +82,7 @@ class QuestionCreate extends Component {
 
         this.props.reset();
         this.resetImageFile();
+        this.props.fetchQuiz();
     }
 
     renderProposals = ({ fields, meta: { error, submitFailed } }) => (
