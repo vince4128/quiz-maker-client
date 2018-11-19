@@ -69,32 +69,32 @@
         display:inline-block;
         padding:0 20px;
         background-color:$accent2-color;
-        /*background-size: 20px 20px;
-        background-image: -webkit-linear-gradient(
-            45deg,
-            rgba(255,255,255,0.15) 25%,
-            rgba(0,0,0,0) 25%,
-            rgba(0,0,0,0) 50%,
-            rgba(255,255,255,0.15) 50%,
-            rgba(255,255,255,0.15) 75%,
-            rgba(0,0,0,0) 75%,
-            rgba(0,0,0,0)            
-        );*/
-        border: solid 1px darken($accent2-color, 10%);
-        border-bottom-width:3px;
+        border:none;
+        border-bottom:solid 3px darken($accent2-color, 10%);
         color:#fff;
         outline:none;
         text-align:center;
         text-decoration:none;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        border-radius:5px 0 0 5px;
         cursor: pointer;
         -webkit-transition: all 0.3s ease;
         transition: all 0.3s ease;
+
+        &:hover{
+            background-color: darken($accent2-color, 10%);
+        }
     }
 
     &__cancel{
         background-color: $accent1-color;
-        border: solid 1px darken($accent1-color, 10%);
-        border-bottom-width:3px;
+        border-radius:0 5px 5px 0;
+        border-bottom:solid 3px darken($accent1-color, 10%);
+
+        &:hover{
+            background-color: darken($accent1-color, 10%);
+        }
     }
 
     button[type="submit"]:hover{
