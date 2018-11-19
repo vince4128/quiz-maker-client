@@ -1,5 +1,5 @@
 .m-tab-list{
-    border-bottom: 1px solid $accent2-color;
+    border-bottom: 2px solid $accent2-color;
     padding-left: 0;
 }
 
@@ -11,8 +11,16 @@
     padding: 0.5rem 0.75rem;
     border:1px solid #ccc;
     border-bottom:none;
-    //border-radius: 0 5px 0 0;
     cursor:pointer;
+    transform: all .3s ease-out;
+
+    &:first-child{
+        border-radius: 5px 0 0 5px;
+    }
+
+    &:last-child{
+        border-radius: 0 5px 5px 0;
+    }
 
     &--active{
         //background-color: white;

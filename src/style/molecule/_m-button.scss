@@ -174,10 +174,11 @@
     }
 
     &:hover {
+        background-color: $accent2-color;
         background-color: darken($accent2-color, 10%);
-        padding-right: 23px;
+        //padding-right: 23px;
         i{
-            display: inline-block;
+            //display: inline-block;
         }
     }
 
@@ -185,6 +186,14 @@
         background-color: $accent1-color;
         box-shadow: 0 3px darken($accent1-color, 20%);
         //padding: 7px 10px;
+        &:hover {
+            background-color: $accent1-color;
+            background-color: darken($accent1-color, 10%);
+            //padding-right: 23px;
+            i{
+                //display: inline-block;
+            }
+        }
     }
 
     @include mq('phablet','max') { 
