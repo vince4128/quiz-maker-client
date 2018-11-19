@@ -55,8 +55,10 @@ class CategoryEdit extends Component {
             <hr/>
 
             <form class="m-form" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-                
-            <Field
+
+            <fieldset>
+
+                <Field
                     label="Title"
                     name="title"
                     placeholder="Type your title"
@@ -80,8 +82,10 @@ class CategoryEdit extends Component {
                     component={RenderField}
                 />
 
+            </fieldset>
+
                 <button type="submit" className="btn btn-primary">Submit</button>
-                <Link to="/category" className="btn btn-danger">Cancel</Link>
+                <Link to="/category" className="m-form__cancel">Cancel</Link>
 
             </form>
 
