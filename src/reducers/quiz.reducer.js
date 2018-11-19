@@ -15,8 +15,9 @@ export default (state={}, action) => {
 
         case EDIT_QUIZ:
             console.log('edit quiz !');
+            return;
 
-        case CREATE_QUESTION:
+        case CREATE_QUESTION:            
             const newQ = action.payload.values;
             state[action.payload.id].question.push(newQ);
 
