@@ -36,6 +36,10 @@
         padding:1rem 1.25rem;
     }
 
+    &__trigger i:nth-last-of-type(1){
+        display: none;
+    }
+
     &__trigger > i {
         display: inline-block;
         //margin:1em 1.5em;
@@ -66,4 +70,13 @@
 
     }
 
+}
+
+.menu-open .o-header {
+    &__trigger i:nth-last-of-type(1){
+        display: inline-block;
+    }
+    &__trigger i:nth-last-of-type(2){
+        display: none;
+    }
 }
