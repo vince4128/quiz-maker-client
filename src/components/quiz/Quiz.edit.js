@@ -149,8 +149,9 @@ class QuizEdit extends Component {
 
                 </fieldset>
 
-                <fieldset>
+                <fieldset className="m-fieldset-img">
 
+                    <label for="image">Image</label>
                     <Field
                         label="Image"
                         name="image"                    

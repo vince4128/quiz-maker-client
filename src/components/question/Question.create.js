@@ -181,7 +181,7 @@ class QuestionCreate extends Component {
 
                     </fieldset>
 
-                    <fieldset>
+                    <fieldset className="m-fieldset-img">
 
                         <label for="uploadInput">Image</label>
                         <Field
