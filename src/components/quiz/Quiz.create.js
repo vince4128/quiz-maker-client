@@ -107,7 +107,7 @@ class QuizCreate extends Component {
         values.author = this.props.connected._id;      
         this.props.createQuiz(values, this.props.connected.authenticated, (newlyCreatedObjId) => {
             //this.props.history.push(`/quiz/${newlyCreatedObjId}/question/new`);
-            this.props.history.push(`/quiz/${newlyCreatedObjId}/edit`);
+            this.props.history.push(`/quiz/${newlyCreatedObjId}/edit/question`);
         });
     }
 
@@ -177,7 +177,7 @@ class QuizCreate extends Component {
 
                 </fieldset>
 
-                <fieldset>
+                <fieldset className="m-fieldset-img">
                     <label for="uploadInput">Image</label>
                     <Field
                         name="uploadInput"

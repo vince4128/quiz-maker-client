@@ -104,7 +104,7 @@ class QuestionEdit extends Component {
         }
         this.props.editQuestion(this.state.selectedQuiz, this.state.selectedQuestion, values, this.props.connected, () => {
             //this.props.history.push(`/quiz/${this.state.selectedQuiz}/question/new`);
-            this.props.history.push(`/quiz/${this.state.selectedQuiz}/edit`);
+            this.props.history.push(`/quiz/${this.state.selectedQuiz}/edit/question`);
         });
     }
 
@@ -196,7 +196,12 @@ class QuestionEdit extends Component {
                             component={RichTextHtml}
                             label="Énonce"
                         />
-                        
+                    
+                    </fieldset>
+                    
+                    <fieldset className="m-fieldset-img">
+
+                        <label htmlFor="image">Image</label>
                         <Field
                             label="Image"
                             name="image"                    
@@ -232,7 +237,7 @@ class QuestionEdit extends Component {
                         <button type="submit" /*onClick={this.props.toggleEdit()}/*onClick={this.props.toggleEdit()}*/ /*disabled={submitting}*/>
                         Enregistrer la question
                         </button>
-                        <Link to={`/quiz/${this.props.match.params.id}/edit`} className="m-form__cancel" /*disabled={pristine || submitting}*/ /*onClick={reset}*/>
+                        <Link to={`/quiz/${this.props.match.params.id}/edit/question`} className="m-form__cancel" /*disabled={pristine || submitting}*/ /*onClick={reset}*/>
                         Annuler
                         </Link>
                     </div>

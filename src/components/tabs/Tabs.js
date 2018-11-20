@@ -20,6 +20,18 @@ class Tabs extends Component {
         this.setState({ activeTab: tab});
     }
 
+    componentDidMount(){
+        console.log("fucking props ", this.props);
+        if(this.props.part){
+            alert('part !');
+            this.props.children.map((c)=>{
+                if(c.props.partName === this.props.part){
+                    this.setState({activeTab:c.props.label});
+                }
+            })
+        }
+    }
+
     render(){
 
         const {

@@ -18,13 +18,15 @@ class QuizCreateQuestion extends Component{
         super(props);
 
         this.state = {
-            selectedQuiz:null          
+            selectedQuiz:null,
+            default:""        
         }
     }
 
     componentDidMount(){
         const { id } = this.props.match.params;
-        this.setState({selectedQuiz:id});
+        const { part } = this.props.match.params;
+        this.setState({selectedQuiz:id, default:part});
         this.props.fetchQuiz(id);
     }
 
@@ -56,13 +58,12 @@ class QuizCreateQuestion extends Component{
         const hasQuiz = 
             <div className="o-content">            
                 <h2>Quiz Edit</h2>
-                <Tabs>
-                    <div label="Paramètres généraux">
+                <Tabs part={this.state.default}>
+                    <div label="Paramètres généraux" partName="general">
                         <QuizEdit connected={this.props.auth}/>
                     </div>
-                    <div label="Ajout / Édition de questions">
+                    <div label="Ajout / Édition de questions" partName="question">
                         { Quiz.question ? <QuestionIndex questions={Quiz.question} edit={true} quizId={Quiz._id} connected={this.props.auth}/> : "" }
-                        {/*<p>Ajout de question</p>*/}
                         <QuestionCreate quizId={Quiz._id} connected={this.props.auth}/>    
                     </div>                                                    
                 </Tabs>
