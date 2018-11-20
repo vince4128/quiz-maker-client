@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Route, Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchQuizzes, deleteQuiz } from '../../actions';
-import { SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION } from 'constants';
 
 class QuizIndex extends Component {
 
