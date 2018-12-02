@@ -114,7 +114,7 @@ const FieldArraysForm = props => {
         placeholder="Feecback ko"  
         component={renderField}                   
         />
-      <div>
+      <div className="btns">
         <button type="submit" /*disabled={submitting}*/>
           Submit
         </button>

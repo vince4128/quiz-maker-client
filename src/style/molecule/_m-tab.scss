@@ -1,5 +1,5 @@
 .m-tab-list{
-    border-bottom: 2px solid $accent2-color;
+    border-bottom: 2px solid $color-primary;
     padding-left: 0;
 }
 
@@ -24,9 +24,9 @@
 
     &--active{
         //background-color: white;
-        background-color: $accent2-color;
+        background-color: $color-primary;
         color:#fff;
-        border: solid $accent2-color;
+        border: solid $color-primary;
         border-width: 1px 1px 0 1px;
     }
 

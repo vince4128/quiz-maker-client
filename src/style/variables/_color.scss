@@ -10,3 +10,109 @@ $lightgrey-color:#939393;
 $grey-color: #333333;
 $darkgrey-color: #252526;
 $darkestgrey-color: #1e1e1e;
+
+//:root{
+    /* main colors */
+    //$color-primary: #4D84F4;
+    $color-primary: #0e55e6;
+    $color-primary-light: lighten($color-primary,15%);
+    $color-primary-dark: darken($color-primary,15%);
+    $color-primary-bg: opacify($color-primary,.2);
+
+    $color-secondary: #4D84F4;
+    $color-secondary-light: lighten($color-secondary,15%);
+    $color-secondary-dark: darken($color-secondary,15%);
+    $color-secondary-bg: opacify($color-secondary,.2);
+
+    $color-accent: #f5414f;
+    $color-accent-light: lighten($color-accent,15%);
+    $color-accent-dark: darken($color-accent,15%);
+    $color-accent-bg: opacify($color-accent,.2);
+
+    $color-accent2: #3EA3E8;
+    $color-accent2-light: lighten($color-accent2,15%);
+    $color-accent2-dark: darken($color-accent2,15%);
+    $color-accent2-bg: opacify($color-accent2,.2);
+
+    $color-error: #f5414f;
+    $color-error-light: lighten($color-error,15%);
+    $color-error-dark: darken($color-error,15%);
+    $color-error-bg: opacify($color-error,.2);
+
+    $color-success: #00C28E;
+    $color-success-light: lighten($color-success,15%);
+    $color-success-dark: darken($color-success,15%);
+    $color-success-bg: opacify($color-success,.2);
+
+    //shades - chroma.js - 12 steps
+
+    $black: #1d1d21;
+    $gray-10: #2e2e31;
+    $gray-6: #7b7a7d;
+    $gray-4: #a5a5a6;
+    $gray-3: #bbbbbc;
+    $gray-2: #d1d0d2;
+    $gray-1: #e8e7e8;
+    $white: white;
+
+    /* feedback */
+    $color-success: #88c459;
+    $color-error: #f5414f;
+    $color-warning: #ffd137;
+
+    /* semantic declaration */
+
+    /* typography */
+    $color-text: $gray-10;
+    $color-text-heading: $black;
+    $color-text-subtle: $gray-6;
+    $color-link: $color-primary;
+    $color-link-visited: $color-primary-dark;
+    $color-mark: $color-accent-bg;
+
+    /* border */
+    $color-border: $gray-2;
+
+    /* body */
+    $color-body: $white;
+
+    /* forms */
+    $form-element-border: $color-border;
+    $form-element-border-focus: $color-primary;
+    $form-element-border-error: $color-error;
+    $form-element-bg: $white;
+    $form-text-placeholder: $gray-4;
+
+    /* button */
+    $btn-primary-bg: $color-primary;
+    $btn-primary-hover: $color-primary-light;
+    $btn-primary-active: $color-primary-dark;
+    $btn-primary-label: $white;
+
+    $btn-secondary-bg: $gray-1;
+    $btn-secondary-active: $gray-2;
+    $btn-secondary-label: $gray-10;
+
+    $btn-accent-bg: $color-accent;
+    $btn-accent-hover: $color-accent-light;
+    $btn-accent-active: $color-accent-dark;
+    $btn-accent-label: $white;
+
+    $btn-error-bg: $color-error;
+    $btn-error-hover: $color-error-light;
+    $btn-error-active: $color-error-dark;
+    $btn-error-label: $white;
+
+    $btn-success-bg: $color-success;
+    $btn-success-hover: $color-success-light;
+    $btn-success-active: $color-success-dark;
+    $btn-success-label: $white;
+
+    $btn-disabled-bg: $gray-2;
+    $btn-disabled-bg: $gray-10;
+
+    /* icons */
+    $color-icon-primary: $gray-4;
+    $color-icon-secondary: inherit;
+    
+//}

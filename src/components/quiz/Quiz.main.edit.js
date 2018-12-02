@@ -56,8 +56,8 @@ class QuizCreateQuestion extends Component{
         data[this.state.selectedQuiz] ? Quiz = data[this.state.selectedQuiz] : Quiz = {err:'objet inexistant'};
 
         const hasQuiz = 
-            <div className="o-content">            
-                <h2>Quiz Edit</h2>
+            <div className="o-content">
+            <h1>Édition du Quiz</h1>            
                 <Tabs part={this.state.default}>
                     <div label="Paramètres généraux" partName="general">
                         <QuizEdit connected={this.props.auth}/>

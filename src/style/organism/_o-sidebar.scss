@@ -12,7 +12,7 @@
         left:0;
         width:100%;
         height:4em;
-        background: #192b3c;
+        background: $color-secondary;
     }
 
     &__trigger > i {
@@ -29,7 +29,8 @@
         transition:all .3s ease-in;
         width:15em;
         height:100%;
-        background: #243e56;
+        background: $color-secondary;
+        //background: $white;
         color:$light-color;
     }
 
@@ -42,7 +43,7 @@
 
     &__nav ul{
         position: absolute;
-        top:4em;
+        top:3.1em;
         left:0;
         margin:0;
         padding:0;
@@ -59,11 +60,24 @@
         width:100%;
         height: 4em;
         font-family:'Lato-regular';
-        color:$light-color;
+        color:$white;
 
         &:hover{
-            background-color: $accent2-color;
+            //background-color: $color-accent2;
+            background-color: $color-primary;
+            color:$color-primary;
         }
+
+        em{
+            color:$white;
+            //color:$color-primary;
+        }
+
+        a:visited {
+            //color: $white !important;
+            color:$color-primary !important;
+        }
+                
     }
 
     &__nav-link em{

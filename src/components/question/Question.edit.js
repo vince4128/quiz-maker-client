@@ -147,10 +147,18 @@ class QuestionEdit extends Component {
                         </label>
                         </div>
                     </div>
-                    <button
+                    {/*<button
                         type="button"
                         title="Effacer la propostion"
                         className="m-button m-button--secondary"
+                        onClick={() => fields.remove(index)}
+                    >
+                        Supprimer la proposition
+                    </button>*/}
+                    <button
+                        type="button"
+                        title="Effacer la propostion"
+                        className="btn btn--error"
                         onClick={() => fields.remove(index)}
                     >
                         Supprimer la proposition
@@ -163,7 +171,10 @@ class QuestionEdit extends Component {
           ))}
           <li>
             <fieldset>
-                <button type="button" className="m-button m-button--primary" onClick={() => fields.push({})}>
+                {/*<button type="button" className="m-button m-button--primary" onClick={() => fields.push({})}>
+                Ajouter une proposition
+                </button>*/}
+                <button type="button" className="btn btn--primary" onClick={() => fields.push({})}>
                 Ajouter une proposition
                 </button>
                 <div>
@@ -185,6 +196,7 @@ class QuestionEdit extends Component {
                 <h4>Question Edit</h4>
                 <p>id question : {this.props.question._id}</p>
                 <p>id quiz : {this.props.quizId}</p>*/}
+                <h1>Édition de la question</h1>
 
                 <form class="m-form" onSubmit={handleSubmit(this.onSubmit.bind(this))}>                
 
@@ -233,11 +245,11 @@ class QuestionEdit extends Component {
 
                     </fieldset>
 
-                    <div>
-                        <button type="submit" /*onClick={this.props.toggleEdit()}/*onClick={this.props.toggleEdit()}*/ /*disabled={submitting}*/>
+                    <div className="btns">
+                        <button type="submit" className="btn btn--primary btn--md"/*onClick={this.props.toggleEdit()}/*onClick={this.props.toggleEdit()}*/ /*disabled={submitting}*/>
                         Enregistrer la question
                         </button>
-                        <Link to={`/quiz/${this.props.match.params.id}/edit/question`} className="m-form__cancel" /*disabled={pristine || submitting}*/ /*onClick={reset}*/>
+                        <Link to={`/quiz/${this.props.match.params.id}/edit/question`} className="btn btn--error btn--md" /*disabled={pristine || submitting}*/ /*onClick={reset}*/>
                         Annuler
                         </Link>
                     </div>

@@ -1,0 +1,16 @@
+/* button group */
+.btns{
+    display:flex;
+    flex-wrap: wrap;
+    margin-bottom: calc(-1 * var(--space-xs));
+
+    > * {
+        margin-right: var(--space-xs);
+        margin-bottom: var(--space-xs);
+
+        &:last-of-type {
+            margin-right:0;
+        }
+    }
+
+}

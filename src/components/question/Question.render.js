@@ -57,7 +57,8 @@ const QuestionRender = (props) => {
                             </div>
                         )
                     })}                                
-                    <button disabled={shouldBeDisabled(props.q)} onClick={()=>props.questionValidation(props.q)}className="m-button m-button--primary">Valider</button>
+                    {/*<button disabled={shouldBeDisabled(props.q)} onClick={()=>props.questionValidation(props.q)}className="m-button m-button--primary">Valider</button>*/}
+                    <button disabled={shouldBeDisabled(props.q)} onClick={()=>props.questionValidation(props.q)}className="btn btn--primary">Valider</button>
                 </form>
                 <p>
                 { props.q.answered ? 

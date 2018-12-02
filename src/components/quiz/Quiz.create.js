@@ -119,7 +119,7 @@ class QuizCreate extends Component {
 
             <div className="o-content">
 
-            <h1>Create Quiz</h1>
+            <h1>Nouveau Quiz</h1>
 
             <form class="m-form" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 
@@ -188,8 +188,10 @@ class QuizCreate extends Component {
                         />
                 </fieldset>
 
-                <button type="submit" className="btn btn-primary">Submit</button>
-                <Link to="/" className="m-form__cancel">Cancel</Link>
+                <div className="btns">
+                    <button type="submit" className="btn btn--primary btn--md">Submit</button>
+                    <Link to="/" className="btn btn--error btn--md">Cancel</Link>
+                </div>
 
             </form>
 

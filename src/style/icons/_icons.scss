@@ -1,0 +1,71 @@
+/*:root{
+    --icon-xs:1em;
+    --icon-sm:1.5em;
+    --icon-md:2em;
+    --icon-lg:3em;
+    --icon-xl:4em
+}*/
+
+/*use an absolute unit (px) rather than a relative one (e.g., em) so that we could preserve the dimension of the icons at different viewport sizes. */
+
+:root{
+    --icon-xs:16px;
+    --icon-sm:24px;
+    --icon-md:32px;
+    --icon-lg:48px;
+    --icon-xl:64px;
+}
+
+.icon{
+    display: inline-block;
+    color:var(--color-primary);
+    height:1em;
+    width:1em;
+    line-height: 1;
+}
+
+/* icon size */
+.icon--xs {
+    font-size: var(--icon-xs);    
+}
+
+.icon--sm {
+    font-size: var(--icon-sm);
+}
+
+.icon--md {
+    font-size: var(--icon-md);
+}
+
+.icon--lg {
+    font-size: var(--icon-lg);
+}
+
+.icon--xl {
+    font-size: var(--icon-xl);
+}
+
+/* add this class to parent element that contains icon + text */
+
+.icon-text-aligner {
+    display: flex;
+    align-items: center;
+
+    > *:nth-child(2) {
+        margin-left: var(--space-xxs);
+    }
+
+    .icon {
+        color:inherit;
+        flex-shrink:0;
+    }
+}
+
+/* use case */
+/*
+<p class="icon-text-aligner">
+  <svg class="icon"><use href="#icon-dog" xlink:href="#icon-dog"/></svg>
+  <em>This is some text here</em>
+</p>
+*/
+

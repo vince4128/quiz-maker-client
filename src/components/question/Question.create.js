@@ -126,8 +126,15 @@ class QuestionCreate extends Component {
                         </div>
                     </div>        
                     {/*<FieldArray name={`${proposal}.hobbies`} component={renderHobbies} />*/}
-                    <button
+                    {/*<button
                         className="m-button m-button--secondary"
+                        title="Effacer la propostion"
+                        onClick={() => fields.remove(index)}
+                    >
+                        Supprimer la proposition
+                    </button>*/}
+                    <button
+                        className="btn btn--error"
                         title="Effacer la propostion"
                         onClick={() => fields.remove(index)}
                     >
@@ -140,7 +147,10 @@ class QuestionCreate extends Component {
           ))}
           <li>
             <fieldset>
-                <button className="m-button m-button--primary" onClick={() => fields.push({})}>
+                {/*<button className="m-button m-button--primary" onClick={() => fields.push({})}>
+                Ajouter une proposition
+                </button>*/}
+                <button className="btn btn--primary" onClick={() => fields.push({})}>
                 Ajouter une proposition
                 </button>
                 <div>
@@ -167,7 +177,7 @@ class QuestionCreate extends Component {
         return (
             
             <div className="o-content o-content--add">
-
+                <h2>Nouvelle question</h2>
                 <form class="m-form" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 
                     <fieldset>
@@ -214,11 +224,11 @@ class QuestionCreate extends Component {
 
                     <FieldArray name="proposal" component={this.renderProposals} />
 
-                    <div>
-                        <button type="submit" className="btn btn-primary"/*disabled={submitting}*/>
+                    <div className="btns">
+                        <button type="submit" className="btn btn--primary btn--md"/*disabled={submitting}*/>
                         Ajouter la question
                         </button>
-                        <button type="button" className="m-form__cancel"/*disabled={pristine || submitting}*/ onClick={()=>{this.props.reset();this.resetImageFile();}}>
+                        <button type="button" className="btn btn--error btn--md"/*disabled={pristine || submitting}*/ onClick={()=>{this.props.reset();this.resetImageFile();}}>
                         Réinitialiser les champs
                         </button>
                     </div>

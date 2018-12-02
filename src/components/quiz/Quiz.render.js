@@ -30,7 +30,8 @@ const QuizRender = (props) => {
                             : ""
                         }
                         <section className="m-quiz__nextBtn">
-                            {q.answered ? <button className="animated fadeIn m-button m-button-group--primary" onClick={()=>props.prevNext("next")}>Suivant</button> : ""}
+                            {/*q.answered ? <button className="animated fadeIn m-button m-button-group--primary" onClick={()=>props.prevNext("next")}>Suivant</button> : ""*/}
+                            {q.answered ? <button className="animated fadeIn btn btn-group--primary" onClick={()=>props.prevNext("next")}>Suivant</button> : ""}
                         </section>
                     </li>
                 )

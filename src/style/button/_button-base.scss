@@ -1,0 +1,154 @@
+:root{
+    --btn-font-size: 1em;
+    --btn-sm: calc(var(--btn-font-size) - 0.2em);
+    --btn-md: calc(var(--btn-font-size) + 0.2em);
+    --btn-lg: calc(var(--btn-font-size) + 0.4em);
+
+    --btn-radius: var(--radius);
+}
+
+.btn{
+    display:inline-flex;
+    position:relative;
+    white-space: nowrap;
+    text-decoration: none;
+    line-height: 1;
+
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--btn-radius);
+    border: none;
+    font-size: var(--btn-font-size);
+    color:($color-link);
+    cursor: pointer;
+
+    transition: .2s;
+
+    &:active{
+        transition:none;
+    }
+
+    .icon {
+        /* icon inherits color of button label */
+        color: inherit;
+        flex-shrink: 0;
+    }
+}
+
+/*
+position: relative; 
+is used in case you want to create interactive icons where an icon replaces the text label.
+
+white-space: nowrap; 
+prevents the text label from wrapping to the next line.
+
+text-decoration: none; 
+removes the text decoration in case you’re applying the .btn class to a link.
+*/
+
+/* themes */
+
+.btn--primary,
+a.btn.btn--primary  {
+    //main button
+    background-color: $btn-primary-bg;
+    //color: $btn-primary-label;
+    color: $white;
+    @include fontSmooth;
+
+    &:visited {
+        color:$white;
+    }
+
+    &:hover {
+        background-color: $btn-primary-hover;
+    }
+
+    &:active {
+        background-color:$btn-primary-active;
+    }
+}
+
+.btn--secondary {
+    background-color:$btn-secondary-bg;
+    color:$btn-secondary-label;
+
+    &:visited {
+        color: $btn-secondary-label;
+    }
+
+    &:active {
+        background-color:$btn-secondary-active;
+    }
+}
+
+.btn--accent {
+    background-color: $btn-accent-bg;
+    color: $btn-accent-label;
+    @include fontSmooth;
+
+    &:visited {
+        color:$btn-accent-label;
+    }
+
+    &:hover{
+        background-color: $btn-accent-hover;
+    }
+
+    &:active{
+        background-color: $btn-accent-active;
+    }
+}
+
+.btn--error {
+    background-color: $btn-accent-bg;
+    color: $white;
+    @include fontSmooth;
+
+    &:visited {
+        color:$white;
+    }
+
+    &:hover{
+        background-color: $btn-accent-hover;
+    }
+
+    &:active{
+        background-color: $btn-accent-active;
+    }
+}
+
+/* feedback */
+.btn[disabled] {
+    cursor: not-allowed;
+    background-color: $btn-disabled-bg;
+    color: $btn-disabled-bg;
+    box-shadow: none;
+    opacity:0.6;
+
+    &:visited {
+        color:$btn-disabled-bg;
+    }
+}
+
+/* button size */
+.btn--sm {
+    font-size: var(--btn-sm);
+}
+
+.btn--md {
+    font-size: var(--btn-md);
+}
+
+.btn-lg {
+    font-size: var(--btn-lg);
+}
+
+.btn--full-width  {
+    display: flex;
+    width:100%;
+    justify-content:center;
+}
+
+button, [type="button"], [type="reset"], [type="submit"] {
+    -webkit-appearance: inherit;
+}

@@ -45,7 +45,7 @@ class Header extends Component {
                             </i>
                         </a>
                     </li>
-                    <li><h3 className="App-title">Quiz Maker</h3></li>
+                    <li><h3 id="app-title">Quiz Maker</h3></li>
                     {this.renderLinks()}
                 </ul>    
             </header>                          

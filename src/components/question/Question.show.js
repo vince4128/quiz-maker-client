@@ -51,10 +51,16 @@ class QuestionShow extends Component {
                         { !this.state.editing ? 
                         <div>
                             <footer>                                
-                                {this.props.edit ? 
+                                {/*this.props.edit ? 
                                     <div className="m-button-group">
                                     <button className="m-button-group--secondary" onClick={()=>{this.handleDelete(this.props.quizId, this.props.question._id)}}>delete</button>
                                         <Link to={`/quiz/${this.props.quizId}/question/${this.props.question._id}/edit`} className="m-button m-button--primary">Edit</Link>
+                                    </div> 
+                                : ""*/
+                                this.props.edit ? 
+                                    <div className="btns">
+                                    <a href="" className="btn btn--error" onClick={()=>{this.handleDelete(this.props.quizId, this.props.question._id)}}>delete</a>
+                                        <Link to={`/quiz/${this.props.quizId}/question/${this.props.question._id}/edit`} className="btn btn--primary">Edit</Link>
                                     </div> 
                                     : ""}
                             </footer>

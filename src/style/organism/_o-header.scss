@@ -1,6 +1,8 @@
 .o-header{
-   background: $primary-color;
-   color: $light-color;
+   //background: $color-primary;
+   background: $white;
+   //color: $light-color;
+   color: $color-primary;
    position:fixed;
    top:0;
    height:50px;
@@ -12,6 +14,12 @@
    a{
        color:inherit;
        text-decoration: none;
+   }
+
+   h3#app-title{
+       margin:.5em !important;
+       //color:$white;
+       color:$color-primary;
    }
 
    ul{
@@ -31,8 +39,9 @@
         top:0;
         left:0;
         width:4rem;
-        height:3rem;
-        background: #192b3c;        
+        height:3.1rem;
+        //background: #192b3c;
+        background:$color-primary;
         padding:1rem 1.25rem;
     }
 

@@ -40,7 +40,8 @@ class Signin extends Component {
                     <div>
                         {this.props.errorMessage}
                     </div>
-                    <button className="m-button m-button--primary">Sign In !</button>
+                    {/*<button className="m-button m-button--primary">Sign In !</button>*/}
+                    <button className="btn btn--primary">Sign In !</button>
                 </form>
             </div>
         )

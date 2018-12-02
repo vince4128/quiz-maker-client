@@ -91,7 +91,7 @@
       margin: 0;
       font-size: 1.7rem;
     }
-    h2 {
+    h5 {
       font-size: 1rem;
       font-weight: 300;
       color: $lightgrey-color;
@@ -114,7 +114,7 @@
         content: "";
         position: absolute;
         height: 5px;
-        background: $accent2-color;
+        background: $color-accent2;
         width: 35px;
         top: -0.75rem;
         border-radius: 3px;

@@ -57,8 +57,12 @@ class CategoryCreate extends Component {
 
                 </fieldset>
 
-                <button type="submit" className="btn btn-primary">Submit</button>
-                <Link to="/category" className="m-form__cancel">Cancel</Link>
+                {/*<button type="submit" className="btn btn-primary">Submit</button>
+                <Link to="/category" className="m-form__cancel">Cancel</Link>*/}
+                <div className="btns">
+                    <button type="submit" className="btn btn--primary btn--md">Submit</button>
+                    <Link to="/category" className="btn btn--error btn--md">Cancel</Link>
+                </div>
 
         </form>
 

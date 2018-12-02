@@ -13,10 +13,10 @@
 
         &.m-fieldset-img{
             color:#fff;
-            background-color:$secondary-color;
+            background-color:$white;
 
             h3{
-                color:#fff;
+                color:$color-primary;
             }
         }
     }
@@ -30,11 +30,11 @@
         padding:0 1rem;
         line-height: 50px;
         height:50px;
-        background:$light-color;
+        background:lighten($color-primary-light,35%);
         //border:solid 1px #e6e6e6;
         border:none;
         border-bottom: 2px solid;
-        border-bottom-color: #e6e6e6;
+        border-bottom-color: $color-primary-light;
         border-bottom-width:2px;
         border-radius:2px;
         -webkit-transition: all 0.3s ease;
@@ -64,10 +64,10 @@
     input[type="textarea"]:active,
     select:focus,
     select:active{
-        border-color:$accent2-color;
+        border-color:$color-accent2;
     }
 
-    button[type="submit"],
+    /*button[type="submit"],
     &__cancel{
         position:relative;
         width:50%;
@@ -78,9 +78,9 @@
         z-index:1;
         display:inline-block;
         padding:0 20px;
-        background-color:$accent2-color;
+        background-color:$color-accent2;
         border:none;
-        border-bottom:solid 3px darken($accent2-color, 10%);
+        border-bottom:solid 3px darken($color-accent2, 10%);
         color:#fff;
         outline:none;
         text-align:center;
@@ -93,9 +93,9 @@
         transition: all 0.3s ease;
 
         &:hover{
-            background-color: darken($accent2-color, 10%);
+            background-color: darken($color-accent2, 10%);
         }
-    }
+    }*/
 
     &__cancel{
         background-color: $accent1-color;
@@ -117,6 +117,7 @@
         font-size: 1.2rem;
         padding: 1rem;
         border-bottom: dashed 1px e6e6e6;
+        color:$color-primary;
     }
 
     &__error{
@@ -148,8 +149,8 @@
             width:200px !important;
 
             &.toggle-2--true:checked + .toggle-2__button{
-                background-color: $accent2-color;
-                border-color: $accent2-color;
+                background-color: $color-accent2;
+                border-color: $color-accent2;
                 color: #ffffff;
 
                 &:before{

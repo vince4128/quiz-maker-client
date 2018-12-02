@@ -2,14 +2,18 @@
 @import "../../node_modules/normalize.css/normalize.css";
 //ANIMATION
 @import "../../node_modules/animate.css/animate.min.css";
+//MIXINS
+@import "./mixins/mixins";
 //VARIABLE
 @import "./variables/variables";
 //GENERAL
 @import "./general/general";
-//MIXINS
-@import "./mixins/mixins";
 //TYPOGRAPHY
 @import "./typography/typography";
+//ICONS//
+@import "./icons/icons";
+//BUTTON//
+@import "./button/button";
 //ANIMATION
 @import "./animation/animation";
 

@@ -107,9 +107,7 @@ class QuizEdit extends Component {
 
         return(
 
-            <div className="o-content">
-
-            <h1>Edit Quiz</h1>
+            <div className="o-content">            
 
             <form class="m-form" onSubmit={handleSubmit(this.onSubmit.bind(this))} >
 
@@ -163,8 +161,10 @@ class QuizEdit extends Component {
 
                 </fieldset>
 
-                <button type="submit" className="btn btn-primary">Submit</button>
-                <Link to="/" className="m-form__cancel">Cancel</Link>
+                <div class="btns">
+                    <button type="submit" className="btn btn--primary btn--md">Submit</button>
+                    <Link to="/" className="btn btn--error btn--md">Cancel</Link>
+                </div>
 
             </form>
 

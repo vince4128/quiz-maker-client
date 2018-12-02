@@ -50,9 +50,7 @@ class CategoryEdit extends Component {
 
             <div className="o-content">
 
-            <h1>Edit Category</h1>
-
-            <hr/>
+            <h1>Édition de Catégorie</h1>
 
             <form class="m-form" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 
@@ -84,8 +82,12 @@ class CategoryEdit extends Component {
 
             </fieldset>
 
-                <button type="submit" className="btn btn-primary">Submit</button>
-                <Link to="/category" className="m-form__cancel">Cancel</Link>
+                {/*<button type="submit" className="btn btn-primary">Submit</button>
+                <Link to="/category" className="m-form__cancel">Cancel</Link>*/}
+                <div className="btns">
+                    <button type="submit" className="btn btn--primary btn--md">Submit</button>
+                    <Link to="/category" className="btn btn--error btn--md">Cancel</Link>
+                </div>
 
             </form>
 
