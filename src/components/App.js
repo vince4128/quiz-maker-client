@@ -30,7 +30,9 @@ class App extends Component {
         {this.props.location.pathname.includes('shared') ?
           "" : <Header auth={this.props.auth}/>}
 
-          <Sidebar auth={this.props.auth}/>
+        {this.props.location.pathname.includes('shared') ?
+          "" : <Sidebar auth={this.props.auth}/>}
+          
           <section className="content-container">
 
             <Route path="/signin" exact component={Signin} />
