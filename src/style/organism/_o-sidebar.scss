@@ -29,7 +29,7 @@
         transition:all .3s ease-in;
         width:15em;
         height:100%;
-        background: $color-secondary;
+        background: $color-primary;
         //background: $white;
         color:$light-color;
     }
@@ -39,6 +39,7 @@
     &__trigger:focus + &__nav,
     &__trigger:hover + &__nav*/{
         left:0;
+        //background: $color-primary-dark;
     }
 
     &__nav ul{
@@ -64,7 +65,7 @@
 
         &:hover{
             //background-color: $color-accent2;
-            background-color: $color-primary;
+            background-color: $color-primary-light;
             color:$color-primary;
         }
 

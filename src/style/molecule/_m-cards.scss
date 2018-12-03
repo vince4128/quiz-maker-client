@@ -56,7 +56,7 @@
     width: 100%;
     font-size: .9rem;
     a {
-      text-decoration: dotted underline
+      text-decoration: dotted underline;      
     }
     ul li {
       display: inline-block;
@@ -105,11 +105,17 @@
       }
     }
   }
+  p {
+    margin-bottom:0.2em;
+  }
+  p.desc{
+    color:$gray-6;
+  }
   p.introduction {
     position: relative;
-    margin: 1rem 0 0;
+    //margin: 1rem 0 0;
     &:first-of-type {
-      margin-top: 1.25rem;
+      //margin-top: 1.25rem;
       &:before {
         content: "";
         position: absolute;
@@ -129,7 +135,7 @@
 
   @include mq('tablet-wide') { 
         flex-direction: row;
-        max-width: 1024px;
+        max-width: 1280px;
         .meta {
           flex-basis: 40%;
           height: auto;
@@ -175,7 +181,7 @@
     }
 
     p{
-      margin: .5rem 0;
+      margin:.5em 0;
     }
 
     h2{

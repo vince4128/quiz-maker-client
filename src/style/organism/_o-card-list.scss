@@ -2,4 +2,8 @@ ul.o-card-list{
     list-style: none;
     list-style-type: none;    
     padding:0;
+
+    @include mq('desktop-wide','min') {
+        /**/
+    }
 }
