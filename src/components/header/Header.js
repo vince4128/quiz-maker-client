@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import { Route, Link, withRouter } from 'react-router-dom';
+import { fetchUser, fetchUsers } from '../../actions';
 import { connect } from 'react-redux';
 
 class Header extends Component {
 
+    componentDidMount(){
+        this.props.fetchUser(this.props.auth._id, this.props.auth.authenticated);
+    }
+
     renderLinks(){
         if(this.props.auth.authenticated) {
             return(
-                <span className="m-header__link--right">                     
+                <span className="m-header__link--right">
+                    <li><span>{this.props.user.pseudo}</span></li>
                     <li><Link to={"/signout"}>Sign out</Link></li>
                 </span>
             )
@@ -54,4 +60,9 @@ class Header extends Component {
 
 }
 
-export default withRouter(Header);
+function mapStateToProps(state){
+    return { user:state.auth };
+}
+
+//export default withRouter(Header);
+export default withRouter(connect(mapStateToProps, { fetchUser })(Header));

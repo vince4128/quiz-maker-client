@@ -1,7 +1,10 @@
 import axios from 'axios';
 import {
     AUTH_USER,
-    AUTH_ERROR
+    AUTH_ERROR,
+    FETCH_USER,
+    FETCH_USERS,
+    SIGN_OUT
 } from './types';
 
 const server = 'http://localhost:3000';
@@ -51,7 +54,30 @@ export function signoutAction(){
     localStorage.removeItem('_id');
 
     return {
-        type: AUTH_USER,
+        type: SIGN_OUT,
         payload: ''
     }
 };
+
+export function fetchUsers(token){
+    const response = axios.get(`${server}/users`, {
+        headers: {authorization:token}
+    });
+
+    return {
+        type:FETCH_USERS,
+        payload:response
+    }
+}
+
+export function fetchUser(id,token){
+
+    const response = axios.get(`${server}/user/${id}`, {
+        headers: {authorization:token}
+    });
+
+    return {
+        type:FETCH_USER,
+        payload:response
+    }
+}

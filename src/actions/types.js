@@ -24,3 +24,6 @@ export const DELETE_QUESTION = 'DELETE_QUESTION';
 
 export const AUTH_USER = 'AUTH_USER';
 export const AUTH_ERROR = 'AUTH_ERROR';
+export const SIGN_OUT = 'SIGN_OUT';
+export const FETCH_USER = 'FETCH_USER';
+export const FETCH_USERS = 'FETCH_USERS';
