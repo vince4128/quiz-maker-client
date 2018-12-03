@@ -16,9 +16,9 @@ class Signin extends Component {
         const { handleSubmit } = this.props;
 
         return(
-            <div class="o-content">
-                <h2>Sign in</h2>
-                <form className="m-form" onSubmit={handleSubmit(this.onSubmit)}>
+            <div class="o-content">                
+                <form className="m-form m-form--signin" onSubmit={handleSubmit(this.onSubmit)}>
+                    <h2>Sign in</h2>
                     <fieldset>
                         <label>Email</label>
                         <Field
@@ -27,8 +27,6 @@ class Signin extends Component {
                             component="input"
                             autoComplete="none"
                         />
-                    </fieldset>
-                    <fieldset>
                         <label>Password</label>
                         <Field
                             name="password"
@@ -36,12 +34,12 @@ class Signin extends Component {
                             component="input"
                             autoComplete="none"
                         />
-                    </fieldset>
-                    <div>
+                        <div>
                         {this.props.errorMessage}
-                    </div>
-                    {/*<button className="m-button m-button--primary">Sign In !</button>*/}
-                    <button className="btn btn--primary">Sign In !</button>
+                        </div>
+                        {/*<button className="m-button m-button--primary">Sign In !</button>*/}
+                        <button className="btn btn--primary">Sign In !</button>
+                    </fieldset>                                        
                 </form>
             </div>
         )
