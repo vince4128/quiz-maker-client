@@ -12,26 +12,26 @@ class LongText extends Component {
     showLess = () => this.setState({showAll:false});
 
     render(){
-        const {content, limit, html} = this.props;
+        const {content, limit, html, classToApply} = this.props;
         const {showAll} = this.state;
 
         if(content.length <= limit) {
             return <div>
-            {html ? <p dangerouslySetInnerHTML={{__html: content}}></p> : <p>{content}</p>}
+            {html ? <p className={classToApply} dangerouslySetInnerHTML={{__html: content}}></p> : <p>{content}</p>}
             </div>
         }
 
         if(showAll) {
             return <div>
-                {html ? <p dangerouslySetInnerHTML={{__html: content}}></p> : <p>{content}</p>}
-                <a onClick={this.showLess}>Read less</a>
+                {html ? <p className={classToApply} dangerouslySetInnerHTML={{__html: content}}></p> : <p>{content}</p>}
+                <a className="a-longtext__toggle small" onClick={this.showLess}>Lire moins</a>
             </div>
         }
 
-        const toShow = content.substring(0,limit)+"...";
+        const toShow = content.substring(0,limit)+"<span class='a-longtext__points'>[...]</span>";
         return <div>
-            {html ? <p dangerouslySetInnerHTML={{__html: toShow}}></p> : <p>{toShow}</p>}
-            <a onClick={this.showMore}>Read More</a>
+            {html ? <p className={classToApply} dangerouslySetInnerHTML={{__html: toShow}}></p> : <p>{toShow}</p>}
+            <a className="a-longtext__toggle small" onClick={this.showMore}>Lire plus</a>
         </div>
     }
 }

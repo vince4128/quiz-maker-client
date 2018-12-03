@@ -77,8 +77,8 @@ class QuizIndex extends Component {
                             <section className="description">
                                 <h1>{renderData.title}</h1>
                                 {/*<h5 dangerouslySetInnerHTML={{__html: renderData.description}}></h5>*/}
-                                <LongText content={renderData.description} limit="30" html="true"/>
-                                <p className="introduction" dangerouslySetInnerHTML={{__html: renderData.introduction}} />
+                                <LongText content={renderData.description} limit="60" html="true" classToApply="desc"/>
+                                <LongText content={renderData.introduction} limit="60" html="true" classToApply="introduction"/>
                                 <hr/>
                                 <div class="read-more">
                                     {/*<div className="m-button-group">
@@ -171,7 +171,11 @@ class QuizIndex extends Component {
 
     render(){
         return(
-            <div className="o-content">                
+            <div className="o-content">
+                {/*<div className="btns">
+                    <button className="btn btn--primary">Tous les quiz</button>
+                    <button className="btn btn--primary">Mes quiz</button>
+                </div>*/}              
                 <ul className="o-card-list">
                     {this.renderQuizzes()}
                 </ul>
