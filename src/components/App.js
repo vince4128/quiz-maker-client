@@ -30,7 +30,7 @@ class App extends Component {
         {this.props.location.pathname.includes('shared') ?
           "" : <Header auth={this.props.auth}/>}
 
-        {this.props.location.pathname.includes('shared') ?
+        {this.props.location.pathname.includes('shared') || this.props.location.pathname.includes('preview') ?
           "" : <Sidebar auth={this.props.auth}/>}
           
           <section className="content-container">
