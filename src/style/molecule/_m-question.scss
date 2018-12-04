@@ -36,7 +36,8 @@
 .m-question{
 
     p{
-        margin:0 0 .25rem;
+        //margin:0 0 .25rem;
+        margin:.2em;
     }
 
     label.m-question__toggle{
@@ -46,7 +47,7 @@
 
     .m-question__toggle{
         display: inline-block;
-        vertical-align: top;
+        vertical-align:top;
         //margin: 0 15px 0 0;
 
         &__input{
@@ -72,7 +73,7 @@
 
                 &:before{
                     border-radius:2px;
-                    background: darken($color-accent2,10%);
+                    background: $color-primary;
                 }
 
             }
@@ -148,17 +149,33 @@
 
             &:before{
                 position: absolute;
-                top: 10px;
+                top: 15px;
                 left: 10px;
                 right: auto;
                 display: inline-block;
                 width: 10px;
                 height: 10px;
-                background-color: #cccccc;
+                background-color: $white;
+                border-radius:2px;
                 content: "";
                 transition: all 0.3s ease;
             }
 
         }
+    }
+
+    p.m-question__feedback{
+        padding:.75rem;
+        background-color:$white;
+        margin: .75rem 0;
+
+    }
+
+    p.m-question__feedback--good{
+        border-left:3px $color-success solid;
+    }
+
+    p.m-question__feedback--bad{
+        border-left:3px $color-success error;
     }
 }

@@ -121,7 +121,7 @@ a.btn.btn--primary  {
 .btn[disabled] {
     cursor: not-allowed;
     background-color: $btn-disabled-bg;
-    color: $btn-disabled-bg;
+    color: $gray-6;
     box-shadow: none;
     opacity:0.6;
 

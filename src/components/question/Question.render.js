@@ -64,8 +64,8 @@ const QuestionRender = (props) => {
                 { props.q.answered ? 
                     <div>
                         { props.q.result ? 
-                            <p dangerouslySetInnerHTML={{__html: props.q.feedback.good}} />
-                        :   <p dangerouslySetInnerHTML={{__html: props.q.feedback.bad}} />
+                            <p className="m-question__feedback m-question__feedback--good" dangerouslySetInnerHTML={{__html: props.q.feedback.good}} />
+                        :   <p className="m-question__feedback m-question__feedback--bad" dangerouslySetInnerHTML={{__html: props.q.feedback.bad}} />
                         }
                     </div> 
                     : ""}
