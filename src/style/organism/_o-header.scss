@@ -20,12 +20,22 @@
        margin:.5em !important;
        //color:$white;
        color:$color-primary;
+
+       @include mq('tablet', 'max'){
+            font-size:1em;
+            margin: .75em !important;
+            transform:translateX(-50%) ;
+        }
    }
 
    ul{
        list-style: none;
        padding:0 0 0 4rem;
        margin:0;
+
+       @include mq('tablet', 'max'){
+            padding:0 0 0 50%;
+        }
 
        li{
            display: inline-block;

@@ -13,7 +13,7 @@ class Header extends Component {
         if(this.props.auth.authenticated) {
             return(
                 <span className="m-header__link--right">
-                    <li><span>{this.props.user.pseudo}</span></li>
+                    <li><span className="a-header__pseudo">{this.props.user.pseudo}</span></li>
                     <li><Link to={"/signout"}>Sign out</Link></li>
                 </span>
             )

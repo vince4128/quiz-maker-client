@@ -49,10 +49,16 @@
         margin:0;
         padding:0;
         width:15em;
+
+        @include mq('tablet', 'max'){
+            top:2.5em;
+        }
     }
 
     &__nav ul li{
         width: 100%;
+        max-height:80px;
+        box-sizing: border-box;
     }
 
     &__nav-link{
@@ -72,6 +78,7 @@
         em{
             color:$white;
             //color:$color-primary;
+            font-size:1.2rem;
         }
 
         a:visited {
@@ -79,6 +86,15 @@
             color:$color-primary !important;
         }
                 
+    }
+
+    &__nav-link--sign{
+
+        display:none;
+
+        @include mq('tablet', 'max'){
+            display: inherit;
+        }
     }
 
     &__nav-link em{
@@ -103,6 +119,10 @@
             top:50%;
             left:50%;
             transform:translate(-50%, -50%);
+        }
+
+        @include mq('tablet', 'max'){
+            padding:26px;
         }
     }
 

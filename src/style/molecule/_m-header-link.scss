@@ -2,9 +2,15 @@
     
     float:right;
 
-    a{
+    a,span{
         display:inline-block;
         padding:1rem 0.5rem;
+
+        @include mq('tablet', 'max'){
+            //font-size: 1rem;
+            //padding:1rem 0.5rem;
+            display:none;
+        }
     }    
     
 }
