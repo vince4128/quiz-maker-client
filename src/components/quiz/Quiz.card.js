@@ -63,7 +63,7 @@ const QuizCard = (props) => {
                     <h1>{props.quiz.title}</h1>
                     <LongText content={props.quiz.description} limit="150" html="true" classToApply="desc" />
                     {/*<p className="introduction">{props.quiz.category.title}</p>*/}
-                    <Link to={`/cat/${props.quiz.category._id}/quiz`}><p className="introduction">{props.quiz.category.title}</p></Link>
+                    <Link to={`/category/${props.quiz.category._id}/quiz`}><p className="introduction">{props.quiz.category.title}</p></Link>
                     <hr />
                     <div class="read-more">
                         <div className="btns">

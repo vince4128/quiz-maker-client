@@ -21,9 +21,9 @@ class CategoryIndex extends Component {
                 const renderData = data[key];
                 return( <li key={renderData._id}>
                         <section className="m-card m-card--cat">
-                            <Link to={`/category/${renderData._id}`}><h2>{renderData.title}</h2></Link>                        
+                            <Link to={`/category/${renderData._id}/quiz`}><h2>{renderData.title}</h2></Link>                        
                             <p>{renderData.shortDescription}</p>
-                            <p className="introduction">{renderData.description}</p>                            
+                            <p className="introduction">{renderData.description}</p> 
                             <hr/>
                             {
                                 /*this.props.connected ? (<div className="m-button-group"><a id="btn-delete" className="m-button m-button-group--secondary" onClick={()=>{this.handleDelete(renderData._id)}}>

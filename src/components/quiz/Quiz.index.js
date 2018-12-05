@@ -3,7 +3,6 @@ import { Route, Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchQuizzes, deleteQuiz } from '../../actions';
 import QuizCard from './Quiz.card';
-import LongText from '../ui/LongText';
 
 class QuizIndex extends Component {
 
@@ -17,7 +16,7 @@ class QuizIndex extends Component {
 
     componentDidMount(){
         this.props.fetchQuizzes();
-        this.setState({user:this.props.connected._id})
+        this.setState({user:this.props.connected._id});
     }
 
     handleDelete(id){
@@ -132,13 +131,13 @@ class QuizIndex extends Component {
             })
     }*/
 
-    renderQuizzesTest(){
+    renderQuizzes(){
         if(this.state.filterUser){
             const data = Object.assign({}, this.props.quiz)        
             return Object.keys(data)
                 .map(key => {
                     const renderData = data[key];
-                if(renderData.author._id == this.props.connected._id){return <QuizCard quiz={renderData} userId={this.props.connected._id} deleteQuiz={(id)=>{this.handleDelete(renderData._id)}}></QuizCard>;}
+                if(renderData.author._id === this.props.connected._id){return <QuizCard quiz={renderData} userId={this.props.connected._id} deleteQuiz={(id)=>{this.handleDelete(renderData._id)}}></QuizCard>;}
                 })
         }else{        
             const data = Object.assign({}, this.props.quiz)        
@@ -165,7 +164,7 @@ class QuizIndex extends Component {
                     </label>
                 </div> : ""}       
                 <ul className="o-card-list">
-                    {this.renderQuizzesTest()}
+                    {this.renderQuizzes()}
                 </ul>
             </div>
         )
