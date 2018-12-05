@@ -23,7 +23,7 @@
 
        @include mq('tablet', 'max'){
             font-size:1em;
-            margin: .75em !important;
+            margin: .75em 0 !important;
             transform:translateX(-50%) ;
         }
    }
@@ -49,7 +49,7 @@
         top:0;
         left:0;
         width:4rem;
-        height:3.1rem;
+        height:50px;
         //background: #192b3c;
         background:$color-primary;
         padding:1rem 1.25rem;
