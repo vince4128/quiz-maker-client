@@ -2,7 +2,7 @@
     display: block;
     position:relative;
     width:100%;    
-    padding: 4rem 0;
+    padding: 4rem .5rem;
     z-index:0;
 
     @include mq('tablet') {
