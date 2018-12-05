@@ -116,19 +116,19 @@ class QuizEdit extends Component {
                     <Field
                         label="Title"
                         name="title"
-                        placeholder="Type your title"          
-                        component={RenderField}                    
+                        placeholder="Titre du quiz"          
+                        component={RenderField}               
                     />
 
                     <Field
                         label="Description"
                         name="description"
-                        placeholder="Type your Description"                                        
+                        placeholder="Description du quiz"                                        
                         component={RichTextHtml}
                     />
 
                     <Field
-                        placeholder="Introduction"
+                        placeholder="Introduction du quiz"
                         label="Introduction"
                         name="introduction"
                         component={RichTextHtml}
@@ -139,7 +139,25 @@ class QuizEdit extends Component {
                 <fieldset>
 
                     <Field
-                        label="Category"
+                        placeholder="Feedback général en cas de réussite"
+                        label="Feedback bad"
+                        name="feedback.bad"
+                        component={RichTextHtml}
+                    />
+
+                    <Field
+                        placeholder="Feedback général en cas d'échec"
+                        label="Feedback good"
+                        name="feedback.good"
+                        component={RichTextHtml}
+                    />
+
+                </fieldset>
+
+                <fieldset>
+
+                    <Field
+                        label="Categorie"
                         name="category"
                         component={RenderSelectField}>
                         {this.renderCategories()}
@@ -162,8 +180,8 @@ class QuizEdit extends Component {
                 </fieldset>
 
                 <div class="btns">
-                    <button type="submit" className="btn btn--primary btn--md">Submit</button>
-                    <Link to="/" className="btn btn--error btn--md">Cancel</Link>
+                    <button type="submit" className="btn btn--primary btn--md">Valider</button>
+                    <Link to="/" className="btn btn--error btn--md">Annuler</Link>
                 </div>
 
             </form>
@@ -193,19 +211,19 @@ function validate(values){
 
     // validate the inputs from 'values'
     if(!values.title){
-        errors.title = "Enter a title !";
+        errors.title = "Saisissez un titre !";
     }
 
     if(!values.description){
-        errors.description = "Enter a description !";
+        errors.description = "Saisissez une description !";
     }
 
     if(!values.introduction){
-        errors.introduction = "Enter a introduction !";
+        errors.introduction = "Saisissez une introduction !";
     }
 
     if(!values.category){
-        errors.category = "Choose a category !";
+        errors.category = "Choisissez une catégorie !";
     }
 
     {/*if(!values.image){
