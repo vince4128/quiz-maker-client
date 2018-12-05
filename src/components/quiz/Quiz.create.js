@@ -169,9 +169,10 @@ class QuizCreate extends Component {
                 <fieldset>
 
                     <Field
-                        label="Category"
+                        label="Catégorie"
                         name="category"
                         component={RenderSelectField}>
+                        <option value="">choisissez une catégorie</option>
                         {this.renderCategories()}
                     </Field>
 
@@ -189,8 +190,8 @@ class QuizCreate extends Component {
                 </fieldset>
 
                 <div className="btns">
-                    <button type="submit" className="btn btn--primary btn--md">Submit</button>
-                    <Link to="/" className="btn btn--error btn--md">Cancel</Link>
+                    <button type="submit" className="btn btn--primary btn--md">Valider</button>
+                    <Link to="/" className="btn btn--error btn--md">Annuler</Link>
                 </div>
 
             </form>
@@ -208,24 +209,24 @@ function validate(values){
 
     // validate the inputs from 'values'
     if(!values.title){
-        errors.title = "Enter a title !";
+        errors.title = "Saisissez un titre !";
     }
 
     if(!values.description){
-        errors.description = "Enter a description !";
+        errors.description = "Saisissez une description !";
     }
 
     if(!values.category){
-        errors.category = "Choose a category !";
+        errors.category = "Choisissez une catégorie !";
     }
 
     if(!values.introduction){
-        errors.introduction = "Enter an introduction !";
+        errors.introduction = "Saisissez une introduction !";
     }
 
     if(!values.feedback){
-        errors.feedback.bad = "Enter a bad feedback !";
-        errors.feedback.good = "Enter a good feedback !";
+        errors.feedback.bad = "Saisissez le feedback en cas d'échec !";
+        errors.feedback.good = "Saisissez le feedback en cas de succès !";
     }
 
     /*if(!values.image){
