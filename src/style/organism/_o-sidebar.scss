@@ -34,12 +34,16 @@
         color:$light-color;
     }
 
-    &__nav:hover,
-    &__nav:focus/*,
-    &__trigger:focus + &__nav,
-    &__trigger:hover + &__nav*/{
-        left:0;
-        //background: $color-primary-dark;
+    @include mq('tablet') {
+
+        &__nav:hover,
+        &__nav:focus/*,
+        &__trigger:focus + &__nav,
+        &__trigger:hover + &__nav*/{
+            left:0;
+            //background: $color-primary-dark;
+        }
+
     }
 
     &__nav ul{
