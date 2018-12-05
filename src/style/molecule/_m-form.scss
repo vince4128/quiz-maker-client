@@ -141,71 +141,140 @@
         margin:0;
     }
 
-    label.toggle-1,
-    label.toggle-2{
-        width:auto !important;
-        padding:0;
-        margin-bottom:15px;
+}
+
+label.toggle-1,
+label.toggle-2{
+    width:auto !important;
+    padding:0;
+    margin-bottom:15px;
+}
+
+.m-form .toggle-2,
+.toggle-2{
+    display: inline-block;
+    vertical-align: top;
+    //margin: 0 15px 0 0;
+
+    &__input{
+        display:none;
+        width:200px !important;
     }
+    
+}
 
-    .toggle-2{
+.m-form .toggle-2{
+    &__button{
+        position: relative;
         display: inline-block;
-        vertical-align: top;
-        //margin: 0 15px 0 0;
+        line-height: 20px;
+        text-transform: uppercase;
+        background-color: #ffffff;
+        color: #aaaaaa;
+        border: 1px solid #cccccc;
+        padding: 5px 10px 5px 30px;
+        transition: all 0.3s ease;
+        cursor: pointer;
 
-        &__input{
-            display:none;
-            width:200px !important;
-
-            &.toggle-2--true:checked + .toggle-2__button{
-                background-color: $color-accent2;
-                border-color: $color-accent2;
-                color: #ffffff;
-
-                &:before{
-                    background: #ffffff;
-                }
-
-            }
-
-            &.toggle-2--false:checked + .toggle-2__button{
-                background-color: $accent1-color;
-                border-color: $accent1-color;
-                color: #ffffff;
-
-                &:before{
-                    background: #ffffff;
-                }
-
-            }
-
+        &:before{
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: auto;
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: #cccccc;
+            content: "";
+            transition: all 0.3s ease;
         }
 
-        &__button{
-            position: relative;
-            display: inline-block;
-            line-height: 20px;
-            text-transform: uppercase;
-            background-color: #ffffff;
-            color: #aaaaaa;
-            border: 1px solid #cccccc;
-            padding: 5px 10px 5px 30px;
-            transition: all 0.3s ease;
-            cursor: pointer;
+    }
+
+    &__input{
+
+        &.toggle-2--true:checked + .toggle-2__button{
+            background-color: $color-accent2;
+            border-color: $color-accent2;
+            color: #ffffff;
 
             &:before{
-                position: absolute;
-                top: 10px;
-                left: 10px;
-                right: auto;
-                display: inline-block;
-                width: 10px;
-                height: 10px;
-                background-color: #cccccc;
-                content: "";
-                transition: all 0.3s ease;
+                background: #ffffff;
             }
+        
+        }
 
+        &.toggle-2--false:checked + .toggle-2__button{
+            background-color: $accent1-color;
+            border-color: $accent1-color;
+            color: #ffffff;
+
+            &:before{
+                background: #ffffff;
+            }
+        }
+    }
+}
+
+.btns-toggle .toggle-2 {
+
+    margin-bottom:0;
+
+    &__button{
+        position: relative;
+        display: inline-block;
+        //text-transform: uppercase;
+        background-color: #ffffff;
+        color: #aaaaaa;
+        border: 1px solid #cccccc;
+        padding: var(--space-xs) var(--space-sm) var(--space-xs) 30px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+
+        &:before{
+            position: absolute;
+            top: 35%;
+            left: 10px;
+            right: auto;
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: $gray-2;
+            content: "";
+            transition: all 0.3s ease;
+        }
+
+    }
+
+    &__input{
+
+        &.toggle-2--true + .toggle-2__button {
+            border-radius:3px 0 0 3px;
+        }
+
+        &.toggle-2--true:checked + .toggle-2__button{
+            background-color: $color-primary;
+            border-color: $color-primary-dark;
+            color: #ffffff;
+
+            &:before{
+                background: #ffffff;
+            }
+        
+        }
+
+        &.toggle-2--false + .toggle-2__button {
+            border-radius:0 3px 3px 0;
+        }
+
+        &.toggle-2--false:checked + .toggle-2__button{
+            background-color: $color-primary;
+            border-color: $color-primary-dark;
+            color: #ffffff;            
+
+            &:before{
+                background: #ffffff;
+            }
         }
     }
 
