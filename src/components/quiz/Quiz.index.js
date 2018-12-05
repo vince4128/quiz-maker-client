@@ -2,16 +2,35 @@ import React, { Component } from 'react';
 import { Route, Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchQuizzes, deleteQuiz } from '../../actions';
+import QuizCard from './Quiz.card';
 import LongText from '../ui/LongText';
 
 class QuizIndex extends Component {
 
+    constructor(props){
+        super(props);
+        this.state = {
+            user:null,
+            filterUser:false,            
+        }
+    }
+
     componentDidMount(){
         this.props.fetchQuizzes();
+        this.setState({user:this.props.connected._id})
     }
 
     handleDelete(id){
         this.props.deleteQuiz(id, this.props.connected.authenticated);        
+    }
+
+    filter(filterUser){
+        //alert('filter ' + id);
+        if(filterUser){
+            this.setState({filterUser:true});
+        }else{
+            this.setState({filterUser:false});
+        }
     }
 
     renderDate(date){    
@@ -23,7 +42,7 @@ class QuizIndex extends Component {
         return `${year}/${month}/${day}`;
     }
 
-    renderQuizzes(){
+    /*renderQuizzes(){
         const data = Object.assign({}, this.props.quiz)        
         return Object.keys(data)
             .map(key => {
@@ -76,80 +95,24 @@ class QuizIndex extends Component {
                             </div>                            
                             <section className="description">
                                 <h1>{renderData.title}</h1>
-                                {/*<h5 dangerouslySetInnerHTML={{__html: renderData.description}}></h5>*/}
-                                <LongText content={renderData.description} limit="60" html="true" classToApply="desc"/>
-                                <LongText content={renderData.introduction} limit="60" html="true" classToApply="introduction"/>
+                                <LongText content={renderData.description} limit="150" html="true" classToApply="desc"/>
+                                <p>{renderData.category.title}</p>
                                 <hr/>
                                 <div class="read-more">
-                                    {/*<div className="m-button-group">
-                                        {renderData.author._id === this.props.connected._id ?
-                                        <a id="btn-delete" className="m-button m-button-group--secondary" onClick={()=>{this.handleDelete(renderData._id)}}>
-                                        Delete
-                                        <i>
-                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20">
-                                            <path d="M15.5 2h-3.5v-0.5c0-0.827-0.673-1.5-1.5-1.5h-2c-0.827 0-1.5 0.673-1.5 1.5v0.5h-3.5c-0.827 0-1.5 0.673-1.5 1.5v1c0 0.652 0.418 1.208 1 1.414v12.586c0 0.827 0.673 1.5 1.5 1.5h10c0.827 0 1.5-0.673 1.5-1.5v-12.586c0.582-0.206 1-0.762 1-1.414v-1c0-0.827-0.673-1.5-1.5-1.5zM8 1.5c0-0.276 0.224-0.5 0.5-0.5h2c0.276 0 0.5 0.224 0.5 0.5v0.5h-3v-0.5zM14.5 19h-10c-0.276 0-0.5-0.224-0.5-0.5v-12.5h11v12.5c0 0.276-0.224 0.5-0.5 0.5zM16 4.5c0 0.276-0.224 0.5-0.5 0.5h-12c-0.276 0-0.5-0.224-0.5-0.5v-1c0-0.276 0.224-0.5 0.5-0.5h12c0.276 0 0.5 0.224 0.5 0.5v1z"></path>
-                                            <path d="M12.5 7c-0.276 0-0.5 0.224-0.5 0.5v10c0 0.276 0.224 0.5 0.5 0.5s0.5-0.224 0.5-0.5v-10c0-0.276-0.224-0.5-0.5-0.5z"></path>
-                                            <path d="M9.5 7c-0.276 0-0.5 0.224-0.5 0.5v10c0 0.276 0.224 0.5 0.5 0.5s0.5-0.224 0.5-0.5v-10c0-0.276-0.224-0.5-0.5-0.5z"></path>
-                                            <path d="M6.5 7c-0.276 0-0.5 0.224-0.5 0.5v10c0 0.276 0.224 0.5 0.5 0.5s0.5-0.224 0.5-0.5v-10c0-0.276-0.224-0.5-0.5-0.5z"></path>
-                                            </svg>
-                                        </i>
-                                        </a> : ""}                                        
-                                        <Link className="m-button" to={`/share/${renderData._id}`}>
-                                        Partager
-                                        <i>
-                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20">
-                                            <path d="M8.5 20c-0.043 0-0.087-0.006-0.13-0.017-0.218-0.059-0.37-0.257-0.37-0.483v-7.5h-7.5c-0.226 0-0.424-0.152-0.483-0.37s0.037-0.449 0.232-0.562l19-11c0.196-0.113 0.444-0.081 0.604 0.079s0.193 0.408 0.079 0.604l-11 19c-0.091 0.157-0.258 0.249-0.433 0.249zM2.362 11h6.138c0.276 0 0.5 0.224 0.5 0.5v6.138l9.128-15.766-15.766 9.128z"></path>
-                                            </svg>
-                                        </i>
-                                        </Link>                                        
-                                        <Link className="m-button" id="btn-preview" to={`/preview/${renderData._id}`} className="">
-                                        Preview
-                                        <i>
-                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 20 20">
-                                                <path d="M19.872 10.166c-0.047-0.053-1.182-1.305-2.956-2.572-1.047-0.748-2.1-1.344-3.13-1.773-1.305-0.544-2.579-0.82-3.786-0.82s-2.481 0.276-3.786 0.82c-1.030 0.429-2.083 1.026-3.13 1.773-1.774 1.267-2.909 2.52-2.956 2.572-0.171 0.19-0.171 0.479 0 0.669 0.047 0.053 1.182 1.305 2.956 2.572 1.047 0.748 2.1 1.344 3.13 1.773 1.305 0.544 2.579 0.82 3.786 0.82s2.481-0.276 3.786-0.82c1.030-0.429 2.083-1.026 3.13-1.773 1.774-1.267 2.909-2.52 2.956-2.572 0.171-0.19 0.171-0.479 0-0.669zM12.574 6.438c0.907 0.763 1.426 1.873 1.426 3.062 0 2.206-1.794 4-4 4s-4-1.794-4-4c0-1.188 0.519-2.299 1.426-3.062 0.822-0.268 1.691-0.438 2.574-0.438s1.752 0.17 2.574 0.438zM16.317 12.606c-1.533 1.092-3.873 2.394-6.317 2.394s-4.784-1.302-6.317-2.394c-1.157-0.824-2.042-1.658-2.489-2.106 0.447-0.448 1.332-1.281 2.489-2.106 0.53-0.378 1.156-0.78 1.85-1.145-0.347 0.688-0.533 1.455-0.533 2.251 0 2.757 2.243 5 5 5s5-2.243 5-5c0-0.796-0.186-1.563-0.533-2.251 0.694 0.365 1.32 0.768 1.85 1.145 1.157 0.824 2.042 1.658 2.489 2.106-0.447 0.448-1.332 1.281-2.489 2.106z"></path>
-                                                </svg> 
-                                        </i>
-                                        </Link>
-                                        {renderData.author._id === this.props.connected._id ? 
-                                        <Link className="m-button" to={`/quiz/${renderData._id}/edit`}>
-                                        Edit
-                                        <i>
-                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20">
-                                            <path d="M19.104 0.896c-0.562-0.562-1.309-0.871-2.104-0.871s-1.542 0.309-2.104 0.871l-12.75 12.75c-0.052 0.052-0.091 0.114-0.116 0.183l-2 5.5c-0.066 0.183-0.021 0.387 0.116 0.524 0.095 0.095 0.223 0.146 0.354 0.146 0.057 0 0.115-0.010 0.171-0.030l5.5-2c0.069-0.025 0.131-0.065 0.183-0.116l12.75-12.75c0.562-0.562 0.871-1.309 0.871-2.104s-0.309-1.542-0.871-2.104zM5.725 17.068l-4.389 1.596 1.596-4.389 11.068-11.068 2.793 2.793-11.068 11.068zM18.396 4.396l-0.896 0.896-2.793-2.793 0.896-0.896c0.373-0.373 0.869-0.578 1.396-0.578s1.023 0.205 1.396 0.578c0.373 0.373 0.578 0.869 0.578 1.396s-0.205 1.023-0.578 1.396z"></path>
-                                            </svg>
-                                        </i>
-                                        </Link> : ""}
-                                        </div>*/}
-
                                         <div className="btns">
                                         {renderData.author._id === this.props.connected._id ? 
                                         <Link className="btn btn--primary" to={`/quiz/${renderData._id}/edit`}>
-                                        Edit
-                                        {/*<i>
-                                        <svg class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20">
-                                            <path d="M19.104 0.896c-0.562-0.562-1.309-0.871-2.104-0.871s-1.542 0.309-2.104 0.871l-12.75 12.75c-0.052 0.052-0.091 0.114-0.116 0.183l-2 5.5c-0.066 0.183-0.021 0.387 0.116 0.524 0.095 0.095 0.223 0.146 0.354 0.146 0.057 0 0.115-0.010 0.171-0.030l5.5-2c0.069-0.025 0.131-0.065 0.183-0.116l12.75-12.75c0.562-0.562 0.871-1.309 0.871-2.104s-0.309-1.542-0.871-2.104zM5.725 17.068l-4.389 1.596 1.596-4.389 11.068-11.068 2.793 2.793-11.068 11.068zM18.396 4.396l-0.896 0.896-2.793-2.793 0.896-0.896c0.373-0.373 0.869-0.578 1.396-0.578s1.023 0.205 1.396 0.578c0.373 0.373 0.578 0.869 0.578 1.396s-0.205 1.023-0.578 1.396z"></path>
-                                            </svg>
-                                        </i>*/}
+                                        Éditer
                                         </Link> : ""}
                                         <Link className="btn btn--primary" id="btn-preview" to={`/preview/${renderData._id}`}>
-                                        Preview
-                                        {/*<i>
-                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 20 20">
-                                                <path d="M19.872 10.166c-0.047-0.053-1.182-1.305-2.956-2.572-1.047-0.748-2.1-1.344-3.13-1.773-1.305-0.544-2.579-0.82-3.786-0.82s-2.481 0.276-3.786 0.82c-1.030 0.429-2.083 1.026-3.13 1.773-1.774 1.267-2.909 2.52-2.956 2.572-0.171 0.19-0.171 0.479 0 0.669 0.047 0.053 1.182 1.305 2.956 2.572 1.047 0.748 2.1 1.344 3.13 1.773 1.305 0.544 2.579 0.82 3.786 0.82s2.481-0.276 3.786-0.82c1.030-0.429 2.083-1.026 3.13-1.773 1.774-1.267 2.909-2.52 2.956-2.572 0.171-0.19 0.171-0.479 0-0.669zM12.574 6.438c0.907 0.763 1.426 1.873 1.426 3.062 0 2.206-1.794 4-4 4s-4-1.794-4-4c0-1.188 0.519-2.299 1.426-3.062 0.822-0.268 1.691-0.438 2.574-0.438s1.752 0.17 2.574 0.438zM16.317 12.606c-1.533 1.092-3.873 2.394-6.317 2.394s-4.784-1.302-6.317-2.394c-1.157-0.824-2.042-1.658-2.489-2.106 0.447-0.448 1.332-1.281 2.489-2.106 0.53-0.378 1.156-0.78 1.85-1.145-0.347 0.688-0.533 1.455-0.533 2.251 0 2.757 2.243 5 5 5s5-2.243 5-5c0-0.796-0.186-1.563-0.533-2.251 0.694 0.365 1.32 0.768 1.85 1.145 1.157 0.824 2.042 1.658 2.489 2.106-0.447 0.448-1.332 1.281-2.489 2.106z"></path>
-                                                </svg> 
-                                        </i>*/}
+                                        Prévisualiser
                                         </Link>
                                         <Link className="btn btn--primary" to={`/share/${renderData._id}`}>
                                         Partager
-                                        {/*<i>
-                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20">
-                                            <path d="M8.5 20c-0.043 0-0.087-0.006-0.13-0.017-0.218-0.059-0.37-0.257-0.37-0.483v-7.5h-7.5c-0.226 0-0.424-0.152-0.483-0.37s0.037-0.449 0.232-0.562l19-11c0.196-0.113 0.444-0.081 0.604 0.079s0.193 0.408 0.079 0.604l-11 19c-0.091 0.157-0.258 0.249-0.433 0.249zM2.362 11h6.138c0.276 0 0.5 0.224 0.5 0.5v6.138l9.128-15.766-15.766 9.128z"></path>
-                                            </svg>
-                                        </i>*/}
                                         </Link>  
                                         {renderData.author._id === this.props.connected._id ?
                                         <a href="" id="btn-delete" className="btn btn--error" onClick={()=>{this.handleDelete(renderData._id)}}>
-                                        Delete&nbsp;
+                                        Supprimer&nbsp;
                                         <i>
                                             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="#fff">
                                             <path d="M15.5 2h-3.5v-0.5c0-0.827-0.673-1.5-1.5-1.5h-2c-0.827 0-1.5 0.673-1.5 1.5v0.5h-3.5c-0.827 0-1.5 0.673-1.5 1.5v1c0 0.652 0.418 1.208 1 1.414v12.586c0 0.827 0.673 1.5 1.5 1.5h10c0.827 0 1.5-0.673 1.5-1.5v-12.586c0.582-0.206 1-0.762 1-1.414v-1c0-0.827-0.673-1.5-1.5-1.5zM8 1.5c0-0.276 0.224-0.5 0.5-0.5h2c0.276 0 0.5 0.224 0.5 0.5v0.5h-3v-0.5zM14.5 19h-10c-0.276 0-0.5-0.224-0.5-0.5v-12.5h11v12.5c0 0.276-0.224 0.5-0.5 0.5zM16 4.5c0 0.276-0.224 0.5-0.5 0.5h-12c-0.276 0-0.5-0.224-0.5-0.5v-1c0-0.276 0.224-0.5 0.5-0.5h12c0.276 0 0.5 0.224 0.5 0.5v1z"></path>
@@ -167,17 +130,42 @@ class QuizIndex extends Component {
                     </li>
                 )
             })
+    }*/
+
+    renderQuizzesTest(){
+        if(this.state.filterUser){
+            const data = Object.assign({}, this.props.quiz)        
+            return Object.keys(data)
+                .map(key => {
+                    const renderData = data[key];
+                if(renderData.author._id == this.props.connected._id){return <QuizCard quiz={renderData} userId={this.props.connected._id} deleteQuiz={(id)=>{this.handleDelete(renderData._id)}}></QuizCard>;}
+                })
+        }else{        
+            const data = Object.assign({}, this.props.quiz)        
+            return Object.keys(data)
+                .map(key => {
+                    const renderData = data[key];
+                    return <QuizCard quiz={renderData} userId={this.props.connected._id} deleteQuiz={(id)=>{this.handleDelete(renderData._id)}}></QuizCard>;
+                })
+        }
     }
 
     render(){
         return(
             <div className="o-content">
-                {/*<div className="btns">
-                    <button className="btn btn--primary">Tous les quiz</button>
-                    <button className="btn btn--primary">Mes quiz</button>
-                </div>*/}              
+                {this.props.connected._id ?
+                <div className="btns-toggle">
+                    <label className="toggle-2">
+                        <input className="toggle-2__input toggle-2--true" type="radio" name="filterUser" checked={!this.state.filterUser}/>
+                        <span onClick={()=>{this.filter(false)}} className="toggle-2__button">Tous les quiz</span>
+                    </label>
+                    <label className="toggle-2">
+                        <input className="toggle-2__input toggle-2--false" type="radio" name="filterUser" checked={this.state.filterUser}/>
+                        <span onClick={()=>this.filter(true)} className="toggle-2__button">Mes Quiz</span>
+                    </label>
+                </div> : ""}       
                 <ul className="o-card-list">
-                    {this.renderQuizzes()}
+                    {this.renderQuizzesTest()}
                 </ul>
             </div>
         )
