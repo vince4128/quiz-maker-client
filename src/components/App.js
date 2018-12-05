@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Header from './header/Header';
 import Sidebar from './sidebar/Sidebar';
 import QuizIndex from './quiz/Quiz.index';
+import QuizIndexCat from './quiz/Quiz.index.cat';
 import QuizShow from './quiz/Quiz.show';
 import QuizCreate from './quiz/Quiz.create';
 import QuizEdit from './quiz/Quiz.edit';
@@ -56,7 +57,8 @@ class App extends Component {
             <Switch>
               <Route path="/category/:id/edit" exact render={()=><CategoryEdit connected={this.props.auth}/>} /> 
               <Route path="/category/new" render={()=><CategoryCreate connected={this.props.auth}/>} />
-              <Route path="/category/:id" render={()=><CategoryShow connected={this.props.auth}/>} />
+              <Route path="/category/:id/quiz" render={()=><QuizIndexCat connected={this.props.auth}/>} />
+              <Route path="/category/:id" render={()=><CategoryShow connected={this.props.auth}/>} />              
             </Switch>
 
             <Route path="/preview/:id" exact render={()=><PreviewQuiz connected={this.props.auth}/>} />
