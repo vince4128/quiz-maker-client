@@ -34,6 +34,7 @@ class RichTextHtml extends Component {
                 <RichTextEditor 
                     value={this.state.value}
                     onChange={this.onChange.bind(this)}
+                    placeholder={this.props.placeholder}
                     toolbarClassName="m-rte-toolbar"
                     editorClassName="m-rte-editor" 
                 />
