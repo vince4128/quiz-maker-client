@@ -1,9 +1,13 @@
 .a-question__enonce{
-    font-size:2rem;    
+    font-size:1.5rem;    
 }
 
 .a-question__proposition{
     border:none;
     margin:0 0 5px 0;
     padding:0;
+}
+
+.a-question--score{
+    text-align: center;
 }

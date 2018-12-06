@@ -10,7 +10,12 @@ const QuizRender = (props) => {
     const getTitle = () => {
         const title = props.quiz.map((q) => {
             if(q.title){
-                return q.title;
+                return (
+                    <React.Fragment>
+                        {q.title}
+                        <ProgressNumber currentSlide={props.currentSlide} totalSlide={props.totalSlide}/>
+                    </React.Fragment>
+                )                
             }
         });
         return title;
@@ -41,10 +46,9 @@ const QuizRender = (props) => {
 
     return(
         <div className="o-quiz">
-            <ProgressBar currentSlide={props.currentSlide} totalSlide={props.totalSlide}/>
-            <ProgressNumber currentSlide={props.currentSlide} totalSlide={props.totalSlide}/>
+            <ProgressBar currentSlide={props.currentSlide} totalSlide={props.totalSlide}/>            
             <div className="m-quiz__title">
-                <h1>{getTitle()}</h1>
+                <h3>{getTitle()}</h3>
             </div>
             
             <ul className="m-quiz__question">

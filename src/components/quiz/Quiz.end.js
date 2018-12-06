@@ -4,10 +4,10 @@ const QuizEnd = (props) => {
 
     return(
         <div>
-            <h1>{props.scorePercent} %</h1>            
+            <h1 className="a-question--score">{props.scorePercent} %</h1>            
                 {props.scorePercent > 80 ? 
-                    <h1 dangerouslySetInnerHTML={{__html: props.feedback.good}}/>
-                    : <h1 dangerouslySetInnerHTML={{__html: props.feedback.bad}}/>
+                    <h4 dangerouslySetInnerHTML={{__html: props.feedback.good}}/>
+                    : <h4 dangerouslySetInnerHTML={{__html: props.feedback.bad}}/>
                 }            
         </div>        
     )

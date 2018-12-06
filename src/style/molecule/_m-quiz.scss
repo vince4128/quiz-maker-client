@@ -59,21 +59,22 @@
 }
 
 .m-quiz__title{
-    padding:1.5rem 2rem 1rem 2rem;
+    padding:.1rem 2rem 1rem 2rem;
     h1{
         margin:0 !important;
     }
 }
 
 .m-quiz__progress{
-    position: absolute;
-    top: 0;
-    left:0;
-    width: 0%;
-    height: 0.5em;
-    background: $color-primary;
-    -webkit-transition: width 0.3s ease-in-out;
-    transition: width 0.3s ease-in-out;
+    float:right;
+    //position: absolute;
+    //top: 0;
+    //left:0;
+    //width: 0%;
+    //height: 0.5em;
+    //background: $color-primary;
+    //-webkit-transition: width 0.3s ease-in-out;
+    //transition: width 0.3s ease-in-out;
 }
 
 .m-quiz__number{
@@ -84,7 +85,7 @@
 	color: rgba(0,0,0,0.4);
 	margin: 1.5rem;
 	font-weight: 700;
-	font-size: 2em;
+	font-size: 1.5em;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	cursor: default;
 }
