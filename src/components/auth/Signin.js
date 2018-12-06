@@ -34,9 +34,9 @@ class Signin extends Component {
                             component="input"
                             autoComplete="none"
                         />
-                        <div>
-                        {this.props.errorMessage}
-                        </div>
+                        { this.props.errorMessage ? <div className="m-form__error">
+                            {this.props.errorMessage}
+                        </div> : ""}
                         {/*<button className="m-button m-button--primary">Sign In !</button>*/}
                         <button className="btn btn--primary">Sign In !</button>
                     </fieldset>                                        

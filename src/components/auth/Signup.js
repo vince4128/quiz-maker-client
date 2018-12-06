@@ -27,8 +27,6 @@ class Signup extends Component {
                             component="input"
                             autoComplete="none"
                         />
-                    </fieldset>
-                    <fieldset>
                         <label>Pseudo</label>
                         <Field
                             name="pseudo"
@@ -36,8 +34,6 @@ class Signup extends Component {
                             component="input"
                             autoComplete="none"
                         />
-                    </fieldset>
-                    <fieldset>
                         <label>Password</label>
                         <Field
                             name="password"
@@ -45,12 +41,11 @@ class Signup extends Component {
                             component="input"
                             autoComplete="none"
                         />
+                        <button className="btn btn--primary">Sign up !</button>
                     </fieldset>
-                    <div>
-                        {this.props.errorMessage}
-                    </div>
-                    {/*<button className="m-button m-button--primary">Sign up !</button>*/}
-                    <button className="btn btn--primary">Sign up !</button>
+                    { this.props.errorMessage ? <div className="m-form__error">
+                            {this.props.errorMessage}
+                        </div> : ""}         
                 </form>
             </div>
         )
