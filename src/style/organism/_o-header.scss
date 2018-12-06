@@ -21,10 +21,18 @@
        //color:$white;
        color:$color-primary;
 
+       &.app-title--preview{
+           padding-left:3em;
+       }
+
        @include mq('tablet', 'max'){
             font-size:1em;
             margin: .75em 0 !important;
-            transform:translateX(-50%) ;
+            transform:translateX(-50%);
+
+            &.app-title--preview{
+                padding-left:0;
+            }
         }
    }
 
@@ -41,8 +49,9 @@
            display: inline-block;
            margin-right: 1rem;
        }
-   } 
-
+   }
+   
+   &__back,
    &__trigger{
         z-index:2;
         position:fixed;
