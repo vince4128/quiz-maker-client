@@ -125,14 +125,6 @@ class QuestionCreate extends Component {
                         </label>
                         </div>
                     </div>        
-                    {/*<FieldArray name={`${proposal}.hobbies`} component={renderHobbies} />*/}
-                    {/*<button
-                        className="m-button m-button--secondary"
-                        title="Effacer la propostion"
-                        onClick={() => fields.remove(index)}
-                    >
-                        Supprimer la proposition
-                    </button>*/}
                     <button
                         className="btn btn--error"
                         title="Effacer la propostion"
@@ -147,9 +139,6 @@ class QuestionCreate extends Component {
           ))}
           <li>
             <fieldset>
-                {/*<button className="m-button m-button--primary" onClick={() => fields.push({})}>
-                Ajouter une proposition
-                </button>*/}
                 <button className="btn btn--primary" onClick={() => fields.push({})}>
                 Ajouter une proposition
                 </button>
