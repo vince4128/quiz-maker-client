@@ -1,4 +1,5 @@
 import axios from 'axios';
+import SERVER from './server';
 import {
     AUTH_USER,
     AUTH_ERROR,
@@ -7,7 +8,7 @@ import {
     SIGN_OUT
 } from './types';
 
-const server = 'http://localhost:3000';
+const server = SERVER;
 
 export const signupAction = (formProps, callback) => /*return*/ async dispatch => { // we use redux thunk (control over the dispatch process)
 

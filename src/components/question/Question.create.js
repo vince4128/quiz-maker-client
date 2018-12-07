@@ -12,7 +12,10 @@ import RenderRadio from '../field/RenderRadio';
 import requireAuth from '../requireAuth';
 import QuestionShow from './Question.show';
 import RenderSelectField from '../field/RenderSelectField';
-import validate from './validate'
+import validate from './validate';
+import SERVER from '../../actions/server';
+
+const server = SERVER;
 
 class QuestionCreate extends Component {
 
@@ -51,7 +54,7 @@ class QuestionCreate extends Component {
                 const data = new FormData();
                 data.append('filename', filename); 
                 data.append('file', this.state.imageFile[0]);             
-                axios.post('http://localhost:3000/upload', data, {
+                axios.post(`${server}/upload`, data, {
                     headers: {authorization: this.props.connected}
                 })
                     .then((r)=>{

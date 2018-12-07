@@ -10,6 +10,9 @@ import RenderField from '../field/RenderField';
 import RenderArea from '../field/RenderArea';
 import RenderSelectField from '../field/RenderSelectField';
 import RichTextHtml from '../field/RichTextHtml';
+import SERVER from '../../actions/server';
+
+const server = SERVER;
 
 class QuizEdit extends Component {
 
@@ -83,7 +86,7 @@ class QuizEdit extends Component {
                 data.append('filename', filename); 
                 data.append('file', this.state.imageFile[0]);             
                 alert('la requete va etre passee !');
-                axios.post('http://localhost:3000/upload', data, {
+                axios.post(`${server}/upload`, data, {
                     headers: {authorization: this.props.auth}
                 })
                     .then((r)=>{

@@ -1,6 +1,9 @@
 import React from 'react';
 import LongText from '../ui/LongText';
 import {Link} from 'react-router-dom';
+import SERVER from '../../actions/server';
+
+const server = SERVER;
 
 function renderDate(date){    
     console.log("date",date.substring(1, 3));
@@ -13,7 +16,7 @@ function renderDate(date){
 
 const QuizCard = (props) => {    
 
-    const image = props.quiz.image ? `url(http://localhost:3000/${props.quiz.image})` : 'url(/img/placeholder.jpg)';    
+    const image = props.quiz.image ? `url(${server}/${props.quiz.image})` : 'url(/img/placeholder.jpg)';    
 
     return (
         <li key={props.quiz._id}>

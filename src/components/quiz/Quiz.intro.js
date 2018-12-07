@@ -1,11 +1,14 @@
 import React from 'react';
+import SERVER from '../../actions/server';
+
+const server = SERVER;
 
 const QuizIntro = (props) => {
 
     return (
         <div className="m-quiz__intro">
             <div className="m-quiz__intro__hero">
-                <img className="m-quiz__img" src={`http://localhost:3000/${props.quizImg}`}/>
+                <img className="m-quiz__img" src={`${server}/${props.quizImg}`}/>
             </div>
             <div className="m-quiz__intro__title">
             <h1>{props.title}</h1>

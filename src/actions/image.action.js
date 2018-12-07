@@ -1,4 +1,5 @@
 import axios from 'axios';
+import SERVER from './server';
 import {
     FETCH_IMAGES,
     FETCH_IMAGE,
@@ -7,7 +8,7 @@ import {
     EDIT_IMAGE  
 } from './types';
 
-const server = 'http://localhost:3000';
+const server = SERVER;
 
 export function fetchImages(){
     const response = axios.get(`${server}/image`);

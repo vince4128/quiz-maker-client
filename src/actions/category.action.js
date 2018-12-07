@@ -1,4 +1,5 @@
 import axios from 'axios';
+import SERVER from './server';
 import {
     FETCH_CATEGORIES,
     FETCH_CATEGORY,
@@ -7,7 +8,7 @@ import {
     DELETE_CATEGORY
 } from './types';
 
-const server = 'http://localhost:3000';
+const server = SERVER;
 
 export function fetchCategories(){
     const response = axios.get(`${server}/category`);

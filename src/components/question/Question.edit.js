@@ -12,6 +12,9 @@ import RenderRadio from '../field/RenderRadio';
 import RichTextHtml from '../field/RichTextHtml';
 import QuestionShow from '../question/Question.show';
 import validate from './validate';
+import SERVER from '../../actions/server';
+
+const server = SERVER;
 
 class QuestionEdit extends Component {
 
@@ -78,7 +81,7 @@ class QuestionEdit extends Component {
                 data.append('filename', filename);            
                 data.append('file', this.state.imageFile[0]);           
                 alert('la requete va etre passee !');
-                axios.post('http://localhost:3000/upload', data, {
+                axios.post(`${server}/upload`, data, {
                     headers: {authorization: this.props.connected.authenticated}
                 })
                     .then((r)=>{

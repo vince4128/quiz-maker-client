@@ -3,6 +3,9 @@ import { Route, Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchQuiz } from '../../actions';
 import QuestionIndex from '../question/Question.index';
+import SERVER from '../../actions/server';
+
+const server = SERVER;
 
 class QuizShow extends Component {
 
@@ -34,7 +37,7 @@ class QuizShow extends Component {
                 <p>{Quiz.date}</p>
                 <p>{Quiz.author ? Quiz.author.pseudo : ""}</p>
                 <div>
-                    {Quiz.image ? <img width="250" height="auto" src={`http://localhost:3000/${Quiz.image}`}/> : ""}
+                    {Quiz.image ? <img width="250" height="auto" src={`${server}/${Quiz.image}`}/> : ""}
                 </div>
                 <QuestionIndex questions={Quiz.question} quizId={Quiz._id}/>
                 <Link to={"/"}>Back</Link>

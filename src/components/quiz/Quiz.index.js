@@ -3,6 +3,9 @@ import { Route, Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchQuizzes, deleteQuiz } from '../../actions';
 import QuizCard from './Quiz.card';
+import SERVER from '../../actions/server';
+
+const server = SERVER;
 
 class QuizIndex extends Component {
 

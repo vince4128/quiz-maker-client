@@ -1,4 +1,5 @@
 import axios from 'axios';
+import SERVER from './server';
 import {
     FETCH_QUESTIONS,
     FETCH_QUESTION,
@@ -7,7 +8,7 @@ import {
     EDIT_QUESTION  
 } from './types';
 
-const server = 'http://localhost:3000';
+const server = SERVER;
 
 export function fetchQuestions(){
     const response = axios.get(`${server}/questions`);

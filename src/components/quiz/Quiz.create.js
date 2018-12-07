@@ -11,6 +11,9 @@ import RenderField from '../field/RenderField';
 import RenderArea from '../field/RenderArea';
 import RichTextHtml from '../field/RichTextHtml';
 import RenderSelectField from '../field/RenderSelectField';
+import SERVER from '../../actions/server';
+
+const server = SERVER;
 
 class QuizCreate extends Component {
 
@@ -90,7 +93,7 @@ class QuizCreate extends Component {
                 const data = new FormData();
                 data.append('filename', filename); 
                 data.append('file', this.state.imageFile[0]);             
-                axios.post('http://localhost:3000/upload', data, {
+                axios.post(`${server}/upload`, data, {
                     headers: {authorization: this.props.connected.authenticated}
                 })
                     .then((r)=>{

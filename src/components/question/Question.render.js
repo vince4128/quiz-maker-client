@@ -1,4 +1,7 @@
 import React from 'react';
+import SERVER from '../../actions/server';
+
+const server = SERVER;
 
 const QuestionRender = (props) => {
 
@@ -28,7 +31,7 @@ const QuestionRender = (props) => {
     
             {props.q.image ? 
                 <div className="m-question__image">
-                    <img src={`http://localhost:3000/${props.q.image}`}/>
+                    <img src={`${server}/${props.q.image}`}/>
                 </div>
                 :<div className="m-question__image--placeholder"></div>
             }
