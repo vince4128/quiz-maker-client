@@ -178,7 +178,7 @@ class QuestionCreate extends Component {
                             name="statement"
                             type="text"
                             component={RichTextHtml}
-                            label="enoncé de la question"
+                            label="Énoncé de la question"
                         />
 
                     </fieldset>
@@ -199,16 +199,16 @@ class QuestionCreate extends Component {
                     <fieldset>
                     
                         <Field
-                            label="FeedBack ok"
+                            label="FeedBack bonne réponse"
                             name="feedback.good"
-                            placeholder="Feedback ok"  
+                            placeholder="Feedback en cas de bonne réponse"  
                             component={RichTextHtml}                   
                             />
                             
                         <Field
-                            label="FeedBack ko"
+                            label="FeedBack mauvaise réponse"
                             name="feedback.bad"
-                            placeholder="Feedback ko"  
+                            placeholder="Feedback en cas de mauvaise réponse"  
                             component={RichTextHtml}                   
                             />
 

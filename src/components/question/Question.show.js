@@ -59,8 +59,8 @@ class QuestionShow extends Component {
                                 : ""*/
                                 this.props.edit ? 
                                     <div className="btns">
-                                    <a href="" className="btn btn--error" onClick={()=>{this.handleDelete(this.props.quizId, this.props.question._id)}}>delete</a>
-                                        <Link to={`/quiz/${this.props.quizId}/question/${this.props.question._id}/edit`} className="btn btn--primary">Edit</Link>
+                                    <Link to={`/quiz/${this.props.quizId}/question/${this.props.question._id}/edit`} className="btn btn--primary">Éditer</Link>
+                                    <a href="" className="btn btn--error" onClick={()=>{this.handleDelete(this.props.quizId, this.props.question._id)}}>Supprimer</a>                                        
                                     </div> 
                                     : ""}
                             </footer>

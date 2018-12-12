@@ -37,7 +37,7 @@ export default ({
             </ul>
         ):(
             <div className="m-dropzone__tip">
-                <h3>Clik or drag img here</h3>
+                <h3>Cliquez ou glissez une image ici</h3>
             </div>            
         )}
         </DropZone>

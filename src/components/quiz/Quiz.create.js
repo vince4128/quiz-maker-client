@@ -130,7 +130,7 @@ class QuizCreate extends Component {
                     
                     <Field
                         placeholder="Titre du nouveau quiz"
-                        label="Title"
+                        label="Titre"
                         name="title"
                         component={RenderField}                        
                     />
@@ -154,15 +154,15 @@ class QuizCreate extends Component {
                 <fieldset>
 
                     <Field
-                        placeholder="Feedback général en cas de réussite"
-                        label="Feedback bad"
+                        placeholder="Feedback général en cas d'échec"
+                        label="Feedback échec"
                         name="feedback.bad"
                         component={RichTextHtml}
                     />
 
                     <Field
-                        placeholder="Feedback général en cas d'échec"
-                        label="Feedback good"
+                        placeholder="Feedback général en cas de succès"
+                        label="Feedback succès"
                         name="feedback.good"
                         component={RichTextHtml}
                     />
@@ -175,7 +175,7 @@ class QuizCreate extends Component {
                         label="Catégorie"
                         name="category"
                         component={RenderSelectField}>
-                        <option value="">choisissez une catégorie</option>
+                        <option value="">Choisissez une catégorie</option>
                         {this.renderCategories()}
                     </Field>
 

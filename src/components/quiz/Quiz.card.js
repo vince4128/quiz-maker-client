@@ -81,7 +81,7 @@ const QuizCard = (props) => {
                                 Partager
                                         </Link>
                             {props.quiz.author._id === props.userId ?
-                                <a id="btn-delete" className="btn btn--error" onClick={() => { props.deleteQuiz(props.quiz._id) }}>
+                                <a id="btn-delete" className="btn btn--error icon-text-aligner" onClick={() => { props.deleteQuiz(props.quiz._id) }}>
                                     Supprimer&nbsp;
                                         <i>
                                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="#fff">

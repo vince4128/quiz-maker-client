@@ -117,7 +117,7 @@ class QuizEdit extends Component {
                 <fieldset>
                 
                     <Field
-                        label="Title"
+                        label="Titre"
                         name="title"
                         placeholder="Titre du quiz"          
                         component={RenderField}               
@@ -142,14 +142,14 @@ class QuizEdit extends Component {
                 <fieldset>
 
                     <Field
-                        placeholder="Feedback général en cas de réussite"
+                        placeholder="Feedback général en cas d'échec"
                         label="Feedback bad"
                         name="feedback.bad"
                         component={RichTextHtml}
                     />
 
                     <Field
-                        placeholder="Feedback général en cas d'échec"
+                        placeholder="Feedback général en cas de succès"
                         label="Feedback good"
                         name="feedback.good"
                         component={RichTextHtml}
@@ -160,7 +160,7 @@ class QuizEdit extends Component {
                 <fieldset>
 
                     <Field
-                        label="Categorie"
+                        label="Catégorie"
                         name="category"
                         component={RenderSelectField}>
                         {this.renderCategories()}

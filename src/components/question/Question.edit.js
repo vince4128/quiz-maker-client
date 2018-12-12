@@ -209,7 +209,7 @@ class QuestionEdit extends Component {
                             name="statement"
                             type="text"
                             component={RichTextHtml}
-                            label="Énonce"
+                            label="Énoncé"
                         />
                     
                     </fieldset>

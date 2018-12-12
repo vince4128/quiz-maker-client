@@ -14,14 +14,14 @@ class Header extends Component {
             return(
                 <span className="m-header__link--right">
                     <li><span className="a-header__pseudo">{this.props.user.pseudo}</span></li>
-                    <li><Link to={"/signout"}>Sign out</Link></li>
+                    <li><Link to={"/signout"}>Déconnexion</Link></li>
                 </span>
             )
         }else{
             return(
                 <span className="m-header__link--right">
-                    <li><Link to={"/signin"}>Sign in</Link></li>
-                    <li><Link to={"/signup"}>Sign up</Link></li>
+                    <li><Link to={"/signin"}>Connexion</Link></li>
+                    <li><Link to={"/signup"}>Inscription</Link></li>
                 </span>
             )
         }

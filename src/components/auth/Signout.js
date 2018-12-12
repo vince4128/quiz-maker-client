@@ -12,8 +12,8 @@ class Signout extends Component {
     render(){
         return(           
             <div className="o-content">
-                <h2>Signed out</h2>
-                <p>Sorry to see you go</p>
+                <h2>Déconnecter</h2>
+                <p>À bientôt !</p>
             </div>
         );
     }
