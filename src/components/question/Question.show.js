@@ -29,7 +29,7 @@ class QuestionShow extends Component {
     }
 
     parentMethod(){
-        alert('parent method !');
+        //alert('parent method !');
         this.toggleEdit();
     }
 

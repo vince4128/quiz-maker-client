@@ -30,7 +30,7 @@ export default (state={}, action) => {
         
         case DELETE_QUESTION:
         
-            alert('delete action reducer');
+            //alert('delete action reducer');
             const tmpState = Object.assign(state);        
             const quizToModify = tmpState[`${action.payload.id}`];
             const newQuestionArray = quizToModify.question.filter((q) => {

@@ -80,7 +80,6 @@ class QuestionEdit extends Component {
                 const data = new FormData();
                 data.append('filename', filename);            
                 data.append('file', this.state.imageFile[0]);           
-                alert('la requete va etre passee !');
                 axios.post(`${server}/upload`, data, {
                     headers: {authorization: this.props.connected.authenticated}
                 })
