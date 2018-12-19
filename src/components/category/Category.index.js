@@ -28,8 +28,8 @@ class CategoryIndex extends Component {
                             {
                                 /*this.props.connected ? (<div className="m-button-group"><a id="btn-delete" className="m-button m-button-group--secondary" onClick={()=>{this.handleDelete(renderData._id)}}>
                             Delete</a><Link to={`/category/${renderData._id}/edit`} className="m-button">Edit</Link></div>) : ""*/
-                            this.props.connected ? (<div className="btns"><Link to={`/category/${renderData._id}/edit`} className="btn btn--primary">Edit</Link><a href="" id="btn-delete" className="btn btn--error" onClick={()=>{this.handleDelete(renderData._id)}}>
-                            Delete</a></div>) : ""}
+                            this.props.connected ? (<div className="btns"><Link to={`/category/${renderData._id}/edit`} className="btn btn--primary">Éditer</Link><a href="" id="btn-delete" className="btn btn--error" onClick={()=>{this.handleDelete(renderData._id)}}>
+                            Supprimer</a></div>) : ""}
                         </section>                    
                     </li>
                 )

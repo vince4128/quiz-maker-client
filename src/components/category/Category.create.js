@@ -31,27 +31,23 @@ class CategoryCreate extends Component {
 
             <div className="o-content">
 
-            <h1>Create Category</h1>
+            <h1>Nouvelle Catégorie</h1>
 
             <form class="m-form" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                 
                 <fieldset>
 
                     <Field
-                        label="Title"
+                        label="Nom de la catégorie"
+                        placeholder="Nom de la catégorie"
                         name="title"
                         component={RenderField}
                     />
 
                     <Field
                         label="Description"
+                        placeholder="Description de la catégorie"
                         name="description"
-                        component={RenderField}
-                    />
-
-                    <Field
-                        label="Short Description"
-                        name="shortDescription"
                         component={RenderField}
                     />
 
@@ -60,8 +56,8 @@ class CategoryCreate extends Component {
                 {/*<button type="submit" className="btn btn-primary">Submit</button>
                 <Link to="/category" className="m-form__cancel">Cancel</Link>*/}
                 <div className="btns">
-                    <button type="submit" className="btn btn--primary btn--md">Submit</button>
-                    <Link to="/category" className="btn btn--error btn--md">Cancel</Link>
+                    <button type="submit" className="btn btn--primary btn--md">Valider</button>
+                    <Link to="/category" className="btn btn--error btn--md">Annuler</Link>
                 </div>
 
         </form>
@@ -80,15 +76,11 @@ function validate(values){
 
     // validate the inputs from 'values'
     if(!values.title){
-        errors.title = "Enter a title !";
+        errors.title = "Saisissez un nom de catégorie !";
     }
 
     if(!values.description){
-        errors.description = "Enter a description !";
-    }
-
-    if(!values.shortDescription){
-        errors.shortDescription = "Enter a shortdescription !";
+        errors.description = "Saisissez une description !";
     }
 
     //if errors is empty, the form is fine to submit

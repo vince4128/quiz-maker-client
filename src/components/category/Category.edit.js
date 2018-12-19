@@ -57,9 +57,9 @@ class CategoryEdit extends Component {
             <fieldset>
 
                 <Field
-                    label="Title"
+                    label="Titre"
                     name="title"
-                    placeholder="Type your title"
+                    placeholder="Saisissez le nouveau titre"
                     defaultValue ="blablalba"            
                     component={RenderField}                    
                 />
@@ -67,16 +67,7 @@ class CategoryEdit extends Component {
                 <Field
                     label="Description"
                     name="description"
-                    placeholder="placeholder"
-                    placeholder="Type your title"                                        
-                    component={RenderField}
-                />
-
-                <Field
-                    label="Short Description"
-                    name="shortDescription"
-                    placeholder="placeholder"
-                    placeholder="Type your title"                                        
+                    placeholder="Saisissez la nouvelle description"                                     
                     component={RenderField}
                 />
 
@@ -85,8 +76,8 @@ class CategoryEdit extends Component {
                 {/*<button type="submit" className="btn btn-primary">Submit</button>
                 <Link to="/category" className="m-form__cancel">Cancel</Link>*/}
                 <div className="btns">
-                    <button type="submit" className="btn btn--primary btn--md">Submit</button>
-                    <Link to="/category" className="btn btn--error btn--md">Cancel</Link>
+                    <button type="submit" className="btn btn--primary btn--md">Valider</button>
+                    <Link to="/category" className="btn btn--error btn--md">Anhuler</Link>
                 </div>
 
             </form>
@@ -109,10 +100,6 @@ function validate(values){
 
     if(!values.description){
         errors.description = "Enter a description !";
-    }
-
-    if(!values.shortDescription){
-        errors.shortDescription = "Enter a shortdescription !";
     }
 
     //if errors is empty, the form is fine to submit
