@@ -5,11 +5,13 @@
   "dependencies": {
     "animate.css": "^3.7.0",
     "axios": "^0.18.0",
+    "chartist": "^0.11.0",
     "lato-webfont": "^2.15.1",
     "node-sass": "^4.9.3",
     "normalize.css": "^8.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
+    "react-chartist": "^0.13.1",
     "react-dom": "^16.5.2",
     "react-dropzone": "^5.1.0",
     "react-redux": "^5.0.7",
