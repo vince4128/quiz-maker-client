@@ -26,7 +26,7 @@ const QuestionIndex = (props) => {
 
     return(
         <div>
-            <h2>Question index</h2>
+            {props.questions.length > 0 ? <h2>Question index</h2> : ""}
             {renderQ()}
             {/*<Link to={`/quiz/${props.quizId}/question/new`}>Add Questions</Link>*/}
         </div>        
