@@ -5,30 +5,32 @@ import ChartistGraph from 'react-chartist';
 
 class Pie extends Component {
 
+    constructor(props){
+        super(props);        
+    }
+
     render() {
 
+        const badAnswer = 100 - this.props.score;
+
         const data = {
-            labels: ['W1', 'W2', 'W3', 'W4', 'W5', 'W6', 'W7', 'W8', 'W9', 'W10'],
-            series: [
-                [1, 2, 4, 8, 6, -2, -1, -4, -6, -2]
-            ]
+            series: [this.props.score,badAnswer],
+            labels: [1, 2, 3, 4, 5, 6, 7]
         };
 
         const options = {
-            high: 10,
-            low: -10,
-            axisX: {
-                labelInterpolationFnc: function(value, index) {
-                    return index % 2 === 0 ? value : null;
-                }
-            }
+            donut: true,
+            donutWidth: 20,
+            /*startAngle: 270,*/
+            total: 100
         };
         
-        const type = 'Bar';
+        const type = 'Pie';
 
         return (
             <Fragment>
-                <ChartistGraph data={data} options={options} type={type} />
+                <ChartistGraph className={'ct-octave'} data={data} options={options} type={type} listener={{"draw" : function(data){ /*data.element.animate({dur:500})*/ }}}/>
+                <div>{JSON.stringify(this.props.score)}</div>
             </Fragment>
         )
 
