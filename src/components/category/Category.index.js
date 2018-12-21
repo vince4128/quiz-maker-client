@@ -21,8 +21,8 @@ class CategoryIndex extends Component {
                 const renderData = data[key];
                 return( <li key={renderData._id}>
                         <section className="m-card m-card--cat">
-                            <Link to={`/category/${renderData._id}/quiz`}><h2>{renderData.title}</h2></Link>                        
-                            <p>{renderData.shortDescription}</p>
+                            <Link to={`/category/${renderData._id}/quiz`}><h2>{renderData.title}</h2></Link>
+                            <br/>                                                 
                             <p className="introduction">{renderData.description}</p> 
                             <hr/>
                             {

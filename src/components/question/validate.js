@@ -4,8 +4,8 @@ const validate = values => {
       errors.statement = 'Un énoncé est requis'
     }
     if(!values.feedback){
-      errors.feedback.bad = "Enter a bad feedback !";
-      errors.feedback.good = "Enter a good feedback !";
+      errors.feedback.bad = "Saisissez un feedback négatif !";
+      errors.feedback.good = "Saisissez un feedback positif !";
   }
     if (!values.proposal || values.proposal.length<2) {
       errors.proposal = { _error: 'Au moins deux proposition sont requises' }
@@ -14,18 +14,18 @@ const validate = values => {
       values.proposal.forEach((member, memberIndex) => {
         const memberErrors = {}
         if (!member || !member.text) {
-          memberErrors.text = 'Required'
+          memberErrors.text = 'Champ requis'
           proposalArrayErrors[memberIndex] = memberErrors
         }
         if (!member || !member.value) {
-          memberErrors.value = 'Required'
+          memberErrors.value = 'Champ requis'
           proposalArrayErrors[memberIndex] = memberErrors
         }
         if (member && member.hobbies && member.hobbies.length) {
           const hobbyArrayErrors = []
           member.hobbies.forEach((hobby, hobbyIndex) => {
             if (!hobby || !hobby.length) {
-              hobbyArrayErrors[hobbyIndex] = 'Required'
+              hobbyArrayErrors[hobbyIndex] = 'Champ requis'
             }
           })
           if (hobbyArrayErrors.length) {
@@ -36,7 +36,7 @@ const validate = values => {
             if (!memberErrors.hobbies) {
               memberErrors.hobbies = []
             }
-            memberErrors.hobbies._error = 'No more than five hobbies allowed'
+            memberErrors.hobbies._error = 'Nombre maximal de proposition atteint'
             proposalArrayErrors[memberIndex] = memberErrors
           }
         }
