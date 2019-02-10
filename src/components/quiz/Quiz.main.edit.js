@@ -57,7 +57,7 @@ class QuizCreateQuestion extends Component{
 
         const hasQuiz = 
             <div className="o-content">
-            <h1>Édition du Quiz</h1>            
+            <h2>Édition du Quiz</h2>            
                 <Tabs part={this.state.default}>
                     <div label="Paramètres généraux" partName="general">
                         <QuizEdit connected={this.props.auth}/>

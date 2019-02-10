@@ -198,7 +198,7 @@ class QuestionEdit extends Component {
                 <h4>Question Edit</h4>
                 <p>id question : {this.props.question._id}</p>
                 <p>id quiz : {this.props.quizId}</p>*/}
-                <h1>Édition de la question</h1>
+                <h2>Édition de la question</h2>
 
                 <form class="m-form" onSubmit={handleSubmit(this.onSubmit.bind(this))}>                
 

@@ -5,7 +5,7 @@ const QuizEnd = (props) => {
 
     return(
         <div>
-            <h1 className="a-question--score">Votre score est de : {props.scorePercent} %</h1>
+            <h2 className="a-question--score">Votre score est de : {props.scorePercent} %</h2>
             <div className="a-graph-result">
                 <Pie score={props.scorePercent}></Pie>
             </div>                                    

@@ -48,7 +48,7 @@ class QuizShow extends Component {
     render(){
         return(
             <div className="o-content">
-                <h1>Quiz Show</h1>
+                <h2>Quiz Show</h2>
                 {this.renderQuiz()}
             </div>
         )

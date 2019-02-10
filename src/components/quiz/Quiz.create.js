@@ -122,7 +122,7 @@ class QuizCreate extends Component {
 
             <div className="o-content">
 
-            <h1>Nouveau Quiz</h1>
+            <h2>Nouveau Quiz</h2>
 
             <form class="m-form" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 

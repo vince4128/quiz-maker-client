@@ -50,7 +50,7 @@ class CategoryEdit extends Component {
 
             <div className="o-content">
 
-            <h1>Édition de Catégorie</h1>
+            <h2>Édition de Catégorie</h2>
 
             <form class="m-form" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 

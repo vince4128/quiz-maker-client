@@ -26,11 +26,11 @@ class QuizIntegration extends Component{
         return(
             <div className="o-content">
                 <section className="m-form">
-                    <h1>Code d'intégration du quiz</h1>
+                    <h2>Code d'intégration du quiz</h2>
                     <section>
                         <fieldset>
                             <h3>Via une url</h3>                
-                            <input ref={(linkref) => this.linkref = linkref} type="text" value={`http://localhost:3001/shared/${this.props.match.params.id}`} id="sharedQuiz"/>
+                            <input ref={(linkref) => this.linkref = linkref} type="text" value={`http://138.197.186.223:3001/shared/${this.props.match.params.id}`} id="sharedQuiz"/>
                             {/*<button className="m-button m-button--primary" onClick={(e)=>this.linkToClipboard(e,'link')}>Copier le lien</button>*/}
                             <button className="btn btn--primary" onClick={(e)=>this.linkToClipboard(e,'link')}>Copier le lien</button>
                         </fieldset>
@@ -41,7 +41,7 @@ class QuizIntegration extends Component{
                             <input 
                                 type="textarea"
                                 ref={(textarearef) => this.textarearef = textarearef} 
-                                value={`<iframe src="http://localhost:3001/shared/${this.props.match.params.id}" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" width="100%" height="100vh"></iframe>`}                         
+                                value={`<iframe src="http://138.197.186.223:3001/shared/${this.props.match.params.id}" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" width="100%" height="100vh"></iframe>`}                         
                                 id="iframeSharedQuiz"/>
                             {/*<button className="m-button m-button--primary" onClick={(e)=>this.linkToClipboard(e,'embed')}>Copier le code</button>*/}
                             <button className="btn btn--primary" onClick={(e)=>this.linkToClipboard(e,'embed')}>Copier le code</button>

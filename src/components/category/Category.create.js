@@ -31,7 +31,7 @@ class CategoryCreate extends Component {
 
             <div className="o-content">
 
-            <h1>Nouvelle Catégorie</h1>
+            <h2>Nouvelle Catégorie</h2>
 
             <form class="m-form" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                 
