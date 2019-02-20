@@ -11,3 +11,50 @@
 .a-question--score{
     text-align: center;
 }
+
+.a-question__btn-suivant,
+.a-question__btn-valider{
+    //border:red 3px solid;
+    @include mq('tablet') { 
+        //display:block;
+        //position:fixed;
+        //bottom:0;
+        //left:0;
+        //width:100%;
+    }
+}
+
+.a-question__btn-suivant,
+.a-question__btn-valider{
+    padding:1rem;
+    border-radius: 0;
+    text-align: center;
+    background-color: $color-success;
+    width:100%;
+    border-left:$color-success-dark 5px solid;
+    opacity: 1;
+    margin-bottom:1rem;
+    &:hover{
+        background-color: $color-success-light;
+    }
+    span{
+        margin:0 auto;
+    }
+    transition: all .3s ease-in-out;
+}
+
+.a-question__btn-valider:disabled{
+    &:hover{
+        background-color: lighten(#333, 15%);
+    }
+    border:none;
+    opacity: 0;
+}
+
+.a-question__btn-suivant{
+    &:hover{
+        background-color: $color-primary-light;
+    }
+    background-color: $color-primary;
+    border:none;
+}
