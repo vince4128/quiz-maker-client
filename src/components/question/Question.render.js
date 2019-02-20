@@ -60,21 +60,22 @@ const QuestionRender = (props) => {
                             </div>
                         )
                     })}                                
-                    {/*<button disabled={shouldBeDisabled(props.q)} onClick={()=>props.questionValidation(props.q)}className="m-button m-button--primary">Valider</button>*/}
-                    <button disabled={shouldBeDisabled(props.q)} onClick={()=>props.questionValidation(props.q)}className="btn btn--primary">Valider</button>
+                    {/*<button disabled={shouldBeDisabled(props.q)} onClick={()=>props.questionValidation(props.q)}className="btn btn--primary a-question__btn-valider">Valider</button>*/}
                 </form>
                 <p>
                 { props.q.answered ? 
                     <div>
                         { props.q.result ? 
-                            <p className="m-question__feedback m-question__feedback--good" dangerouslySetInnerHTML={{__html: props.q.feedback.good}} />
-                        :   <p className="m-question__feedback m-question__feedback--bad" dangerouslySetInnerHTML={{__html: props.q.feedback.bad}} />
+                            <p id="feedback" className="m-question__feedback m-question__feedback--good" dangerouslySetInnerHTML={{__html: props.q.feedback.good}} />
+                        :   <p id="feedback" className="m-question__feedback m-question__feedback--bad" dangerouslySetInnerHTML={{__html: props.q.feedback.bad}} />
                         }
                     </div> 
                     : ""}
                 </p>
             </div>
-            
+        
+            { !props.q.answered ? <button disabled={shouldBeDisabled(props.q)} onClick={()=>props.questionValidation(props.q)}className="btn btn--primary a-question__btn-valider"><span>Valider</span></button> : ""}
+
         </div>
     )
 

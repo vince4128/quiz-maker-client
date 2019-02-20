@@ -35,8 +35,7 @@ const QuizRender = (props) => {
                             : ""
                         }
                         <section className="m-quiz__nextBtn">
-                            {/*q.answered ? <button className="animated fadeIn m-button m-button-group--primary" onClick={()=>props.prevNext("next")}>Suivant</button> : ""*/}
-                            {q.answered ? <button className="animated fadeIn btn btn--primary" onClick={()=>props.prevNext("next")}>Suivant</button> : ""}
+                            {q.answered ? <button id="btn-suivant" className="animated fadeIn btn btn--primary a-question__btn-suivant" onClick={()=>props.prevNext("next")}><span>Suivant</span></button> : ""}
                         </section>
                     </li>
                 )
@@ -45,7 +44,7 @@ const QuizRender = (props) => {
     }
 
     return(
-        <div className="o-quiz">
+        <div className={"o-quiz" + (props.shared ? " o-quiz--shared" : "")}>
             <ProgressBar currentSlide={props.currentSlide} totalSlide={props.totalSlide}/>            
             <div className="m-quiz__title">
                 <h3>{getTitle()}</h3>
