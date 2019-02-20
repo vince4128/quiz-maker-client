@@ -61,9 +61,9 @@ class App extends Component {
               <Route path="/category/:id" render={()=><CategoryShow connected={this.props.auth}/>} />              
             </Switch>
 
-            <Route path="/preview/:id" exact render={()=><PreviewQuiz connected={this.props.auth}/>} />
+            <Route path="/preview/:id" exact render={()=><PreviewQuiz connected={this.props.auth} shared={false}/>} />
             <Route path="/share/:id" exact render={()=><QuizIntegration connected={this.props.auth}/>} />
-            <Route path="/shared/:id" exact render={()=><PreviewQuiz connected={this.props.auth}/>} />
+            <Route path="/shared/:id" exact render={()=><PreviewQuiz connected={this.props.auth} shared={true}/>} />
 
         </section>
 

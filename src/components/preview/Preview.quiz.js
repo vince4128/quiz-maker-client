@@ -57,6 +57,7 @@ class PreviewQuiz extends Component {
     }
 
     prevNext(direction){
+        window.scrollTo(0, 0);
         const currentQ = this.state.quiz[this.state.currentSlide];
         //console.log(currentQ);
         if(direction === "next" && this.state.currentSlide <= this.state.totalSlide){
@@ -171,6 +172,7 @@ class PreviewQuiz extends Component {
                     prevNext={(direction)=>{this.prevNext(direction)}}
                     questionValidation={(index)=>{this.questionValidation(index)}}
                     toggleCheck={(q, p, check)=>this.toggleCheck(q, p, check)}
+                    shared={this.props.shared}
                     />
             </div>
         )
