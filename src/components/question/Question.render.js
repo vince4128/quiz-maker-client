@@ -27,7 +27,7 @@ const QuestionRender = (props) => {
     }
 
     return(
-        <div className="animated slideInRight">
+        <div className="m-question--container animated slideInRight">
     
             {props.q.image ? 
                 <div className="m-question__image">
