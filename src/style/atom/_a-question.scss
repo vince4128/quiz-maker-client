@@ -1,5 +1,8 @@
 .a-question__enonce{
-    font-size:1.5rem;    
+    font-size:1.5rem;
+    @include mq('tablet', 'max'){
+        font-size:1em;
+    }   
 }
 
 .a-question__proposition{

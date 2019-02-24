@@ -12,7 +12,7 @@ const QuizIntro = (props) => {
             </div>
             <div className="m-quiz__intro__title">
             <h2>{props.title}</h2>
-            <h4 dangerouslySetInnerHTML={{__html: props.intro}} />
+            <h4 className="m-quiz__intro__text" dangerouslySetInnerHTML={{__html: props.intro}} />
             {/*<button className="animated fadeInLeft m-button m-button--primary" onClick={()=>props.next()}>Démarrer</button>*/}
             <button className="animated fadeInLeft btn btn--primary btn--demarrer" onClick={()=>props.next()}>Démarrer</button>
             </div>            
