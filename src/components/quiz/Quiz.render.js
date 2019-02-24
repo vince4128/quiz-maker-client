@@ -12,7 +12,7 @@ const QuizRender = (props) => {
             if(q.title){
                 return (
                     <React.Fragment>
-                        {q.title}
+                        {props.currentSlide == (props.totalSlide - 1) ? "" : q.title}
                         <ProgressNumber currentSlide={props.currentSlide} totalSlide={props.totalSlide}/>
                     </React.Fragment>
                 )                
@@ -35,7 +35,7 @@ const QuizRender = (props) => {
                             : ""
                         }
                         <section className="m-quiz__nextBtn">
-                            {q.answered ? <button id="btn-suivant" className="animated fadeIn btn btn--primary a-question__btn-suivant" onClick={()=>props.prevNext("next")}><span>Suivant</span></button> : ""}
+                            {q.answered ? <button id="btn-suivant" className="animated fadeIn btn btn--primary a-question__btn-suivant" onClick={()=>props.prevNext("next")}><span>Suivant</span></button> : ""}                            
                         </section>
                     </li>
                 )
@@ -43,7 +43,7 @@ const QuizRender = (props) => {
         })
     }
 
-    return(
+    return(        
         <div className={"o-quiz" + (props.shared ? " o-quiz--shared" : "")}>
             <ProgressBar currentSlide={props.currentSlide} totalSlide={props.totalSlide}/>            
             <div className="m-quiz__title">
