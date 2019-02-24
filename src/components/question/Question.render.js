@@ -38,7 +38,6 @@ const QuestionRender = (props) => {
 
             <div className="m-question">                     
                 <div className="a-question__enonce" dangerouslySetInnerHTML={{__html: props.q.statement}}/>
-                <br/>
                 <form onSubmit={(e)=>{e.preventDefault()}}>                                
                     {props.q.proposal.map((p) =>{
                         return (
