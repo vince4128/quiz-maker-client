@@ -69,7 +69,7 @@ const QuizCard = (props) => {
                     <Link to={`/category/${props.quiz.category._id}/quiz`}><p className="introduction">{props.quiz.category.title}</p></Link>
                     <hr />
                     <div class="read-more">
-                        <div className="btns btns--quiz-card">
+                        <div className="btns">
                             {props.quiz.author._id === props.userId ?
                                 <Link className="btn btn--primary" to={`/quiz/${props.quiz._id}/edit`}>
                                     Éditer
