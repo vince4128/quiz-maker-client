@@ -3,6 +3,8 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchQuiz } from '../../actions';
 import QuizRender from '../quiz/Quiz.render';
+import * as Scroll from 'react-scroll';
+import { animateScroll as scroll } from 'react-scroll';
 
 class PreviewQuiz extends Component {
 
@@ -78,7 +80,8 @@ class PreviewQuiz extends Component {
         this.questionCorrection(q);
     }
 
-    questionCorrection(q){
+    questionCorrection(q){ 
+        scroll.scrollToBottom();       
         //TODO add a method for multi-choice question
         //const currentQ = this.state.quiz[this.state.currentSlide];
         if(q.type ==="simple"){
