@@ -14,7 +14,7 @@ const QuizIntro = (props) => {
             <h2>{props.title}</h2>
             <h4 dangerouslySetInnerHTML={{__html: props.intro}} />
             {/*<button className="animated fadeInLeft m-button m-button--primary" onClick={()=>props.next()}>Démarrer</button>*/}
-            <button className="animated fadeInLeft btn btn--primary" onClick={()=>props.next()}>Démarrer</button>
+            <button className="animated fadeInLeft btn btn--primary btn--demarrer" onClick={()=>props.next()}>Démarrer</button>
             </div>            
         </div>
     );
