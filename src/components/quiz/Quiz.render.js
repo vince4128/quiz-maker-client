@@ -27,7 +27,7 @@ const QuizRender = (props) => {
             q.index = count++;
             if(q.index === props.currentSlide){
                 return(
-                    <li>
+                    <li className="m-question--container">
                         {q.intro ? <QuizIntro quizImg={props.quizImg} intro={q.intro} title={q.title} next={() => {props.prevNext("next")}}/> : ""}
                         {q.feedback && (q.index === props.totalSlide-1) ? <QuizEnd scorePercent={props.scorePercent} feedback={q.feedback}/> : ""}                        
                         {q.proposal ?
@@ -50,7 +50,7 @@ const QuizRender = (props) => {
                 <h3>{getTitle()}</h3>
             </div>
             
-            <ul className="m-quiz__question">
+            <ul className="m-quiz__question m-question--container">
                 {renderQuiz()}
             </ul>            
         </div>

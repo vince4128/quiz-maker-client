@@ -183,4 +183,6 @@
 .m-question--container{
     display: block;
     width:100%;
+    max-width:100vw !important;
+    overflow: hidden;
 }
