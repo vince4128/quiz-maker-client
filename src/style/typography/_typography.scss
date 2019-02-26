@@ -11,8 +11,8 @@
     --font-secondary: 'Lato-regular', sans-serif; //heading text - replace with an imported font
 
     /* set base values */
-    --text-base-size: 1em; 
-    --text-scale-ratio: 1.15; //use to generate the font scale
+    --text-base-size: 1.05em; 
+    --text-scale-ratio: 1.05; //use to generate the font scale
 
     /* type scale */
 
@@ -26,8 +26,8 @@
     --text-xxxl: calc( 1em * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio));
 
     /* line-height */
-    --heading-line-height: 1.2;
-    --body-line-height: 1.4;
+    --heading-line-height: 1.05;
+    --body-line-height: 1.1;
 
     /*@include breakpoint(md) {
         :root{
@@ -40,8 +40,8 @@
 
 @include mq('tablet', 'max'){
     :root {
-        --text-base-size: 1.25em;
-        --text-scale-ratio: 1.25;
+        --text-base-size: 1.1em;
+        --text-scale-ratio: 1.15;
     }
 }
 
