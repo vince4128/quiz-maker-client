@@ -17,9 +17,10 @@
    }
 
    h3#app-title{
-       margin:.5em !important;
+       margin:.7em .5em .5em .5em !important;
        //color:$white;
        color:$color-primary;
+       font-size: 1.35em;
 
        &.app-title--preview{
            //padding-left:3em;
