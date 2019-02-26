@@ -46,9 +46,9 @@ const QuizRender = (props) => {
     return(        
         <div className={"o-quiz" + (props.shared ? " o-quiz--shared" : "")}>
             <ProgressBar currentSlide={props.currentSlide} totalSlide={props.totalSlide}/>            
-            <div className="m-quiz__title">
+            {props.currentSlide == 0 ? "" : <div className="m-quiz__title">
                 <h3>{getTitle()}</h3>
-            </div>
+            </div>}
             
             <ul className="m-quiz__question m-question--container">
                 {renderQuiz()}
